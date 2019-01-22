@@ -40,7 +40,7 @@
 				<div class="container">
 					<div class="row align-items-center justify-content-between d-flex">
 						<div id="logo">
-							<a href="index.html"><img src="<?php echo base_url();?>assets/user/img/logo.png" alt="" title="" /></a>
+							<a href="<?php echo base_url('Welcome');?>"><img src="<?php echo base_url();?>assets/user/img/logo.png" alt="" title="" /></a>
 						</div>
 						<nav id="nav-menu-container">
 							<ul class="nav-menu">
@@ -63,7 +63,7 @@
 								Where is<br>
 								My Coffee?			
 							</h1>
-							<a href="#" class="primary-btn text-uppercase">Signup Now</a>
+							<a href="<?php echo base_url('Welcome/login');?>" class="primary-btn text-uppercase">Signup Now</a>
 						</div>											
 					</div>
 				</div>

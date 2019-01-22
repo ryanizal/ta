@@ -3,6 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
 
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('Mroaster');
+	}
+
 	public function index()
 	{
 		$this->load->view('user/main');
@@ -23,6 +29,25 @@ class Welcome extends CI_Controller {
 
 	public function login_roaster()
 	{
+		$inputan = $this->input->post();
+
+		if ($inputan) 
+		{
+			$cek = $this->Mroaster->login_roaster($inputan);
+
+			
+			// print_r ($cek);
+			
+			if ($cek == "sukses") 
+			{
+				
+				redirect('roaster/','refresh');
+			}
+			else
+			{
+				echo "<script>alert('username and Password Didnt match');</script>";
+			}
+		} 
 		$this->load->view('user/roaster/login');
 	}
 
@@ -33,6 +58,12 @@ class Welcome extends CI_Controller {
 
 	public function signup_roaster()
 	{
+		$inputan=$this->input->post();
+		if ($inputan) 
+		{
+			$this->Mroaster->save_roaster($inputan);
+			redirect('Welcome/login_roaster','refresh');
+		}
 		$this->load->view('user/roaster/signup');
 	}
 }

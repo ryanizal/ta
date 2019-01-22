@@ -6,7 +6,7 @@
 
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3>DATA COFFEE</h3>
+			<h3>LIST COFFEE</h3>
 			
 		</div>
 
@@ -24,9 +24,8 @@
 						<th>Sweetness</th>
 						<th>Bitterness</th>
 						<th>Savory</th>
-						<th>Foto 1</th>
-						<th>Foto 2</th>
-						<th>Foto 3</th>
+						<th>Origin</th>
+						<th>Roast profile</th>
 						<th>Roasterd by</th>
 						<th>action</th>
 					</tr>
@@ -40,12 +39,15 @@
 							<td><?php echo $value['sweet'] ?></td>
 							<td><?php echo $value['bitter'] ?></td>
 							<td><?php echo $value['savory'] ?></td>
-							<td><img src="../assets/img/coffee/<?php echo $value['foto_1'] ?>" class="img-circle" height="100" width="100"></td>
+							<td><?php echo $value['origin'] ?></td>
+							<td><?php echo $value['id_roast_prof'] ?></td>
+							<!-- <td><img src="../assets/img/coffee/<?php echo $value['foto_1'] ?>" class="img-circle" height="100" width="100"></td>
 							<td><img src="../assets/img/coffee/<?php echo $value['foto_2'] ?>" class="img-circle" height="100" width="100"></td>
-							<td><img src="../assets/img/coffee/<?php echo $value['foto_3'] ?>" class="img-circle" height="100" width="100"></td>
+							<td><img src="../assets/img/coffee/<?php echo $value['foto_3'] ?>" class="img-circle" height="100" width="100"></td> -->
 							<td><?php echo $value['id_roaster'] ?></td>
 							<td>
 								<!-- <a href="" class="btn btn-info btn-sm"> Detail</a> -->
+								<a href="<?php echo base_url('administrator/Coffee/detail/'.$value['id_kopi']);?>" class="btn btn-info btn-sm"> Detail</a>
 								<a href="<?php echo base_url('administrator/Coffee/edit/'.$value['id_kopi']);?>" class="btn btn-warning btn-sm"> Ubah</a>
 								<a href="<?php echo base_url('administrator/Coffee/hapus/'.$value['id_kopi']);?>" class="btn btn-danger btn-sm"> Hapus</a>
 							</td>

@@ -17,7 +17,8 @@ class Mkopi extends CI_Model {
 			$config['upload_path'] = './assets/img/coffee';
 			$config['allowed_types'] = 'gif|jpg|png';
 
-			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
+			
 			$u = $this->upload->do_upload($nama_foto);
 
 			if ($u)
@@ -30,7 +31,8 @@ class Mkopi extends CI_Model {
 		$this->db->insert("kopi", $input);
 	}
 
-	function get_kopi($id_kopi){
+	function get_kopi($id_kopi)
+	{
 		$this->db->where('id_kopi', $id_kopi);
 		$ambil = $this->db->get('kopi');
 
@@ -38,6 +40,8 @@ class Mkopi extends CI_Model {
 
 		return $data_kopi;
 	}
+
+	
 
 	function hapus_kopi($id_kopi){
 
@@ -89,7 +93,21 @@ class Mkopi extends CI_Model {
 			$this->db->update('kopi', $input);
 		}
 	}
+
+	function tampil_kopi_roaster($limit,$idr)
+	{
+		$this->db->where('id_roaster', $idr);
+		$this->db->order_by('id_kopi', 'desc');
+		$data = $this->db->get('kopi', $limit);
+		return $data->result_array();
+	}
+
+	function profile_roast()
+	{
+		$profile_roast = array("Light", "Light to Medium", "Medium", "Medium to Dark", "Dark");
+		return $profile_roast;
+	}
 }
 
-	/* End of file Mkopi.php */
+/* End of file Mkopi.php */
 /* Location: ./application/models/Mkopi.php */

@@ -1,83 +1,136 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Registration Page</title>
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/adminlte/bower_components/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/adminlte/bower_components/Ionicons/css/ionicons.min.css">
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/adminlte/dist/css/AdminLTE.css">
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/adminlte/plugins/iCheck/square/blue.css">
+  <!DOCTYPE html>
+  <html lang="zxx" class="no-js">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="<?php echo base_url();?>assets/user/img/fav.png">
+    <meta name="author" content="codepixer">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta charset="UTF-8">
+    <title>Coffee</title>
 
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/linearicons.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/bootstrap.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/magnific-popup.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/nice-select.css">          
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/animate.min.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/owl.carousel.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/main.css">
+  </head>
+  <body>
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-</head>
-<body class="hold-transition register-page">
-  <div class="register-box">
-    <div class="register-logo">
-      <a href="../../index2.html"><b>SIGNUP AS A ROASTER</b></a>
-    </div>
+    <header id="header" id="home">
+      <div class="header-top">
+        <div class="container">
+          <div class="row justify-content-end">
 
-    <div class="register-box-body">
-      <br>
-      <br>
+          </div>                  
+        </div>
+      </div>          
+      <div class="container">
+        <div class="row align-items-center justify-content-between d-flex">
+          <div id="logo">
+            <a href="index.html"><img src="<?php echo base_url();?>assets/user/img/logo.png" alt="" title="" /></a>
+          </div>
+          <nav id="nav-menu-container">
+            <ul class="nav-menu">
 
-      <form action="../../index.html" method="post">
-        <div class="form-group has-feedback">
-          <label class="control-label">Roastery's Name</label>
-          <input type="text" class="form-control" placeholder="Your Roastery's Name..." name="nama_roastery">
+              <li class="menu-has-children"><a href="<?php echo base_url('Welcome/login'); ?>">Login</a>
 
-        </div>
-        <div class="form-group has-feedback">
-          <label class="control-label">Choose a Username</label>
-          <input type="text" class="form-control" placeholder="Your Username..." name="username_roaster">
-        </div>
-        <div class="form-group has-feedback">
-          <label class="control-label">Password</label>
-          <input type="password" class="form-control" placeholder="Your Password..." name="password_roaster">
-        </div>
-        <div class="form-group has-feedback">
-          <label class="control-label">About Your Roastery</label>
-          <textarea class="form-control" placeholder="Tell us about your Roastery" name="deskripsi_roaster"></textarea>
-        </div>
-        <div class="form-group has-feedback">
-          <label class="control-label">Roastery's Address</label>
-          <textarea class="form-control" placeholder="Tell us about your Roastery" name="alamat_roaster"></textarea>
-        </div>
-        <div class="form-group has-feedback">
-          <label class="control-label">Phone Number</label>
-          <input type="text" class="form-control" placeholder="Roastery's phone number..." name="telp_roaster" >
-        </div>
-        <div class="form-group has-feedback">
-          <label class="control-label">Roastery's Logo/Photo</label>
-          <input type="file" class="form-control" name="foto_roaster" >
-        </div>
-        <div class="row">
-
-          <div class="col-xs-4 pull-right">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign me up!</button>
+              </ul>
+            </nav>            
           </div>
         </div>
-      </form>
+      </header>
+      
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
+      <div class="container">
+        <!-- <section class="sample-text-area"> -->
+          <div class="row">
+            <div class="col-lg-10 col-md-10">
+              <h3 class="mb-30 text-center">Register a Roastery</h3>
+              <!-- <a href="<?php echo base_url('Welcome/signup_roaster'); ?>"><p class="pull-right">I am a Roaster</p></a> -->
+              <br>
+              <form method="post" enctype="multipart/form-data" class="form-horizontal">
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Username</label>
+                  <div class="col-sm-12">
+                    <input class="single-input" type="text" name="username_roaster">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Password</label>
+                  <div class="col-sm-12">
+                    <input class="single-input" type="password" name="password_roaster">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Full Name</label>
+                  <div class="col-sm-12">
+                    <input class="single-input" type="text" name="nama_roaster">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-5 control-label">About Your Rosatery</label>
+                  <div class="col-sm-12">
+                    <textarea class="single-input" name="deskripsi_roaster"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Your Address</label>
+                  <div class="col-sm-12">
+                    <input class="single-input" type="text" name="alamat_roaster">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Phone</label>
+                  <div class="col-sm-12">
+                    <input class="single-input" type="text" name="telp_roaster">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Profile Picture</label>
+                  <div class="col-sm-12">
+                    <input class="" type="file" name="foto_roaster">
+                  </div>
+                </div>
+                <br>
+                <div class="col-lg-2 col-md-2 pull-right">
+                  <button type="submit" class="genric-btn info circle arrow">Signup</button>
+                </div>
+              </div>
+            </div>
+            <!-- </section> -->
+          </div>
+        </div>
+      </div>
 
 
 
-      <a href="<?php echo base_url('Welcome/login'); ?>" class="text-center">I already am a Roaster</a>
-    </div>
-  </div>
 
-  <script src="<?php echo base_url();?>assets/adminlte/bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="<?php echo base_url();?>assets/adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="<?php echo base_url();?>assets/adminlte/plugins/iCheck/icheck.min.js"></script>
-  <script>
-    $(function () {
-      $('input').iCheck({
-        checkboxClass: 'icheckbox_square-blue',
-        radioClass: 'iradio_square-blue',
-        increaseArea: '20%' 
-      });
-    </script>
-  </body>
-  </html>
+      <script src="<?php echo base_url();?>assets/user/js/vendor/jquery-2.2.4.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="<?php echo base_url();?>assets/user/js/vendor/bootstrap.min.js"></script>      
+      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+      <script src="<?php echo base_url();?>assets/user/js/easing.min.js"></script>      
+      <script src="<?php echo base_url();?>assets/user/js/hoverIntent.js"></script>
+      <script src="<?php echo base_url();?>assets/user/js/superfish.min.js"></script> 
+      <script src="<?php echo base_url();?>assets/user/js/jquery.ajaxchimp.min.js"></script>
+      <script src="<?php echo base_url();?>assets/user/js/jquery.magnific-popup.min.js"></script> 
+      <script src="<?php echo base_url();?>assets/user/js/owl.carousel.min.js"></script>      
+      <script src="<?php echo base_url();?>assets/user/js/jquery.sticky.js"></script>
+      <script src="<?php echo base_url();?>assets/user/js/jquery.nice-select.min.js"></script>      
+      <script src="<?php echo base_url();?>assets/user/js/parallax.min.js"></script>  
+      <script src="<?php echo base_url();?>assets/user/js/waypoints.min.js"></script>
+      <script src="<?php echo base_url();?>assets/user/js/jquery.counterup.min.js"></script>          
+      <script src="<?php echo base_url();?>assets/user/js/mail-script.js"></script> 
+      <script src="<?php echo base_url();?>assets/user/js/main.js"></script>  
+    </body>
+    </html>

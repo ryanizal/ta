@@ -15,7 +15,7 @@ class Mroaster extends CI_Model {
 		$config['upload_path'] = './assets/img/roaster';
 		$config['allowed_types'] = 'gif|jpg|png';
 
-		$this->load->library('upload', $config);
+		$this->upload->initialize($config);
 		$u = $this->upload->do_upload("foto_roaster");
 
 		if ($u)
@@ -49,7 +49,8 @@ class Mroaster extends CI_Model {
 
 	}
 
-	function edit_roaster($input,$id_roaster){
+	function edit_roaster($input,$id_roaster)
+	{
 		$config['upload_path'] = './assets/img/roaster';
 		$config['allowed_types'] = 'gif|jpg|png';
 
@@ -64,11 +65,36 @@ class Mroaster extends CI_Model {
 		$detail_roaster = $this->get_roaster($id_roaster);
 		$old = $detail_roaster['foto_roaster'];
 
-		if (file_exists("./assets/img/roaster".$old)) {
+		if (file_exists("./assets/img/roaster".$old))
+		{
 			unlink("./assets/img/roaster".$old);
 		}
 		$this->db->where('id_roaster', $id_roaster);
 		$this->db->update('roaster', $input);
+	}
+
+	function login_roaster($input)
+	{
+		$username = $input['username_roaster'];
+		$password = $input['password_roaster'];
+
+		$this->db->where('username_roaster', $username);
+		$this->db->where('password_roaster', $password);
+
+		$data = $this->db->get('roaster');
+		$cari = $data->num_rows();
+
+		if ($cari==1) 
+		{
+			$data_login = $data->row_array();
+			$this->session->set_userdata('roaster', $data_login); 
+			return "sukses";
+		}
+		else 
+		{
+			return "gagal";
+
+		}
 	}
 }
 

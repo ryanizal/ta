@@ -14,7 +14,7 @@
 			<form class="form-horizontal" method="post" enctype="multipart/form-data" >
 				<div class="form-group">
 					<label class="col-sm-1 control-label">Username</label>
-					<div class="col-sm-11">
+					<div class="col-sm-10">
 						<input class="form-control" type="text" name="username_member">
 					</div>
 				</div>

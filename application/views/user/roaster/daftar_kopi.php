@@ -2,93 +2,53 @@
 	
 	<h3 class="mb-30">List of Your Coffee</h3>
 	<div class="progress-table-wrap">
+		<div class="pull-right">
+			<a href="<?php echo base_url('Roaster/tambah_kopi/');?>" class="genric-btn primary circle col-md-offset-11">Add Coffee</a>
+			<br>
+			<br>
+		</div>
 		<div class="progress-table">
-			<div class="table-head">
-				<div class="serial">#</div>
-				<div class="country">Countries</div>
-				<div class="visit">Visits</div>
-				<div class="percentage">Percentages</div>
-			</div>
-			<div class="table-row">
-				<div class="serial">01</div>
-				<div class="country"> <img src="img/elements/f1.jpg" alt="flag">Canada</div>
-				<div class="visit">645032</div>
-				<div class="percentage">
-					<div class="progress">
-						<div class="progress-bar color-1" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-					</div>
-				</div>
-			</div>
-			<div class="table-row">
-				<div class="serial">02</div>
-				<div class="country"> <img src="img/elements/f2.jpg" alt="flag">Canada</div>
-				<div class="visit">645032</div>
-				<div class="percentage">
-					<div class="progress">
-						<div class="progress-bar color-2" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-					</div>
-				</div>
-			</div>
-			<div class="table-row">
-				<div class="serial">03</div>
-				<div class="country"> <img src="img/elements/f3.jpg" alt="flag">Canada</div>
-				<div class="visit">645032</div>
-				<div class="percentage">
-					<div class="progress">
-						<div class="progress-bar color-3" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-					</div>
-				</div>
-			</div>
-			<div class="table-row">
-				<div class="serial">04</div>
-				<div class="country"> <img src="img/elements/f4.jpg" alt="flag">Canada</div>
-				<div class="visit">645032</div>
-				<div class="percentage">
-					<div class="progress">
-						<div class="progress-bar color-4" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-					</div>
-				</div>
-			</div>
-			<div class="table-row">
-				<div class="serial">05</div>
-				<div class="country"> <img src="img/elements/f5.jpg" alt="flag">Canada</div>
-				<div class="visit">645032</div>
-				<div class="percentage">
-					<div class="progress">
-						<div class="progress-bar color-5" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-					</div>
-				</div>
-			</div>
-			<div class="table-row">
-				<div class="serial">06</div>
-				<div class="country"> <img src="img/elements/f6.jpg" alt="flag">Canada</div>
-				<div class="visit">645032</div>
-				<div class="percentage">
-					<div class="progress">
-						<div class="progress-bar color-6" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-					</div>
-				</div>
-			</div>
-			<div class="table-row">
-				<div class="serial">07</div>
-				<div class="country"> <img src="img/elements/f7.jpg" alt="flag">Canada</div>
-				<div class="visit">645032</div>
-				<div class="percentage">
-					<div class="progress">
-						<div class="progress-bar color-7" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-					</div>
-				</div>
-			</div>
-			<div class="table-row">
-				<div class="serial">08</div>
-				<div class="country"> <img src="img/elements/f8.jpg" alt="flag">Canada</div>
-				<div class="visit">645032</div>
-				<div class="percentage">
-					<div class="progress">
-						<div class="progress-bar color-8" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-					</div>
-				</div>
-			</div>
+			<!-- <br> -->
+			<table class="table table-bordered">
+				<thead>
+
+					<tr>
+						<th>No</th>
+						<th>Name</th>
+						<th>Acidity</th>
+						<th>Sweetness</th>
+						<th>Bitterness</th>
+						<th>Savory</th>
+						<th>Origin</th>
+						<th>Roast profile</th>
+						<th>Roasterd by</th>						
+						<th>action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php $no=1; ?>
+					<?php foreach ($kopi as $key => $value): ?>
+					
+					<tr>
+						<td><?php echo $no++ ?></td>
+						<td><?php echo $value['nama_kopi'] ?></td>
+						<td><?php echo $value['acidity'] ?></td>
+						<td><?php echo $value['sweet'] ?></td>
+						<td><?php echo $value['bitter'] ?></td>
+						<td><?php echo $value['savory'] ?></td>
+						<td><?php echo $value['origin'] ?></td>
+						<td><?php echo $value['profile_roast'] ?></td>
+						<td><?php echo $value['id_roaster'] ?></td>
+						<td>
+							<a href="<?php echo base_url('Roaster/detail_kopi/'.$value['id_kopi']);?>" class="btn btn-info btn-sm"> Detail</a>
+							<a href="<?php echo base_url('Roaster/edit_kopi/'.$value['id_kopi']);?>" class="btn btn-warning btn-sm"> Edit</a>
+							<a href="<?php echo base_url('Roaster/hapus_kopi/'.$value['id_kopi']);?>" class="btn btn-danger btn-sm"> Delete</a>
+						</td>
+					</tr>
+					<?php endforeach; ?>
+
+				</tbody>
+			</table>
 		</div>
 	</div>
 	

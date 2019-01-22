@@ -12,28 +12,40 @@ class Roaster extends CI_Controller {
 
 	public function index()
 	{
-		
+		$data['nama_roaster'] = $_SESSION['roaster']['nama_roaster'];
+		$idr = $_SESSION['roaster']['id_roaster'];
+		// print_r($data);
+
+		$data['new'] = $this->Mkopi->tampil_kopi_roaster(2,$idr);
+
 		$this->load->view('user/roaster/header');
-		$this->load->view('user/roaster/main');
+		$this->load->view('user/roaster/main', $data);
 		$this->load->view('user/roaster/footer');
 	}
 
 	function tambah_kopi()
 	{
 		$input = $this->input->post();
+		$idr = $_SESSION['roaster']['id_roaster'];
+
+
 		if($input)
 		{
+			$input['id_roaster'] = $idr;
 			$this->Mkopi->save_kopi($input, $_FILES);
-			redirect('pengguna/roaster/list_kopi');
+			redirect('roaster/list_kopi');
 		}
 
+		$data['profile_roast'] = $this->Mkopi->profile_roast();
+
 		$this->load->view('user/roaster/header');
-		$this->load->view('user/roaster/tambah_kopi');
+		$this->load->view('user/roaster/tambah_kopi',$data);
 		$this->load->view('user/roaster/footer');
 	}
 
 	function list_kopi()
 	{
+
 		$this->load->view('user/roaster/header');
 		$data['kopi']=$this->Mkopi->view_kopi();
 		$this->load->view('user/roaster/daftar_kopi', $data);
@@ -68,9 +80,11 @@ class Roaster extends CI_Controller {
 		if($input){
 			
 			$this->Mkopi->edit_kopi($input, $_FILES, $id_kopi);
-			redirect('pengguna/Roaster/list_kopi');
+			redirect('Roaster/list_kopi');
 		}
 		$data['k'] = $this->Mkopi->get_kopi($id_kopi);
+		$data['profile_roast'] = $this->Mkopi->profile_roast();
+		
 
 		$this->load->view('user/roaster/header');
 		$this->load->view('user/roaster/edit_kopi',$data);
@@ -95,12 +109,18 @@ class Roaster extends CI_Controller {
 
 	function hapus_kopi($id_kopi){
 		$this->Mkopi->hapus_kopi($id_kopi);
-		redirect('pengguna/Roaster/list_kopi');
+		redirect('Roaster/list_kopi');
 
 
+	}
+
+	function logout()
+	{
+		$this->session->unset_userdata('roaster');
+		redirect('welcome','refresh');
 	}
 
 }
 
 /* End of file Roaster.php */
-/* Location: ./application/controllers/pengguna/Roaster.php */
+/* Location: ./application/controllers/Roaster.php */

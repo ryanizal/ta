@@ -18,6 +18,8 @@
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/animate.min.css">
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/owl.carousel.css">
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/main.css">
+		<link rel="stylesheet" href="<?php echo base_url();?>assets/css/komen.css">
+		
 	</head>
 	<body>
 
@@ -36,16 +38,16 @@
 					</div>
 					<nav id="nav-menu-container">
 						<ul class="nav-menu">
-							<li class="menu-active"><a href="#home">Home</a></li>
-							<li><a href="#">Profile</a></li>
+							<li class="menu-active"><a href="<?php echo base_url('pengguna/roaster'); ?>">Home</a></li>
+							<li><a href="<?php echo base_url('pengguna/roaster/profile'); ?>">Profile</a></li>
 							<li class="menu-has-children"><a href="#">Coffee</a>
 								<ul>
-									<li><a href="#">See Coffee</a></li>
-									<li><a href="#">My Coffee</a></li>
-									<li><a href="#">Add Coffee</a></li>
+									<li><a href="<?php echo base_url('pengguna/roaster/'); ?>">See Coffee</a></li>
+									<li><a href="<?php echo base_url('pengguna/roaster/list_kopi'); ?>">My Coffee</a></li>
+									<li><a href="<?php echo base_url('pengguna/roaster/tambah_kopi'); ?>">Add Coffee</a></li>
 								</ul>
 							</li>
-							<li class="menu-has-children"><a href="#">Logout</a>
+							<li class="menu-has-children"><a href="<?php echo base_url('roaster/logout') ?>">Logout</a>
 
 							</ul>
 						</nav>		    		

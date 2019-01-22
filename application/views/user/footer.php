@@ -1,4 +1,6 @@
-
+<div class="section-gap">
+	
+</div>
 
 			<!-- start footer Area -->		
 			<footer class="footer-area section-gap">

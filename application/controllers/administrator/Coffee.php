@@ -33,10 +33,11 @@ class Coffee extends CI_Controller {
 
 	function detail($id_kopi){
 
-
+		
 		$get['k'] = $this->Mkopi->get_kopi($id_kopi);
 		$this->load->view('admin/header'); 
-		$this->load->view('admin/coffee/kopi_detail', $get);
+		$this->load->view('admin/coffee/detail_kopi',$get);
+		
 		$this->load->view('admin/footer');
 
 	}

@@ -18,6 +18,7 @@
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/animate.min.css">
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/owl.carousel.css">
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/main.css">
+		<link rel="stylesheet" href="<?php echo base_url();?>assets/css/komen.css">
 	</head>
 	<body>
 
@@ -32,18 +33,14 @@
 			<div class="container">
 				<div class="row align-items-center justify-content-between d-flex">
 					<div id="logo">
-						<a href="index.html"><img src="<?php echo base_url();?>assets/user/img/logo.png" alt="" title="" /></a>
+						<a href="<?php echo base_url('pengguna/member'); ?>"><img src="<?php echo base_url();?>assets/user/img/logo.png" alt="" title="" /></a>
 					</div>
 					<nav id="nav-menu-container">
 						<ul class="nav-menu">
-							<li class="menu-active"><a href="#home">Home</a></li>
-							<li><a href="#">Profile</a></li>
-							<li class="menu-has-children"><a href="#">Coffee</a>
-								<ul>
-									<li><a href="#">See Coffee</a></li>
-									<li><a href="#">My Coffee</a></li>
-									<li><a href="#">Add Coffee</a></li>
-								</ul>
+							<li class="menu-active"><a href="<?php echo base_url('pengguna/member'); ?>">Home</a></li>
+							<li><a href="<?php echo base_url('pengguna/member/profile'); ?>">Profile</a></li>
+							<li><a href="<?php echo base_url('pengguna/member'); ?>">Coffee</a>
+								
 							</li>
 							<li class="menu-has-children"><a href="#">Logout</a>
 
