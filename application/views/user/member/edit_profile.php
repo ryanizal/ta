@@ -8,30 +8,31 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Username</label>
 						<div class="col-sm-12">
-							<input class="single-input" type="text" name="username_member" value="">
+							<input class="single-input" type="text" name="username_member" value="<?php echo $username_member ?>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Password</label>
 						<div class="col-sm-12">
-							<input class="single-input" type="password" name="password_member">
+							<input class="single-input" type="password" name="password_member" value="<?php echo $password_member ?>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Full Name</label>
 						<div class="col-sm-12">
-							<input class="single-input" type="text" name="nama_member">
+							<input class="single-input" type="text" name="nama_member" value="<?php echo $nama_member ?>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">About You</label>
 						<div class="col-sm-12">
-							<textarea name="keterangan_member" class="single-input"></textarea>
+							<textarea name="keterangan_member" class="single-input" value="<?php echo $keterangan_member ?>"></textarea>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Profile Picture</label>
 						<div class="col-sm-12">
+							<img src="<?php echo base_url('assets/img/member/'.$foto_member); ?>" class="img-responsive" width="100" height="100">
 							<input class="" type="file" name="foto_member">
 						</div>
 					</div>

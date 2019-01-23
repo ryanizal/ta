@@ -59,7 +59,7 @@
               <div class="col-lg-5 generic-blockquote">
                 <h3 class="mb-30">Login as Member</h3>
                 <a href="<?php echo base_url('Welcome/login_roaster'); ?>"><p class="pull-right">I am a Roaster</p></a>
-                <form action="#">
+                <form method="post">
                   <div class="form-group">
                     <label class="col-sm-1 ">Username</label>
                     <div class="col-sm-11">

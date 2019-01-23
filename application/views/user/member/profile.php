@@ -19,24 +19,21 @@
 					<table class="" style="font-size: 130%; word-spacing: 1px">
 						<tr>
 							<td >Name </td>
-							<td>Member lorem</td>
+							<td>:	<?php echo $nama_member?></td>
 						</tr>
 						<tr>
 							<td >Username</td>
-							<td>Member1</td>
+							<td>:	<?php echo $username_member?></td>
 						</tr>
 						<tr>
 							<td >Bio</td>
-							<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat. Duis aute irure dolor in reprehenderit in</td>
+							<td>:	<?php echo $keterangan_member ?></td>
 						</tr>
 						
 					</table>
 					<div class="pull-right">
 						
-						<a href="<?php echo base_url()?>pengguna/Member/edit_profile" class="genric-btn primary circle">Update</a>
+						<a href="<?php echo base_url()?>Member/edit_profile" class="genric-btn primary circle">Update</a>
 					</div>
 				</div>
 			</div>

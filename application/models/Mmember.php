@@ -70,6 +70,30 @@ class Mmember extends CI_Model {
 		$this->db->where('id_member', $id_member);
 		$this->db->update('member', $input);
 	}
+
+	function login_member($input)
+	{
+		$username = $input['username_member'];
+		$password = $input['password_member'];
+
+		$this->db->where('username_member', $username);
+		$this->db->where('password_member', $password);
+
+		$data = $this->db->get('member');
+		$cari = $data->num_rows();
+
+		if ($cari==1) 
+		{
+			$data_login = $data->row_array();
+			$this->session->set_userdata('member', $data_login); 
+			return "sukses";
+		}
+		else 
+		{
+			return "gagal";
+
+		}
+	}
 }
 
 /* End of file Mmember.php */

@@ -63,7 +63,7 @@
 								Where is<br>
 								My Coffee?			
 							</h1>
-							<a href="<?php echo base_url('Welcome/login');?>" class="primary-btn text-uppercase">Signup Now</a>
+							<a href="<?php echo base_url('Welcome/signup');?>" class="primary-btn text-uppercase">Signup Now</a>
 						</div>											
 					</div>
 				</div>

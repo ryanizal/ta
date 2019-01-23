@@ -45,24 +45,48 @@ class Roaster extends CI_Controller {
 
 	function list_kopi()
 	{
+		$idr = $_SESSION['roaster']['id_roaster'];
 
 		$this->load->view('user/roaster/header');
-		$data['kopi']=$this->Mkopi->view_kopi();
+		$data['new'] = $this->Mkopi->tampil_kopi_roaster_list($idr);
+		// $data['kopi']=$this->Mkopi->view_kopi();
 		$this->load->view('user/roaster/daftar_kopi', $data);
 		$this->load->view('user/roaster/footer');
 	}
 
 	function profile()
 	{
+		$r['id_roaster'] = $_SESSION['roaster']['id_roaster'];
+		$r['nama_roaster'] = $_SESSION['roaster']['nama_roaster'];
+		$r['username_roaster'] = $_SESSION['roaster']['username_roaster'];
+		$r['deskripsi_roaster'] = $_SESSION['roaster']['deskripsi_roaster'];
+		$r['alamat_roaster'] = $_SESSION['roaster']['alamat_roaster'];
+		$r['telp_roaster'] = $_SESSION['roaster']['telp_roaster'];
+		$r['foto_roaster'] = $_SESSION['roaster']['foto_roaster'];
 		$this->load->view('user/roaster/header');
-		$this->load->view('user/roaster/profile');
+		$this->load->view('user/roaster/profile',$r);
 		$this->load->view('user/roaster/footer');
 	}
 
-	function update_profile()
+	function edit_profile()
 	{
+		$input = $this->input->post(); 
+
+		if($input){
+			
+			$this->Mroaster->edit_roaster($input, $id_roaster);
+			redirect('roaster/profile');
+		}
+		$r['id_roaster'] = $_SESSION['roaster']['id_roaster'];
+		$r['nama_roaster'] = $_SESSION['roaster']['nama_roaster'];
+		$r['username_roaster'] = $_SESSION['roaster']['username_roaster'];
+		$r['password_roaster'] = $_SESSION['roaster']['password_roaster'];
+		$r['deskripsi_roaster'] = $_SESSION['roaster']['deskripsi_roaster'];
+		$r['alamat_roaster'] = $_SESSION['roaster']['alamat_roaster'];
+		$r['telp_roaster'] = $_SESSION['roaster']['telp_roaster'];
+		$r['foto_roaster'] = $_SESSION['roaster']['foto_roaster'];
 		$this->load->view('user/roaster/header');
-		$this->load->view('user/roaster/edit_profile');
+		$this->load->view('user/roaster/edit_profile',$r);
 		$this->load->view('user/roaster/footer');
 	}
 
@@ -77,7 +101,8 @@ class Roaster extends CI_Controller {
 	function edit_kopi($id_kopi){
 		$input = $this->input->post(); 
 
-		if($input){
+		if($input)
+		{
 			
 			$this->Mkopi->edit_kopi($input, $_FILES, $id_kopi);
 			redirect('Roaster/list_kopi');
@@ -91,21 +116,7 @@ class Roaster extends CI_Controller {
 		$this->load->view('user/roaster/footer');
 	}
 
-	function edit_profile(){
-
-		// $input = $this->input->post(); 
-
-		// if($input){
-			
-		// $this->Mmember->edit_member($input, $id_member);
-		// redirect('administrator/Member');
-		// }
-		// $data['m'] = $this->Mmember->get_member($id_member);
-
-		$this->load->view('user/roaster/header');
-		$this->load->view('user/roaster/edit_profile');
-		$this->load->view('user/roaster/footer');
-	}
+	
 
 	function hapus_kopi($id_kopi){
 		$this->Mkopi->hapus_kopi($id_kopi);

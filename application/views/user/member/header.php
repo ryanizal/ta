@@ -33,16 +33,16 @@
 			<div class="container">
 				<div class="row align-items-center justify-content-between d-flex">
 					<div id="logo">
-						<a href="<?php echo base_url('pengguna/member'); ?>"><img src="<?php echo base_url();?>assets/user/img/logo.png" alt="" title="" /></a>
+						<a href="<?php echo base_url('member'); ?>"><img src="<?php echo base_url();?>assets/user/img/logo.png" alt="" title="" /></a>
 					</div>
 					<nav id="nav-menu-container">
 						<ul class="nav-menu">
-							<li class="menu-active"><a href="<?php echo base_url('pengguna/member'); ?>">Home</a></li>
-							<li><a href="<?php echo base_url('pengguna/member/profile'); ?>">Profile</a></li>
-							<li><a href="<?php echo base_url('pengguna/member'); ?>">Coffee</a>
+							<li class="menu-active"><a href="<?php echo base_url('member'); ?>">Home</a></li>
+							<li><a href="<?php echo base_url('member/profile'); ?>">Profile</a></li>
+							<li><a href="<?php echo base_url('member'); ?>">Coffee</a>
 								
 							</li>
-							<li class="menu-has-children"><a href="#">Logout</a>
+							<li class="menu-has-children"><a href="<?php echo base_url('Member/logout') ?>">Logout</a>
 
 							</ul>
 						</nav>		    		

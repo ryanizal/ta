@@ -38,13 +38,13 @@
 					</div>
 					<nav id="nav-menu-container">
 						<ul class="nav-menu">
-							<li class="menu-active"><a href="<?php echo base_url('pengguna/roaster'); ?>">Home</a></li>
-							<li><a href="<?php echo base_url('pengguna/roaster/profile'); ?>">Profile</a></li>
+							<li class="menu-active"><a href="<?php echo base_url('roaster'); ?>">Home</a></li>
+							<li><a href="<?php echo base_url('roaster/profile'); ?>">Profile</a></li>
 							<li class="menu-has-children"><a href="#">Coffee</a>
 								<ul>
-									<li><a href="<?php echo base_url('pengguna/roaster/'); ?>">See Coffee</a></li>
-									<li><a href="<?php echo base_url('pengguna/roaster/list_kopi'); ?>">My Coffee</a></li>
-									<li><a href="<?php echo base_url('pengguna/roaster/tambah_kopi'); ?>">Add Coffee</a></li>
+									<li><a href="<?php echo base_url('roaster/'); ?>">See Coffee</a></li>
+									<li><a href="<?php echo base_url('roaster/list_kopi'); ?>">My Coffee</a></li>
+									<li><a href="<?php echo base_url('roaster/tambah_kopi'); ?>">Add Coffee</a></li>
 								</ul>
 							</li>
 							<li class="menu-has-children"><a href="<?php echo base_url('roaster/logout') ?>">Logout</a>

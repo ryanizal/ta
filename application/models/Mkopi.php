@@ -102,6 +102,21 @@ class Mkopi extends CI_Model {
 		return $data->result_array();
 	}
 
+	function tampil_kopi_roaster_list($idr)
+	{
+		$this->db->where('id_roaster', $idr);
+		$data = $this->db->get('kopi');
+		return $data->result_array();
+
+	}
+
+	function tampil_kopi_member($limit)
+	{
+		$this->db->order_by('id_kopi', 'desc');
+		$data = $this->db->get('kopi', $limit);
+		return $data->result_array();
+	}
+
 	function profile_roast()
 	{
 		$profile_roast = array("Light", "Light to Medium", "Medium", "Medium to Dark", "Dark");

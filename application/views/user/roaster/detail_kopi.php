@@ -1,19 +1,22 @@
 <div  class="container">
-	<h3 class="panel-title">Coffee in Detail</h3>
+	<h3 class="panel-title"><?php echo $k['nama_kopi'] ?></h3>
+	<div class="pull-right">
+		<a href="<?php echo base_url('roaster/list_kopi');?>"><p> back to list </p></a>
+	</div>
 	<br>
 	<div class="row">
 		<div class="col-md-3">
-			<img src="<?php echo base_url(); ?>assets/user/img/b1.jpg" class="img-responsive">
+			<img src="<?php echo base_url('assets/img/coffee/'.$k['foto_1']); ?>" class="img-responsive">
 		</div>
 		<div class="col-md-9">
 
 			<form class="form-horizontal">
 				<div class="form-group">
-					<label class="control-label col-sm-2">Coffee's Name </label>
+				<!-- 	<label class="control-label col-sm-2">Coffee's Name </label>
 					<div class="col-sm-10 pull-right">
 						<p class="form-control-static">: <?php echo $k['nama_kopi'] ?></p>
 					</div>
-				</div>
+				</div> -->
 				<div class="form-group">
 					<label class="control-label col-sm-2">Acidity</label>
 					<div class="col-sm-10 pull-right">
@@ -53,7 +56,7 @@
 				<div class="form-group">
 					<label class="control-label col-sm-2">Roast Profile</label>
 					<div class="col-sm-10 pull-right">
-						<p class="form-control-static">: <?php echo $k['id_roast_prof'] ?></p>
+						<p class="form-control-static">: <?php echo $k['profile_roast'] ?></p>
 					</div>
 				</div>
 				<div class="form-group">

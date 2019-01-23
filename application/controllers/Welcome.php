@@ -7,6 +7,7 @@ class Welcome extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Mroaster');
+		$this->load->model('Mmember');
 	}
 
 	public function index()
@@ -24,6 +25,25 @@ class Welcome extends CI_Controller {
 
 	public function login()
 	{
+		$inputan = $this->input->post();
+
+		if ($inputan) 
+		{
+			$cek = $this->Mmember->login_member($inputan);
+
+			
+			// print_r ($cek);
+			
+			if ($cek == "sukses") 
+			{
+				
+				redirect('member','refresh');
+			}
+			else
+			{
+				echo "<script>alert('Username and Password didnt match');</script>";
+			}
+		} 
 		$this->load->view('user/login');
 	}
 
@@ -53,6 +73,14 @@ class Welcome extends CI_Controller {
 
 	public function signup()
 	{
+		$inputan=$this->input->post();
+		if ($inputan) 
+		{
+			$this->Mmember->save_member($inputan);
+			echo "<script>alert('Registration success, please login');</script>";
+
+			redirect('Welcome/login','refresh');
+		}
 		$this->load->view('user/signup');
 	}
 
