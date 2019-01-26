@@ -21,8 +21,10 @@
 						<th>Savory</th>
 						<th>Origin</th>
 						<th>Roast profile</th>
+						<th>Coffee's Kind</th>
+						<th>Process</th>
 						<!-- <th>Roasterd by</th>						 -->
-						<th>action</th>
+						<th width="12%">Action</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -38,11 +40,13 @@
 						<td><?php echo $value['savory'] ?></td>
 						<td><?php echo $value['origin'] ?></td>
 						<td><?php echo $value['profile_roast'] ?></td>
+						<td><?php echo $value['jenis_kopi'] ?></td>
+						<td><?php echo $value['proses_kopi'] ?></td>
 						<!-- <td><?php echo $value['id_roaster'] ?></td> -->
 						<td>
-							<a href="<?php echo base_url('Roaster/detail_kopi/'.$value['id_kopi']);?>" class="btn btn-info btn-sm"> Detail</a>
-							<a href="<?php echo base_url('Roaster/edit_kopi/'.$value['id_kopi']);?>" class="btn btn-warning btn-sm"> Edit</a>
-							<a href="<?php echo base_url('Roaster/hapus_kopi/'.$value['id_kopi']);?>" class="btn btn-danger btn-sm"> Delete</a>
+							<a href="<?php echo base_url('Roaster/detail_kopi/'.$value['id_kopi']);?>" class="btn btn-info btn-sm"><i class="fa fa-info-circle"></i></a>
+							<a href="<?php echo base_url('Roaster/edit_kopi/'.$value['id_kopi']);?>" class="btn btn-warning btn-sm"> <i class="fa fa-edit"></i></a>
+							<a href="<?php echo base_url('Roaster/hapus_kopi/'.$value['id_kopi']);?>" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i></a>
 						</td>
 					</tr>
 					<?php endforeach; ?>

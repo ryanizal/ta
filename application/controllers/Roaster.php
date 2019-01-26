@@ -37,6 +37,8 @@ class Roaster extends CI_Controller {
 		}
 
 		$data['profile_roast'] = $this->Mkopi->profile_roast();
+		$data['jenis_kopi'] = $this->Mkopi->jenis_kopi();
+		$data['proses_kopi'] = $this->Mkopi->proses_kopi();
 
 		$this->load->view('user/roaster/header');
 		$this->load->view('user/roaster/tambah_kopi',$data);
@@ -56,13 +58,16 @@ class Roaster extends CI_Controller {
 
 	function profile()
 	{
-		$r['id_roaster'] = $_SESSION['roaster']['id_roaster'];
-		$r['nama_roaster'] = $_SESSION['roaster']['nama_roaster'];
-		$r['username_roaster'] = $_SESSION['roaster']['username_roaster'];
-		$r['deskripsi_roaster'] = $_SESSION['roaster']['deskripsi_roaster'];
-		$r['alamat_roaster'] = $_SESSION['roaster']['alamat_roaster'];
-		$r['telp_roaster'] = $_SESSION['roaster']['telp_roaster'];
-		$r['foto_roaster'] = $_SESSION['roaster']['foto_roaster'];
+		$id_roaster= $_SESSION['roaster']['id_roaster'];
+		$r['profile']=$this->Mroaster->get_roaster($id_roaster);
+
+		// $r['id_roaster'] = $_SESSION['roaster']['id_roaster'];
+		// $r['nama_roaster'] = $_SESSION['roaster']['nama_roaster'];
+		// $r['username_roaster'] = $_SESSION['roaster']['username_roaster'];
+		// $r['deskripsi_roaster'] = $_SESSION['roaster']['deskripsi_roaster'];
+		// $r['alamat_roaster'] = $_SESSION['roaster']['alamat_roaster'];
+		// $r['telp_roaster'] = $_SESSION['roaster']['telp_roaster'];
+		// $r['foto_roaster'] = $_SESSION['roaster']['foto_roaster'];
 		$this->load->view('user/roaster/header');
 		$this->load->view('user/roaster/profile',$r);
 		$this->load->view('user/roaster/footer');
@@ -74,6 +79,7 @@ class Roaster extends CI_Controller {
 
 		if($input){
 			
+			$id_roaster= $_SESSION['roaster']['id_roaster'];
 			$this->Mroaster->edit_roaster($input, $id_roaster);
 			redirect('roaster/profile');
 		}
@@ -109,6 +115,8 @@ class Roaster extends CI_Controller {
 		}
 		$data['k'] = $this->Mkopi->get_kopi($id_kopi);
 		$data['profile_roast'] = $this->Mkopi->profile_roast();
+		$data['jenis_kopi'] = $this->Mkopi->jenis_kopi();
+		$data['proses_kopi'] = $this->Mkopi->proses_kopi();
 		
 
 		$this->load->view('user/roaster/header');

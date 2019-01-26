@@ -50,6 +50,54 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label class="col-sm-1 control-label">Roast Profile</label>
+					<div class="col-sm-3">
+						<select class="form-control" name="profile_roast">
+							<option value="" disabled>Roast Profile</option>
+							<?php foreach ($profile_roast as $key => $value): ?>
+								<option 
+								<?php if ($value == $k['profile_roast']) 
+								{
+									echo "selected";
+								} ?>
+								value="<?php echo $value ?>"><?php echo $value ?> </option>
+							<?php endforeach ?>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-1 control-label">Coffee's Kind</label>
+					<div class="col-sm-3">
+						<select class="form-control" name="jenis_kopi">
+							<option value="" disabled>Coffee's Kind</option>
+							<?php foreach ($jenis_kopi as $key => $value): ?>
+								<option 
+								<?php if ($value == $k['jenis_kopi']) 
+								{
+									echo "selected";
+								} ?>
+								value="<?php echo $value ?>"><?php echo $value ?> </option>
+							<?php endforeach ?>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-1 control-label">Process</label>
+					<div class="col-sm-3">
+						<select class="form-control" name="proses_kopi">
+							<option value="" disabled>Process</option>
+							<?php foreach ($proses_kopi as $key => $value): ?>
+								<option 
+								<?php if ($value == $k['proses_kopi']) 
+								{
+									echo "selected";
+								} ?>
+								value="<?php echo $value ?>"><?php echo $value ?> </option>
+							<?php endforeach ?>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
 					<label class="col-sm-1 control-label">Foto </label>
 					<div class="col-sm-3">
 						<img src="<?php echo base_url("assets/img/coffee/$k[foto_1] ") ?>" class="img-responsive">	

@@ -53,7 +53,7 @@ class Mmember extends CI_Model {
 		$config['upload_path'] = './assets/img/member';
 		$config['allowed_types'] = 'gif|jpg|png';
 
-		$this->load->library('upload', $config);
+		$this->upload->initialize($config);
 		$u = $this->upload->do_upload("foto_member");
 
 		if ($u){

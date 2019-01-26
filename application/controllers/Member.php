@@ -24,9 +24,11 @@ class Member extends CI_Controller {
 
 	function profile()
 	{
-		$m['nama_member'] = $_SESSION['member']['nama_member'];
-		$m['username_member'] = $_SESSION['member']['username_member'];
-		$m['keterangan_member'] = $_SESSION['member']['keterangan_member'];
+		$id_member= $_SESSION['member']['id_member'];
+		$m['profile']=$this->Mmember->get_member($id_member);
+		// $m['nama_member'] = $_SESSION['member']['nama_member'];
+		// $m['username_member'] = $_SESSION['member']['username_member'];
+		// $m['keterangan_member'] = $_SESSION['member']['keterangan_member'];
 
 		$this->load->view('user/member/header');
 		$this->load->view('user/member/profile',$m);
@@ -36,20 +38,22 @@ class Member extends CI_Controller {
 	function edit_profile()
 	{
 		$input = $this->input->post(); 
+		$id_member= $_SESSION['member']['id_member'];
 
-		if($input){
+		if($input)
+		{
 			
-		$this->Mmember->edit_member($input, $id_member);
-		redirect('Member/profile');
+			$this->Mmember->edit_member($input, $id_member);
+			redirect('Member/profile');
 		}
 
-		$m['id_member'] = $_SESSION['member']['id_member'];
-		$m['nama_member'] = $_SESSION['member']['nama_member'];
-		$m['username_member'] = $_SESSION['member']['username_member'];
-		$m['password_member'] = $_SESSION['member']['password_member'];
-		$m['keterangan_member'] = $_SESSION['member']['keterangan_member'];
-		$m['foto_member'] = $_SESSION['member']['foto_member'];
-		// $data['m'] = $this->Mmember->get_member($id_member);
+		// $m['id_member'] = $_SESSION['member']['id_member'];
+		// $m['nama_member'] = $_SESSION['member']['nama_member'];
+		// $m['username_member'] = $_SESSION['member']['username_member'];
+		// $m['password_member'] = $_SESSION['member']['password_member'];
+		// $m['keterangan_member'] = $_SESSION['member']['keterangan_member'];
+		// $m['foto_member'] = $_SESSION['member']['foto_member'];
+		$m['profile'] = $this->Mmember->get_member($id_member);
 		$this->load->view('user/member/header');
 		$this->load->view('user/member/edit_profile',$m);
 		$this->load->view('user/member/footer');
@@ -57,7 +61,23 @@ class Member extends CI_Controller {
 
 	function detail_kopi($id_kopi)
 	{
+		$get['komentar'] = $this->Mkopi->tampil_komentar($id_kopi);
 		$get['k'] = $this->Mkopi->get_kopi($id_kopi);
+		$get['id_member'] = $_SESSION['member']['id_member'];
+
+		$this->Mkopi->simpan_view($id_kopi, $get['id_member'], date("Y-m-d H:i:s"));
+		$input = $this->input->post(); 
+
+		if ($input)
+		{
+			$input['waktu_komentar'] = date("Y-m-d H:i:s");
+			$input['id_member'] = $_SESSION['member']['id_member'];
+			$input['id_kopi'] = $id_kopi;
+
+			$this->Mkopi->simpan_komentar($input);
+		}
+
+
 		$this->load->view('user/member/header');
 		$this->load->view('user/member/detail_kopi',$get);
 		$this->load->view('user/member/footer');
@@ -69,6 +89,11 @@ class Member extends CI_Controller {
 		redirect('welcome','refresh');
 	}
 
+	function hapus_komentar($id_kopi, $id_komentar)
+	{
+		$this->Mkopi->hapus_komentar($id_komentar);
+		redirect('Member/detail_kopi/'.$id_kopi.'','refresh');
+	}
 	// function edit_profile(){
 	// 	// $id_member
 	// 	// $input = $this->input->post(); 

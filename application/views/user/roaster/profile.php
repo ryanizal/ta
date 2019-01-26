@@ -11,9 +11,9 @@
 	<section class="text-sample">
 		<div class="row d-flex justify-content-center">
 			<div class="col-md-5 mt-sm-30">
-				<h3 class="mb-20 text-center"><?php echo $nama_roaster;?></h3>
+				<h3 class="mb-20 text-center"><?php echo $profile['nama_roaster'];?></h3>
 				<div class="text-center">
-					<img class="img-circle" width="200" height="200" src="<?php echo base_url('assets/img/roaster/'.$foto_roaster);?>" >
+					<img class="img-circle" width="200" height="200" src="<?php echo base_url('assets/img/roaster/'.$profile['foto_roaster']);?>" >
 				</div>
 				<div class="section-gap">
 					<table class="" style="font-size: 130%; word-spacing: 1px">
@@ -23,19 +23,19 @@
 						</tr> -->
 						<tr>
 							<td >Username</td>
-							<td>:	<?php echo $username_roaster ?></td>
+							<td>:	<?php echo $profile['username_roaster'] ?></td>
 						</tr>
 						<tr>
 							<td >About</td>
-							<td>:	<?php echo $deskripsi_roaster ?></td>
+							<td>:	<?php echo $profile['deskripsi_roaster'] ?></td>
 						</tr>
 						<tr>
 							<td>Address</td>
-							<td>:	<?php echo $alamat_roaster ?></td>
+							<td>:	<?php echo $profile['alamat_roaster'] ?></td>
 						</tr>
 						<tr>
 							<td>Phone</td>
-							<td>:	<?php echo $telp_roaster ?></td>
+							<td>:	<?php echo $profile['telp_roaster'] ?></td>
 						</tr>
 						
 					</table>

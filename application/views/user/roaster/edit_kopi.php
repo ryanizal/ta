@@ -68,6 +68,50 @@
 							</select>
 						</div>
 					</div>
+						<div class="mt-10">
+						<p>Coffee's Kind</p>
+						
+					</div>
+					<div class="input-group-icon mt-10">
+						<div class="icon"><i class="fa fa-fire" aria-hidden="true"></i></div>
+						<div class="form-select" id="default-select"">
+							<select name="jenis_kopi">
+								<option value="" disabled>Coffee's Kind</option>
+								
+								<?php foreach ($jenis_kopi as $key => $value): ?>
+
+									<option 
+									<?php  if ($value == $k['jenis_kopi'])
+									 {
+										echo "selected";
+									}?>
+									value="<?php echo $value ?>"><?php echo $value ?> </option>
+								<?php endforeach ?>
+							</select>
+						</div>
+					</div>
+						<div class="mt-10">
+						<p>Process</p>
+						
+					</div>
+					<div class="input-group-icon mt-10">
+						<div class="icon"><i class="fa fa-fire" aria-hidden="true"></i></div>
+						<div class="form-select" id="default-select"">
+							<select name="proses_kopi">
+								<option value="" disabled>Process</option>
+								
+								<?php foreach ($proses_kopi as $key => $value): ?>
+
+									<option 
+									<?php  if ($value == $k['proses_kopi'])
+									 {
+										echo "selected";
+									}?>
+									value="<?php echo $value ?>"><?php echo $value ?> </option>
+								<?php endforeach ?>
+							</select>
+						</div>
+					</div>
 
 					<div class="mt-10">
 						<p>About This Coffee</p>
@@ -89,7 +133,14 @@
 					<div class="col-lg-3 col-md-3 pull-right">
 						<br>
 						<br>
-						<button type="submit" class="genric-btn danger circle">Cancel</button>
+							<script>
+							function goBack() 
+							{
+								window.history.back()
+							}
+							
+						</script>
+						<button onclick="goBack()" class="genric-btn danger circle">Cancel</button>
 						<button type="submit" class="genric-btn success circle">Submit</button>
 					</div>
 

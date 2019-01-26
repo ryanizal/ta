@@ -25,9 +25,11 @@ class Coffee extends CI_Controller {
 			$this->Mkopi->save_kopi($input, $_FILES);
 			redirect('administrator/coffee');
 		}
-
+		$data['profile_roast'] = $this->Mkopi->profile_roast();
+		$data['jenis_kopi'] = $this->Mkopi->jenis_kopi();
+		$data['proses_kopi'] = $this->Mkopi->proses_kopi();
 		$this->load->view('admin/header');
-		$this->load->view('admin/coffee/tambah_kopi'); 
+		$this->load->view('admin/coffee/tambah_kopi', $data); 
 		$this->load->view('admin/footer');
 	}
 
@@ -58,6 +60,9 @@ class Coffee extends CI_Controller {
 			redirect('administrator/Coffee');
 		}
 		$data['k'] = $this->Mkopi->get_kopi($id_kopi);
+		$data['profile_roast'] = $this->Mkopi->profile_roast();
+		$data['jenis_kopi'] = $this->Mkopi->jenis_kopi();
+		$data['proses_kopi'] = $this->Mkopi->proses_kopi();
 
 		$this->load->view('admin/header');
 		$this->load->view('admin/coffee/edit_kopi',$data);

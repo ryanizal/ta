@@ -60,13 +60,33 @@
 				<div class="form-group">
 					<label class="col-sm-1 control-label">Roast Profile</label>
 					<div class="col-sm-3">
-						<select class="form-control" name="id_roast_prof">
+						<select class="form-control" name="profile_roast">
 							<option value="" disabled selected>Roast Profile</option>
-							<option value="1">Light</option>
-							<option value="2">Light to Medium</option>
-							<option value="3">Medium</option>
-							<option value="4">Medium to Dark</option>
-							<option value="5">Dark</option>
+							<?php foreach ($profile_roast as $key => $value): ?>
+								<option value="<?php echo $value ?>"><?php echo $value ?> </option>
+							<?php endforeach ?>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-1 control-label">Coffee's Kind</label>
+					<div class="col-sm-3">
+						<select class="form-control" name="jenis_kopi">
+							<option value="" disabled selected>Coffee's Kind</option>
+							<?php foreach ($jenis_kopi as $key => $value): ?>
+								<option value="<?php echo $value ?>"><?php echo $value ?> </option>
+							<?php endforeach ?>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-1 control-label">Process</label>
+					<div class="col-sm-3">
+						<select class="form-control" name="proses_kopi">
+							<option value="" disabled selected>Process</option>
+							<?php foreach ($proses_kopi as $key => $value): ?>
+								<option value="<?php echo $value ?>"><?php echo $value ?> </option>
+							<?php endforeach ?>
 						</select>
 					</div>
 				</div>

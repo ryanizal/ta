@@ -34,6 +34,30 @@
 							</select>
 						</div>
 					</div>
+					<div class="input-group-icon mt-10">
+						<div class="icon"><i class="fa fa-fire" aria-hidden="true"></i></div>
+						<div class="form-select" id="default-select"">
+							<select name="jenis_kopi">
+								<option value="" disabled selected>Coffee's Kind</option>
+								
+								<?php foreach ($jenis_kopi as $key => $value): ?>
+									<option value="<?php echo $value ?>"><?php echo $value ?> </option>
+								<?php endforeach ?>
+							</select>
+						</div>
+					</div>
+					<div class="input-group-icon mt-10">
+						<div class="icon"><i class="fa fa-fire" aria-hidden="true"></i></div>
+						<div class="form-select" id="default-select"">
+							<select name="proses_kopi">
+								<option value="" disabled selected>Process</option>
+								
+								<?php foreach ($proses_kopi as $key => $value): ?>
+									<option value="<?php echo $value ?>"><?php echo $value ?> </option>
+								<?php endforeach ?>
+							</select>
+						</div>
+					</div>
 
 					<div class="mt-10">
 						<textarea name="deskripsi_kopi" placeholder="About This Coffee" onfocus="this.placeholder = ''" onblur="this.placeholder = 'About This Coffee'" required class="single-input"></textarea>

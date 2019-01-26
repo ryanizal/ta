@@ -18,7 +18,7 @@
 			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th>Id Kopi</th>
+						<th>No</th>
 						<th>Nama Kopi</th>
 						<th>Acidity</th>
 						<th>Sweetness</th>
@@ -26,21 +26,28 @@
 						<th>Savory</th>
 						<th>Origin</th>
 						<th>Roast profile</th>
+						<th>Coffee's Kind</th>
+						<th>Process</th>
 						<th>Roasterd by</th>
 						<th>action</th>
 					</tr>
 				</thead>
 				<tbody>
-					<?php foreach ($kopi as $key => $value): ?>
+					<?php 
+					$no = 1;
+					foreach ($kopi as $key => $value): ?>
 						<tr>
-							<td><?php echo $value['id_kopi'] ?></td>
+							<!-- <td><?php echo $value['id_kopi'] ?></td> -->
+							<td><?php echo $no++; ?></td>
 							<td><?php echo $value['nama_kopi'] ?></td>
 							<td><?php echo $value['acidity'] ?></td>
 							<td><?php echo $value['sweet'] ?></td>
 							<td><?php echo $value['bitter'] ?></td>
 							<td><?php echo $value['savory'] ?></td>
 							<td><?php echo $value['origin'] ?></td>
-							<td><?php echo $value['id_roast_prof'] ?></td>
+							<td><?php echo $value['profile_roast'] ?></td>
+							<td><?php echo $value['jenis_kopi'] ?></td>
+							<td><?php echo $value['proses_kopi'] ?></td>
 							<!-- <td><img src="../assets/img/coffee/<?php echo $value['foto_1'] ?>" class="img-circle" height="100" width="100"></td>
 							<td><img src="../assets/img/coffee/<?php echo $value['foto_2'] ?>" class="img-circle" height="100" width="100"></td>
 							<td><img src="../assets/img/coffee/<?php echo $value['foto_3'] ?>" class="img-circle" height="100" width="100"></td> -->

@@ -8,20 +8,23 @@ class Welcome extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Mroaster');
 		$this->load->model('Mmember');
+		$this->load->model('Mkopi');
 	}
 
 	public function index()
 	{
-		$this->load->view('user/main');
+		$data['kopi']=$this->Mkopi->view_kopi();
+		$data['new'] = $this->Mkopi->tampil_kopi_member(0);
+		$this->load->view('user/main',$data);
 		$this->load->view('user/footer');
 	}
 
-	public function konten()
-	{
-		$this->load->view('user/header');
-		$this->load->view('user/tampil_kopi');
-		$this->load->view('user/footer');
-	}
+	// public function konten()
+	// {
+	// 	$this->load->view('user/header');
+	// 	$this->load->view('user/tampil_kopi');
+	// 	$this->load->view('user/footer');
+	// }
 
 	public function login()
 	{
@@ -93,5 +96,12 @@ class Welcome extends CI_Controller {
 			redirect('Welcome/login_roaster','refresh');
 		}
 		$this->load->view('user/roaster/signup');
+	}
+
+	function detail_kopi($id_kopi)
+	{
+		$get['k'] = $this->Mkopi->get_kopi($id_kopi);
+		$this->load->view('user/detail_kopi',$get);
+		$this->load->view('user/footer');
 	}
 }

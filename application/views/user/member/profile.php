@@ -13,21 +13,21 @@
 			<div class="col-md-5 mt-sm-30">
 				<h3 class="mb-20 text-center">Nama Member</h3>
 				<div class="text-center">
-					<img class="img-circle" width="200" height="200" src="<?php echo base_url();?>assets/img/member/male4.png" >
+					<img class="img-circle" width="200" height="200" src="<?php echo base_url('assets/img/member/'.$profile['foto_member']);?>" >
 				</div>
 				<div class="section-gap">
 					<table class="" style="font-size: 130%; word-spacing: 1px">
 						<tr>
 							<td >Name </td>
-							<td>:	<?php echo $nama_member?></td>
+							<td>:	<?php echo $profile['nama_member']?></td>
 						</tr>
 						<tr>
 							<td >Username</td>
-							<td>:	<?php echo $username_member?></td>
+							<td>:	<?php echo $profile['username_member']?></td>
 						</tr>
 						<tr>
 							<td >Bio</td>
-							<td>:	<?php echo $keterangan_member ?></td>
+							<td>:	<?php echo $profile['keterangan_member'] ?></td>
 						</tr>
 						
 					</table>

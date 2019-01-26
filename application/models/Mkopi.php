@@ -122,6 +122,53 @@ class Mkopi extends CI_Model {
 		$profile_roast = array("Light", "Light to Medium", "Medium", "Medium to Dark", "Dark");
 		return $profile_roast;
 	}
+
+	function jenis_kopi()
+	{
+		$jenis_kopi = array("Arabica", "Robusta", "Blend");
+		return $jenis_kopi;
+	}
+
+	function proses_kopi()
+	{
+		$proses_kopi = array("Natural", "Washed", "Semi Washed");
+		return $proses_kopi;
+	}
+
+	function simpan_komentar($input)
+	{
+		$this->db->insert('komentar', $input);
+	}
+
+	function simpan_view($id_kopi, $member, $waktu)
+	{
+		$input["id_kopi"] = $id_kopi;
+		$input["id_member"] = $member;
+		$input["waktu_view"] = $waktu;
+		$this->db->insert('view', $input);
+	}
+
+	function tampil_komentar($kopi)
+	{
+		$this->db->join('member', 'member.id_member = komentar.id_member');
+		$this->db->where('id_kopi', $kopi);
+		$data = $this->db->get('komentar');
+		return $data->result_array(); 
+	}
+
+	function hapus_komentar($id_komentar)
+	{
+		$this->db->where('id_komentar', $id_komentar);
+		$this->db->delete('komentar');
+	}
+
+	// function simpan_view($id_kopi, $member, $waktu)
+	// {
+	// 	$input['id_kopi'] = $id_kopi;
+	// 	$input['id_member'] = $member;
+	// 	$input['waktu_view'] = $waktu;
+	// 	$this->db->insert('view', $input);
+	// }
 }
 
 /* End of file Mkopi.php */

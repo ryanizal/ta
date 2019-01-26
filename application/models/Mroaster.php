@@ -26,7 +26,8 @@ class Mroaster extends CI_Model {
 		$this->db->insert("roaster", $input);
 	}
 
-	function get_roaster($id_roaster){
+	function get_roaster($id_roaster)
+	{
 		$this->db->where('id_roaster', $id_roaster);
 		$ambil = $this->db->get('roaster');
 
