@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container single-menu">
 	
 	<h3 class="mb-30">List of Your Coffee</h3>
 	<div class="progress-table-wrap">

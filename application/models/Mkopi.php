@@ -162,6 +162,11 @@ class Mkopi extends CI_Model {
 		$this->db->delete('komentar');
 	}
 
+	function most_view($id_member)	
+	{
+
+	}
+
 	// function simpan_view($id_kopi, $member, $waktu)
 	// {
 	// 	$input['id_kopi'] = $id_kopi;

@@ -160,13 +160,22 @@
 
 			</section>
 		</div>
+		<div class="row">
+			<div></div>
+			<div class="col-md-5">
+				
+			<div class="single-menu">
+				<p>Please <a href="<?php echo base_url('Welcome/signup'); ?>">signup</a> or <a href="<?php echo base_url('Welcome/login'); ?>">login</a> to comment this coffee</p>
+			</div>
+			</div>
+		</div>
 		<div class="widget-area no-padding blank col-md-10">
 			<div class="status-upload">
-				<form>
+				<!-- <form method="post">
 					<textarea placeholder="Say Something About This Coffee..." ></textarea>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
 					<button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Share</button>
-				</form>
+				</form> -->
 			</div><!-- Status Upload  -->
 		</div><!-- Widget Area -->
 		

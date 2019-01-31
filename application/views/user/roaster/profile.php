@@ -8,7 +8,7 @@
 		</div>
 	</div>
 
-	<section class="text-sample">
+	<section class="text-sample single-menu">
 		<div class="row d-flex justify-content-center">
 			<div class="col-md-5 mt-sm-30">
 				<h3 class="mb-20 text-center"><?php echo $profile['nama_roaster'];?></h3>

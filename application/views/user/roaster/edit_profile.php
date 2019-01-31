@@ -1,6 +1,6 @@
 <div class="container">
   <!-- <section class="sample-text-area"> -->
-    <div class="row">
+    <div class="row single-menu">
       <div class="col-lg-11 col-md-11">
         <h3 class="mb-30 text-center">Edit Profile Roastery</h3>
         <!-- <a href="<?php echo base_url('Welcome/signup_roaster'); ?>"><p class="pull-right">I am a Roaster</p></a> -->

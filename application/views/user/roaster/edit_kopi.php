@@ -11,13 +11,7 @@
 					<div class="mt-10">
 						<input type="text" name="nama_kopi" placeholder="Coffee's Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Coffees Name'" required class="single-input" value="<?php echo $k['nama_kopi'] ?>">
 					</div>
-					<div class="mt-10">
-						<p>Acidity</p>
-						
-					</div>
-					<div class="mt-10">
-						<input type="text" name="acidity" placeholder="Acidity" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Acidity'" required class="single-input" value="<?php echo $k['acidity'] ?>">
-					</div>
+					
 					<div class="mt-10">
 						<p>Sweetness</p>
 						
@@ -60,7 +54,7 @@
 
 									<option 
 									<?php  if ($value == $k['profile_roast'])
-									 {
+									{
 										echo "selected";
 									}?>
 									value="<?php echo $value ?>"><?php echo $value ?> </option>
@@ -68,7 +62,7 @@
 							</select>
 						</div>
 					</div>
-						<div class="mt-10">
+					<div class="mt-10">
 						<p>Coffee's Kind</p>
 						
 					</div>
@@ -82,7 +76,7 @@
 
 									<option 
 									<?php  if ($value == $k['jenis_kopi'])
-									 {
+									{
 										echo "selected";
 									}?>
 									value="<?php echo $value ?>"><?php echo $value ?> </option>
@@ -90,7 +84,7 @@
 							</select>
 						</div>
 					</div>
-						<div class="mt-10">
+					<div class="mt-10">
 						<p>Process</p>
 						
 					</div>
@@ -104,7 +98,7 @@
 
 									<option 
 									<?php  if ($value == $k['proses_kopi'])
-									 {
+									{
 										echo "selected";
 									}?>
 									value="<?php echo $value ?>"><?php echo $value ?> </option>
@@ -125,15 +119,22 @@
 						<!-- <label class=" mt-10 control-label">Photo's</label> -->
 					</div>
 					<div class="mt-10">
+
+						<img src="<?php echo base_url("assets/img/coffee/$k[foto_1]") ?>" class="img-responsive" height="100">	
 						<input type="file" name="foto_1" class="">
-						<input type="file" name="foto_2" class="">
-						<input type="file" name="foto_3" class="">
+						<br>	
+						<img src="<?php echo base_url("assets/img/coffee/$k[foto_2]") ?>" class="img-responsive">	
+						<input type="file" name="foto_1" class="">
+						<br>	
+						<img src="<?php echo base_url("assets/img/coffee/$k[foto_3]") ?>" class="img-responsive">	
+						<input type="file" name="foto_1" class="">
+					
 					</div>
 
 					<div class="col-lg-3 col-md-3 pull-right">
 						<br>
 						<br>
-							<script>
+						<script>
 							function goBack() 
 							{
 								window.history.back()

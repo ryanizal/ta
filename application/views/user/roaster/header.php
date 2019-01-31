@@ -21,7 +21,7 @@
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/css/komen.css">
 		
 	</head>
-	<body>
+	<body class="menu-area">
 
 		<header id="header" id="home">
 			<div class="header-top">

@@ -1,7 +1,7 @@
-<div class="container">
-	<div class="section-top-border">
+<div class="container single-menu">
+	<!-- <div class="section-top-border"> -->
 		<div class="row">
-			<div class="col-lg-11 col-md-11	">
+			<div class="col-lg-12 col-md-12	">
 				<h3 class="mb-30">Add Coffee</h3>
 				<form method="post" enctype="multipart/form-data">
 					<div class="mt-10">
@@ -84,5 +84,5 @@
 			</div>
 
 		</div>
-	</div>
+	<!-- </div> -->
 </div>

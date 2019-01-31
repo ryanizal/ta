@@ -20,7 +20,7 @@
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/main.css">
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/css/komen.css">
 	</head>
-	<body>
+	<body class="menu-area">
 
 		<header id="header" id="home">
 			<div class="header-top">
@@ -39,8 +39,11 @@
 						<ul class="nav-menu">
 							<li class="menu-active"><a href="<?php echo base_url('member'); ?>">Home</a></li>
 							<li><a href="<?php echo base_url('member/profile'); ?>">Profile</a></li>
-							<li><a href="<?php echo base_url('member'); ?>">Coffee</a>
-								
+							<li class="menu-has-children"><a href="#">Coffee</a>
+								<ul>
+									<li><a href="<?php echo base_url('member'); ?>">Coffee</a></li>
+									<li><a href="<?php echo base_url('member/rekomendasi'); ?>">Recomendation</a></li>
+								</ul>
 							</li>
 							<li class="menu-has-children"><a href="<?php echo base_url('Member/logout') ?>">Logout</a>
 

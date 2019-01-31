@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/owl.carousel.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/main.css">
   </head>
-  <body class="">
+  <body class="menu-area">
 
     <header id="header" id="home">
       <div class="header-top">
@@ -54,7 +54,7 @@
       <div class="container">
         <!-- <section class="sample-text-area"> -->
           <div class="row">
-            <div class="col-lg-10 col-md-10">
+            <div class="col-lg-12 col-md-12 single-menu">
               <h3 class="mb-30 text-center">Register a new membership</h3>
               <a href="<?php echo base_url('Welcome/signup_roaster'); ?>"><p class="pull-right">I am a Roaster</p></a>
               <br>

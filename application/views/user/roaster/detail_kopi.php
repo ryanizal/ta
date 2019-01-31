@@ -4,13 +4,13 @@
 		<a href="<?php echo base_url('roaster/list_kopi');?>"><p> back to list </p></a>
 	</div>
 	<br>
-	<div class="row">
+	<div class="row single-menu">
 		<div class="col-md-3">
 			<img src="<?php echo base_url('assets/img/coffee/'.$k['foto_1']); ?>" class="img-responsive">
 		</div>
-		<div class="col-md-9">
+		<div class="col-md-9 single-menu-kom">
 
-			<form class="form-horizontal">
+			<form class="form-horizontal ">
 				<div class="form-group">
 				<!-- 	<label class="control-label col-sm-2">Coffee's Name </label>
 					<div class="col-sm-10 pull-right">
@@ -76,7 +76,7 @@
 		<div class="col-md-10">
 			<section class="comment-list">
 				<!-- First Comment -->
-				<article class="row">
+				<article class="row single-menu-kom">
 					<div class="col-md-2 col-sm-2 hidden-xs">
 						<figure class="thumbnail">
 							<img class="img-responsive img-circle" height="100" width="100" src="<?php echo base_url();?>assets/img/member/male4.png" />

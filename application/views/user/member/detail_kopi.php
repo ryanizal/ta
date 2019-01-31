@@ -66,9 +66,9 @@
 		<h3>Comments:</h3>
 		<br>
 		<div class="col-md-10">
-			<pre>
+			<!-- <pre>
 				<?php print_r($komentar) ?>
-			</pre>
+			</pre> -->
 			<section class="comment-list">
 				<?php foreach ($komentar as $key => $value): ?>
 					<article class="row">

@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/owl.carousel.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/main.css">
   </head>
-  <body>
+  <body class="menu-area">
 
     <header id="header" id="home">
       <div class="header-top">
@@ -52,31 +52,37 @@
       <br>
 
       <!-- <section class="sample-text-area"> -->
-        <section class="form-group">
+        <section class="form-group mt-80" >
 
           <div class="container">
-            <div class="row">
-              <div class="col-lg-5 generic-blockquote">
-                <h3 class="mb-30">Login as Member</h3>
-                <a href="<?php echo base_url('Welcome/login_roaster'); ?>"><p class="pull-right">I am a Roaster</p></a>
-                <form method="post">
-                  <div class="form-group">
-                    <label class="col-sm-1 ">Username</label>
+            <div style="display:flex;  align-items: center; justify-content: center;">
+              <!-- <div class="row"> -->
+
+
+                <div class="col-lg-5 single-menu">
+                  <h3 class="mb-30">Login as Member</h3>
+                  <a href="<?php echo base_url('Welcome/login_roaster'); ?>"><p class="pull-right">I am a Roaster</p></a>
+                  <form method="post">
+                    <div class="form-group">
+                      <label class="col-sm-1 ">Username</label>
+                      <div class="col-sm-11">
+                        <input type="text" name="username_member" placeholder="" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" required class="form-control">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-md-1 control-label">Password</label>
+                    </div>
                     <div class="col-sm-11">
-                      <input type="text" name="username_member" placeholder="" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" required class="form-control">
+                      <input type="password" name="password_member" placeholder="" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" required class="form-control">
+                    </div>
+                    <br>
+                    <div class="col-lg-3 col-md-3 pull-right">
+                      <button type="submit" class="genric-btn info circle arrow">Login</button>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label class="col-md-1 control-label">Password</label>
-                  </div>
-                  <div class="col-sm-11">
-                    <input type="password" name="password_member" placeholder="" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" required class="form-control">
-                  </div>
-                  <br>
-                  <div class="col-lg-2 col-md-2 pull-right">
-                    <button type="submit" class="genric-btn info circle arrow">Login</button>
-                  </div>
-                </div>
+                <!-- </div> -->
+
+
               </div>
             </div>
           </div>

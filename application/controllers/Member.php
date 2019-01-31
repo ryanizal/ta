@@ -42,7 +42,7 @@ class Member extends CI_Controller {
 
 		if($input)
 		{
-			
+
 			$this->Mmember->edit_member($input, $id_member);
 			redirect('Member/profile');
 		}
@@ -94,6 +94,23 @@ class Member extends CI_Controller {
 		$this->Mkopi->hapus_komentar($id_komentar);
 		redirect('Member/detail_kopi/'.$id_kopi.'','refresh');
 	}
+
+	function rekomendasi()
+	{
+		$this->load->view('user/member/header');
+		$this->load->view('user/member/rekomendasi');
+		$this->load->view('user/member/footer');
+
+	}
+
+	function hasil_rekomendasi()
+	{
+		$this->load->view('user/member/header');
+		$this->load->view('user/member/hasil_rekomendasi');
+		$this->load->view('user/member/footer');
+
+	}
+
 	// function edit_profile(){
 	// 	// $id_member
 	// 	// $input = $this->input->post(); 
