@@ -82,7 +82,7 @@
 				<div class="row">
 					<?php foreach ($new as $key => $value): ?>
 
-						<div class="col-lg-6 col-md-6 single-blog">
+						<div class="col-lg-5 col-md-5 single-blog single-menu">
 							<a href="<?php echo base_url('Member/detail_kopi/'.$value['id_kopi']);?>">
 								<img class="img-fluid" src="<?php echo base_url('assets/img/coffee/'.$value['foto_1']);?>" alt="">
 								<ul class="post-tags">
@@ -100,6 +100,9 @@
 								</p>
 								<a href=""><p class="post-date">Roasted by <?php echo $value['id_roaster'] ?></p></a>
 							</a>
+						</div>
+						<div class="col-lg-1 col-md-1">
+							
 						</div>
 					<?php endforeach; ?>				
 				</div>

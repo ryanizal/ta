@@ -133,7 +133,7 @@
 							<h6>Savoriness</h6>
 						</div>		
 						<div class="col-md-3 pull-right">
-							<button type="submit" class="btn btn-success">Submit</button>
+							<a href="<?php echo base_url('Member/hasil_rekomendasi') ?>"><button class="btn btn-success">Submit</button></a>
 						</div>
 					</div>
 				</div>
