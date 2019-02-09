@@ -10,6 +10,11 @@ class Home extends CI_Controller {
 		$this->load->view('admin/footer');
 	}
 
+	function login()
+	{
+
+	}
+
 }
 
 /* End of file Home.php */

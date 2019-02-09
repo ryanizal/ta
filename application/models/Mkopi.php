@@ -117,6 +117,23 @@ class Mkopi extends CI_Model {
 		return $data->result_array();
 	}
 
+	function last_seen_member($limit, $id_member)
+	{
+		$this->db->select('*');
+		$this->db->from('view v');
+		$this->db->join('kopi k', 'k.id_kopi = v.id_kopi');
+		$this->db->where('v.id_member', $id_member);
+		$this->db->order_by('v.id_view', 'desc');
+		$this->db->group_by('v.id_kopi');
+		$data = $this->db->get('',$limit);
+
+		
+		// print_r($data->result_array());
+		// die();
+		return $data->result_array(); 
+
+	}
+
 	function profile_roast()
 	{
 		$profile_roast = array("Light", "Light to Medium", "Medium", "Medium to Dark", "Dark");
@@ -165,6 +182,14 @@ class Mkopi extends CI_Model {
 	function most_view($id_member)	
 	{
 
+	}
+
+	function cari_kopi($keyword)
+	{
+		$this->db->select('*');
+		$this->db->from('kopi');
+		$this->db->like('nama_kopi',$keyword);
+		return $this->db->get()->result_array();
 	}
 
 	// function simpan_view($id_kopi, $member, $waktu)

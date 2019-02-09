@@ -1,8 +1,8 @@
 <div id="page-wrapper">
 	<ol class="breadcrumb">
-		<li><a href="">Home</a></li>
-		<li><a href="">Kopi</a></li>
-		<li class="active"><a href="">Tambah Kopi</a></li>
+		<li><a href="<?php echo base_url('administrator/Home'); ?>">Home</a></li>
+		<li><a href="<?php echo base_url('administrator/Coffee'); ?>">Kopi</a></li>
+		<li class="active"><a href="#">Tambah Kopi</a></li>
 	</ol>
 
 	<div class="panel panel-default">
@@ -13,7 +13,7 @@
 		<div class="panel-body">
 			<form class="form-horizontal" method="post" enctype="multipart/form-data" >
 				<div class="form-group">
-					<label class="col-sm-1 control-label">Coffee's Name</label>
+					<label class="col-sm-1 control-label">Nama Kopi</label>
 					<div class="col-sm-11">
 						<input class="form-control" type="text" name="nama_kopi">
 					</div>
@@ -69,7 +69,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-1 control-label">Coffee's Kind</label>
+					<label class="col-sm-1 control-label">Tipe</label>
 					<div class="col-sm-3">
 						<select class="form-control" name="jenis_kopi">
 							<option value="" disabled selected>Coffee's Kind</option>
@@ -80,7 +80,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-1 control-label">Process</label>
+					<label class="col-sm-1 control-label">Proses</label>
 					<div class="col-sm-3">
 						<select class="form-control" name="proses_kopi">
 							<option value="" disabled selected>Process</option>
@@ -92,7 +92,7 @@
 				</div>
 
 				<div class="form-group">
-					<label class="col-sm-1 control-label">About this Coffee</label>
+					<label class="col-sm-1 control-label">Deskripsi</label>
 					<div class="col-sm-11">
 						<textarea class="form-control" type="text" name="deskripsi_kopi" rows="3"></textarea>
 					</div>

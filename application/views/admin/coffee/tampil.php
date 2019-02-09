@@ -1,12 +1,12 @@
 <div id="page-wrapper">
 	<ol class="breadcrumb">
-		<li><a href="">Home</a></li>
-		<li class="active"><a href="">Coffee</a></li>
+		<li><a href="<?php echo base_url('administrator/Home'); ?>">Home</a></li>
+		<li class="active"><a href="<?php echo base_url('administrator/Coffee'); ?>">KOPI</a></li>
 	</ol>
 
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3>LIST COFFEE</h3>
+			<h3>DAFTAR KOPI</h3>
 			
 		</div>
 
@@ -26,10 +26,10 @@
 						<th>Savory</th>
 						<th>Origin</th>
 						<th>Roast profile</th>
-						<th>Coffee's Kind</th>
-						<th>Process</th>
-						<th>Roasterd by</th>
-						<th>action</th>
+						<th>Tipe</th>
+						<th>Proses</th>
+						<th>Roaster</th>
+						<th>aksi</th>
 					</tr>
 				</thead>
 				<tbody>

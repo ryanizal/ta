@@ -5,7 +5,7 @@
 		<div class="col-md-3">
 			<img src="<?php echo base_url('assets/img/coffee/'.$k['foto_1']); ?>" class="img-responsive">
 		</div>
-		<div class="col-md-9">
+		<div class="col-md-9 single-menu">
 
 			<form class="form-horizontal">
 
@@ -78,9 +78,9 @@
 								<figcaption class="text-center"><?php echo $value['username_member'] ?></figcaption>
 							</figure>
 						</div>
-						<div class="col-md-10 col-sm-10">
+						<div class="col-md-10 col-sm-10 ">
 							<div class="panel panel-default arrow left">
-								<div class="panel-body">
+								<div class="panel-body ">
 									<header class="text-left">
 										<div class="comment-user"><i class="fa fa-user"></i> <?php echo $value['nama_member'] ?></div>
 										<time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i><?php echo date("F d, Y", strtotime($value['waktu_komentar'])) ?></time>
@@ -103,8 +103,8 @@
 
 			</section>
 		</div>
-		<div class="widget-area no-padding blank col-md-10">
-			<div class="status-upload">
+		<div class="widget-area no-padding blank col-md-10 ">
+			<div class="status-upload single-menu-kom">
 				<form method="post">
 					<textarea placeholder="Say Something About This Coffee..." name="isi_komentar"></textarea>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
@@ -113,7 +113,7 @@
 				</form>
 			</div><!-- Status Upload  -->
 		</div><!-- Widget Area -->
-
+<hr>
 	</div>
 </div>
 </div>

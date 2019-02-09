@@ -1,8 +1,8 @@
 <div id="page-wrapper">
 	<ol class="breadcrumb">
-		<li><a href="">Home</a></li>
-		<li><a href="">Member</a></li>
-		<li class="active"><a href="">Tambah Member</a></li>
+		<li><a href="<?php echo base_url('administrator/Home'); ?>">Home</a></li>
+		<li><a href="<?php echo base_url('administrator/Member'); ?>">Member</a></li>
+		<li class="active"><a href="#">Tambah Member</a></li>
 	</ol>
 
 	<div class="panel panel-default">

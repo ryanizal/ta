@@ -13,9 +13,11 @@ class Member extends CI_Controller {
 	public function index()
 	{
 		$data['nama_member'] = $_SESSION['member']['nama_member'];
+		$id_member = $_SESSION['member']['id_member'];
 		$data['kopi']=$this->Mkopi->view_kopi();
 		$data['new'] = $this->Mkopi->tampil_kopi_member(0);
-
+		$data['last'] = $this->Mkopi->last_seen_member(5, $id_member);
+		
 
 		$this->load->view('user/member/header');
 		$this->load->view('user/member/main', $data);
@@ -110,6 +112,8 @@ class Member extends CI_Controller {
 		$this->load->view('user/member/footer');
 
 	}
+
+
 
 	// function edit_profile(){
 	// 	// $id_member

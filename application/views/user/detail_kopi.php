@@ -27,7 +27,7 @@
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/owl.carousel.css">
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/main.css">
 	</head>
-	<body>
+	<body class="menu-area">
 
 		<header id="header" id="home">
 			<div class="header-top">
@@ -64,7 +64,7 @@
 				<div class="col-md-3">
 					<img src="<?php echo base_url('assets/img/coffee/'.$k['foto_1']); ?>" class="img-responsive">
 				</div>
-				<div class="col-md-9">
+				<div class="col-md-9 single-menu">
 
 					<form class="form-horizontal">
 						<div class="form-group">
@@ -129,7 +129,7 @@
 	<div class="section-top-border">
 		<h3>Comments:</h3>
 		<br>
-		<div class="col-md-10">
+		<div class="col-md-10 single-menu-kom">
 			<section class="comment-list">
 				<!-- First Comment -->
 				<article class="row">
@@ -160,13 +160,14 @@
 
 			</section>
 		</div>
+		<hr>
 		<div class="row">
 			<div></div>
 			<div class="col-md-5">
 				
-			<div class="single-menu">
-				<p>Please <a href="<?php echo base_url('Welcome/signup'); ?>">signup</a> or <a href="<?php echo base_url('Welcome/login'); ?>">login</a> to comment this coffee</p>
-			</div>
+				<div class="single-menu">
+					<p>Please <a href="<?php echo base_url('Welcome/signup'); ?>">signup</a> or <a href="<?php echo base_url('Welcome/login'); ?>">login</a> to comment this coffee</p>
+				</div>
 			</div>
 		</div>
 		<div class="widget-area no-padding blank col-md-10">

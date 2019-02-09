@@ -104,4 +104,14 @@ class Welcome extends CI_Controller {
 		$this->load->view('user/detail_kopi',$get);
 		$this->load->view('user/footer');
 	}
+
+	function cari_kopi($keyword = null)
+	{
+		// var_dump('hai');die();
+		$keyword = $this->input->post('keyword');
+		$data['kopi']=$this->Mkopi->cari_kopi($keyword);
+		$k = $keyword;
+		$this->load->view('user/hasil_cari',$data, $k);
+
+	}
 }

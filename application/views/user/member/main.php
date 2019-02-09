@@ -52,62 +52,18 @@
 	<div class="section-top-border">
 		<h3 class="mb-30">Last Seen Product</h3>
 		<div class="row">
+			
+			<?php foreach ($last as $key => $value): ;?>
 			<div class="col-md-4 single-menu">
 				<div class="single-defination">
-					<h4 class="mb-20">Kopi 01</h4>
+					<h4 class="mb-20"><?php echo $value['nama_kopi']; ?></h4>
 					<a href=""><img src="<?php echo base_url();?>assets/user/img/b1.jpg" class="img-responsive"></a>
-					<p>Recently, the US Federal government banned online casinos from operating in America by making it illegal to transfer money to them through any US bank or payment system. As a result of this law, most of the popular online casino networks</p>
 				</div>
 			</div>
 			<div class="col-md-1">
 				
 			</div>
-			<div class="col-md-4 single-menu">
-				<div class="single-defination">
-					<h4 class="mb-20">Kopi 02</h4>
-					<a href=""><img src="<?php echo base_url();?>assets/user/img/b1.jpg" class="img-responsive"></a>
-					<p>Recently, the US Federal government banned online casinos from operating in America by making it illegal to transfer money to them through any US bank or payment system. As a result of this law, most of the popular online casino networks</p>
-				</div>
-			</div>
-
-			<div class="col-md-1">
-				
-			</div>
-
-
-			<div class="col-md-4 single-menu">
-				<div class="single-defination">
-					<h4 class="mb-20">Kopi 03</h4>
-					<a href=""><img src="<?php echo base_url();?>assets/user/img/b1.jpg" class="img-responsive"></a>
-					<p>Recently, the US Federal government banned online casinos from operating in America by making it illegal to transfer money to them through any US bank or payment system. As a result of this law, most of the popular online casino networks</p>
-				</div>
-			</div>
-
-			<div class="col-md-1">
-				
-			</div>
-
-
-			<div class="col-md-4 single-menu">
-				<div class="single-defination">
-					<h4 class="mb-20">Kopi 04</h4>
-					<a href=""><img src="<?php echo base_url();?>assets/user/img/b1.jpg" class="img-responsive"></a>
-					<p>Recently, the US Federal government banned online casinos from operating in America by making it illegal to transfer money to them through any US bank or payment system. As a result of this law, most of the popular online casino networks</p>
-				</div>
-			</div>
-
-			<div class="col-md-1">
-				
-			</div>
-
-
-			<div class="col-md-4 single-menu">
-				<div class="single-defination">
-					<h4 class="mb-20">Kopi 05</h4>
-					<a href=""><img src="<?php echo base_url();?>assets/user/img/b1.jpg" class="img-responsive"></a>
-					<p>Recently, the US Federal government banned online casinos from operating in America by making it illegal to transfer money to them through any US bank or payment system. As a result of this law, most of the popular online casino networks</p>
-				</div>
-			</div>
+			<?php endforeach; ?>
 		</div>
 	</div>
 </div>

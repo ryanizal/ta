@@ -1,8 +1,8 @@
 <div id="page-wrapper">
 	<ol class="breadcrumb">
-		<li><a href="">Home</a></li>
-		<li><a href="">Kopi</a></li>
-		<li class="active"><a href="">Edit Kopi</a></li>
+		<li><a href="<?php echo base_url('administrator/Home'); ?>">Home</a></li>
+		<li><a href="<?php echo base_url('administrator/Coffee'); ?>">Kopi</a></li>
+		<li class="active"><a href="#">Edit Kopi</a></li>
 	</ol>
 
 	<div class="panel panel-default">
@@ -66,7 +66,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-1 control-label">Coffee's Kind</label>
+					<label class="col-sm-1 control-label">Tipe</label>
 					<div class="col-sm-3">
 						<select class="form-control" name="jenis_kopi">
 							<option value="" disabled>Coffee's Kind</option>
@@ -82,7 +82,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-1 control-label">Process</label>
+					<label class="col-sm-1 control-label">Proses</label>
 					<div class="col-sm-3">
 						<select class="form-control" name="proses_kopi">
 							<option value="" disabled>Process</option>

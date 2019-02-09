@@ -1,7 +1,7 @@
 <div id="page-wrapper">
 	<ol class="breadcrumb">
-		<li><a href="">Home</a></li>
-		<li><a href="">Roaster</a></li>
+		<li><a href="<?php echo base_url('administrator/Home'); ?>">Home</a></li>
+		<li><a href="<?php echo base_url('administrator/Roaster'); ?>">Roaster</a></li>
 		<li class="active"><a href="">Tambah Roaster</a></li>
 	</ol>
 

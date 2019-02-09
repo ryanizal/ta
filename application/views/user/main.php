@@ -42,17 +42,28 @@
 					<div id="logo">
 						<a href="<?php echo base_url('Welcome');?>"><img src="<?php echo base_url();?>assets/user/img/logo.png" alt="" title="" /></a>
 					</div>
+					<div class="col-md-6 col-sm-6">
+						<div class="single-footer-widget">
+							<div class="" >
+								<form action="<?php echo base_url();?>Welcome/cari_kopi" method="post" class="form-inline">
+									<input class="form-control" name="keyword" placeholder="Enter Coffee's Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Coffee Name '" required="" type="text">
+									<button class="click-btn btn btn-default" type="submit">
+										<i class="fa fa-search" aria-hidden="true"></i>
+									</button>
+								</form>
+							
+							</div>
+						</div>
+					</div>
+
 					<nav id="nav-menu-container">
 						<ul class="nav-menu">
 							<li class="menu-active"><a href="<?php echo base_url('Welcome/login');?>">Login</a></li>
-
 						</ul>
-					</nav>		    		
+					</nav>
 				</div>
 			</div>
 		</header>
-
-
 
 		<section class="banner-area" id="home">	
 			<div class="container">
@@ -83,7 +94,7 @@
 					<?php foreach ($new as $key => $value): ?>
 
 						<div class="col-lg-5 col-md-5 single-blog single-menu">
-							<a href="<?php echo base_url('Member/detail_kopi/'.$value['id_kopi']);?>">
+							<a href="<?php echo base_url('Welcome/detail_kopi/'.$value['id_kopi']);?>">
 								<img class="img-fluid" src="<?php echo base_url('assets/img/coffee/'.$value['foto_1']);?>" alt="">
 								<ul class="post-tags">
 									<li><a href="#"><?php echo $value['profile_roast']; ?></a></li>
@@ -102,7 +113,7 @@
 							</a>
 						</div>
 						<div class="col-lg-1 col-md-1">
-							
+
 						</div>
 					<?php endforeach; ?>				
 				</div>

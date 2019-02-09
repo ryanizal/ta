@@ -2,8 +2,8 @@
 	<div class="row">
 		<div class="col-md-12 text-right">
 			<ol class="breadcrumb">
-				<li><a href="">Home</a></li>
-				<li class="active"><a href="">Roaster</a></li>
+				<li><a href="<?php echo base_url('administrator/Home'); ?>">Home</a></li>
+				<li class="active"><a href="<?php echo base_url('administrator/Roaster'); ?>">Roaster</a></li>
 			</ol>
 			
 		</div>

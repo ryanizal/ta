@@ -1,14 +1,14 @@
 <div id="page-wrapper">
 	<ol class="breadcrumb">
-		<li><a href="">Home</a></li>
-		<li class=""><a href="">Coffee</a></li>
-		<li class="active"><a href="">Detail Kopi</a></li>
+		<li><a href="<?php echo base_url('administrator/Home'); ?>">Home</a></li>
+		<li class=""><a href="<?php echo base_url('administrator/Coffee'); ?>">Coffee</a></li>
+		<li class="active"><a href="#">Detail Kopi</a></li>
 	</ol>
 
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<a href="<?php echo base_url('administrator/Coffee') ?>" class="pull-right">back to list</a>
-			<h3>DETAIL COFFEE</h3>
+			<h3>DETAIL Kopi</h3>
 		</div>
 
 		<div class="panel-body">
@@ -22,7 +22,7 @@
 
 							<form class="form-horizontal">
 								<div class="form-group">
-									<label class="control-label col-sm-2">Coffee's Name</label>
+									<label class="control-label col-sm-2">Nama Kopi</label>
 									<div class="col-sm-10">
 										<p class="form-control-static">	: 	<?php echo $k['nama_kopi'] ?></p>
 									</div>
@@ -70,19 +70,19 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="control-label col-sm-2">Coffee's Kind</label>
+									<label class="control-label col-sm-2">Tipe</label>
 									<div class="col-sm-10">
 										<p class="form-control-static">	: 	<?php echo $k['jenis_kopi'] ?></p>
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="control-label col-sm-2">Process</label>
+									<label class="control-label col-sm-2">Proses</label>
 									<div class="col-sm-10">
 										<p class="form-control-static">	: 	<?php echo $k['proses_kopi'] ?></p>
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="control-label col-sm-2">Description</label>
+									<label class="control-label col-sm-2">Deskripsi</label>
 									<div class="col-sm-10">
 										<p class="form-control-static">	: 	<?php echo $k['deskripsi_kopi'] ?></p>
 									</div>
