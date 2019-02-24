@@ -113,6 +113,18 @@ class Member extends CI_Controller {
 
 	}
 
+	function cari_kopi($keyword = null)
+	{
+		// var_dump('hai');die();
+		$keyword = $this->input->post('keyword');
+		$data['kopi']=$this->Mkopi->cari_kopi($keyword);
+		$k = $keyword;
+		$this->load->view('user/member/header');
+		$this->load->view('user/member/hasil_cari',$data);
+		$this->load->view('user/member/footer');
+
+	}
+
 
 
 	// function edit_profile(){

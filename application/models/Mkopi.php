@@ -33,7 +33,10 @@ class Mkopi extends CI_Model {
 
 	function get_kopi($id_kopi)
 	{
-		$this->db->where('id_kopi', $id_kopi);
+		$this->db->select('*');
+		$this->db->from('kopi k');
+		$this->db->join('roaster r', 'r.id_roaster = k.id_roaster','left');
+		$this->db->where('k.id_kopi', $id_kopi);
 		$ambil = $this->db->get('kopi');
 
 		$data_kopi = $ambil->row_array();

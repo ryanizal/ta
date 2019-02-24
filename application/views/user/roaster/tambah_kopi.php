@@ -4,20 +4,92 @@
 			<div class="col-lg-12 col-md-12	">
 				<h3 class="mb-30">Add Coffee</h3>
 				<form method="post" enctype="multipart/form-data">
+					
 					<div class="mt-10">
 						<input type="text" name="nama_kopi" placeholder="Coffee's Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Coffees Name'" required class="single-input">
 					</div>
-					<div class="mt-10">
-						<input type="text" name="acidity" placeholder="Acidity" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Acidity'" required class="single-input">
-					</div>
-					<div class="mt-10">	
-						<input type="text" name="sweet" placeholder="Sweetness" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Sweetness'" required class="single-input">
+					<div class="mt-10 mb-20">
+						<p>Acidity</p>
 					</div>
 					<div class="mt-10">
-						<input type="text" name="bitter" placeholder="Bitterness" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Bitterness'" required class="single-input">
+						<div class="range">
+							<input type="range" min="1" max="9" steps="1" value="1">
+						</div>
+
+						<ul class="range-labels">
+							<li class="active selected">1</li>
+							<li>2</li>
+							<li>3</li>
+							<li>4</li>
+							<li>5</li>
+							<li>6</li>
+							<li>7</li>
+							<li>8</li>
+							<li>9</li>
+						</ul>
+					</div>
+					<br>
+					<div class="mt-10 mb-20">
+						<p>Sweetness</p>
 					</div>
 					<div class="mt-10">
-						<input type="text" name="savory" placeholder="Savoriness" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Savoriness'" required class="single-input">
+						<div class="range">
+							<input type="range" min="1" max="9" steps="1" value="1">
+						</div>
+
+						<ul class="range-labels">
+							<li class="active selected">1</li>
+							<li>2</li>
+							<li>3</li>
+							<li>4</li>
+							<li>5</li>
+							<li>6</li>
+							<li>7</li>
+							<li>8</li>
+							<li>9</li>
+						</ul>
+					</div>
+					<br>
+					<div class="mt-10 mb-20">
+						<p>Bitterness</p>
+					</div>
+					<div class="mt-10">
+						<div class="range">
+							<input type="range" name="acidity" min="1" max="9" steps="1" value="1">
+						</div>
+
+						<ul class="range-labels">
+							<li class="active selected">1</li>
+							<li>2</li>
+							<li>3</li>
+							<li>4</li>
+							<li>5</li>
+							<li>6</li>
+							<li>7</li>
+							<li>8</li>
+							<li>9</li>
+						</ul>
+					</div>
+					<br>
+					<div class="mt-10 mb-20">
+						<p>Savoriness</p>
+					</div>
+					<div class="mt-10">
+						<div class="range">
+							<input type="range" min="1" max="9" steps="1" value="1">
+						</div>
+
+						<ul class="range-labels">
+							<li class="active selected">1</li>
+							<li>2</li>
+							<li>3</li>
+							<li>4</li>
+							<li>5</li>
+							<li>6</li>
+							<li>7</li>
+							<li>8</li>
+							<li>9</li>
+						</ul>
 					</div>
 					<div class="mt-10">
 						<input type="text" name="origin" placeholder="Place of Origin" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Place of Origin'" required class="single-input">
@@ -84,5 +156,5 @@
 			</div>
 
 		</div>
-	<!-- </div> -->
-</div>
+		<!-- </div> -->
+	</div>

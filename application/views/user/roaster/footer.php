@@ -30,6 +30,7 @@
 			<script src="<?php echo base_url();?>assets/user/js/jquery.counterup.min.js"></script>					
 			<script src="<?php echo base_url();?>assets/user/js/mail-script.js"></script>	
 			<script src="<?php echo base_url();?>assets/user/js/main.js"></script>	
+			<script src="<?php echo base_url();?>assets/js/range.js"></script>	
 		</body>
 		</html>
 

@@ -104,15 +104,15 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-2">Roast by</label>
-					<div class="col-sm-10 pull-right">
-						<p class="form-control-static">: <?php echo $k['id_roaster'] ?></p>
-					</div>
-				</div>
-				<div class="form-group">
 					<label class="control-label col-sm-2">Roast Profile</label>
 					<div class="col-sm-10 pull-right">
 						<p class="form-control-static">: <?php echo $k['profile_roast'] ?></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2">Roasted By</label>
+					<div class="col-sm-10 pull-right">
+						<p class="form-control-static">: <?php echo $k['nama_roaster'] ?></p>
 					</div>
 				</div>
 				<div class="form-group">

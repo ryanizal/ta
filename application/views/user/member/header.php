@@ -35,6 +35,21 @@
 					<div id="logo">
 						<a href="<?php echo base_url('member'); ?>"><img src="<?php echo base_url();?>assets/user/img/logo.png" alt="" title="" /></a>
 					</div>
+
+					<div class="col-md-6 col-sm-6">
+						<div class="single-footer-widget">
+							<div class="" >
+								<form action="<?php echo base_url();?>Member/cari_kopi" method="post" class="form-inline">
+									<input class="form-control" name="keyword" placeholder="Search Coffee..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Coffee... '" required="" type="text">
+									<button class="click-btn btn btn-default" type="submit">
+										<i class="fa fa-search" aria-hidden="true"></i>
+									</button>
+								</form>
+
+							</div>
+						</div>
+					</div>
+
 					<nav id="nav-menu-container">
 						<ul class="nav-menu">
 							<li class="menu-active"><a href="<?php echo base_url('member'); ?>">Home</a></li>

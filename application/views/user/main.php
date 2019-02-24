@@ -46,7 +46,7 @@
 						<div class="single-footer-widget">
 							<div class="" >
 								<form action="<?php echo base_url();?>Welcome/cari_kopi" method="post" class="form-inline">
-									<input class="form-control" name="keyword" placeholder="Enter Coffee's Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Coffee Name '" required="" type="text">
+									<input class="form-control" name="keyword" placeholder="Search Coffee..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Coffee...'" required="" type="text">
 									<button class="click-btn btn btn-default" type="submit">
 										<i class="fa fa-search" aria-hidden="true"></i>
 									</button>

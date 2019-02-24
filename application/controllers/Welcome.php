@@ -111,7 +111,7 @@ class Welcome extends CI_Controller {
 		$keyword = $this->input->post('keyword');
 		$data['kopi']=$this->Mkopi->cari_kopi($keyword);
 		$k = $keyword;
-		$this->load->view('user/hasil_cari',$data, $k);
+		$this->load->view('user/hasil_cari',$data);
 
 	}
 }

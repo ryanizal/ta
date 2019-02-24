@@ -33,12 +33,15 @@ class Roaster extends CI_Controller {
 		{
 			$input['id_roaster'] = $idr;
 			$this->Mkopi->save_kopi($input, $_FILES);
+			var_dump($input);
+			die();
 			redirect('roaster/list_kopi');
 		}
 
 		$data['profile_roast'] = $this->Mkopi->profile_roast();
 		$data['jenis_kopi'] = $this->Mkopi->jenis_kopi();
 		$data['proses_kopi'] = $this->Mkopi->proses_kopi();
+
 
 		$this->load->view('user/roaster/header');
 		$this->load->view('user/roaster/tambah_kopi',$data);
@@ -137,6 +140,19 @@ class Roaster extends CI_Controller {
 	{
 		$this->session->unset_userdata('roaster');
 		redirect('welcome','refresh');
+	}
+
+	function cari_kopi($keyword = null)
+	{
+		// var_dump('hai');die();
+		$keyword = $this->input->post('keyword');
+		$data['kopi']=$this->Mkopi->cari_kopi($keyword);
+		$k = $keyword;
+		$this->load->view('user/roaster/header');
+		$this->load->view('user/roaster/hasil_cari',$data);
+		$this->load->view('user/roaster/footer');
+
+
 	}
 
 }
