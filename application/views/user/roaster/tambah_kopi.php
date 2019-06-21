@@ -11,9 +11,9 @@
 					<div class="mt-10 mb-20">
 						<p>Acidity</p>
 					</div>
-					<div class="mt-10">
+					<div class="mt-10 mb-20">
 						<div class="range">
-							<input type="range" min="1" max="9" steps="1" value="1">
+							<input name="acidity" type="range" min="1" max="9" steps="1" value="1">
 						</div>
 
 						<ul class="range-labels">
@@ -32,9 +32,9 @@
 					<div class="mt-10 mb-20">
 						<p>Sweetness</p>
 					</div>
-					<div class="mt-10">
+					<div class="mt-10 mb-20">
 						<div class="range">
-							<input type="range" min="1" max="9" steps="1" value="1">
+							<input name="sweet" type="range" min="1" max="9" steps="1" value="1">
 						</div>
 
 						<ul class="range-labels">
@@ -53,9 +53,9 @@
 					<div class="mt-10 mb-20">
 						<p>Bitterness</p>
 					</div>
-					<div class="mt-10">
+					<div class="mt-10 mb-20">
 						<div class="range">
-							<input type="range" name="acidity" min="1" max="9" steps="1" value="1">
+							<input type="range" name="bitter" min="1" max="9" steps="1" value="1">
 						</div>
 
 						<ul class="range-labels">
@@ -74,9 +74,9 @@
 					<div class="mt-10 mb-20">
 						<p>Savoriness</p>
 					</div>
-					<div class="mt-10">
+					<div class="mt-10 mb-20">
 						<div class="range">
-							<input type="range" min="1" max="9" steps="1" value="1">
+							<input name="savory" type="range" min="1" max="9" steps="1" value="1">
 						</div>
 
 						<ul class="range-labels">
@@ -91,7 +91,8 @@
 							<li>9</li>
 						</ul>
 					</div>
-					<div class="mt-10">
+					<br>
+					<div class="mt-20">
 						<input type="text" name="origin" placeholder="Place of Origin" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Place of Origin'" required class="single-input">
 					</div>
 					<div class="input-group-icon mt-10">

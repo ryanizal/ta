@@ -10,6 +10,31 @@ class Mkopi extends CI_Model {
 		return $array;
 	}
 
+	function view_jenis()
+	{
+		$get = $this->db->get("jenis_kopi");
+		$array = $get->result_array();
+		return $array;
+	}
+
+	function view_profile()
+	{
+		$get = $this->db->get("roast_prof");
+		$array = $get->result_array();
+		return $array;
+	}
+
+	function view_proses()
+	{
+		$get = $this->db->get("proses_kopi");
+		$array = $get->result_array();
+		return $array;
+	}
+
+
+
+	
+
 	function save_kopi($input, $file)
 	{
 		foreach ($file as $nama_foto => $atribut) {
@@ -97,13 +122,13 @@ class Mkopi extends CI_Model {
 		}
 	}
 
-	function tampil_kopi_roaster($limit,$idr)
-	{
-		$this->db->where('id_roaster', $idr);
-		$this->db->order_by('id_kopi', 'desc');
-		$data = $this->db->get('kopi', $limit);
-		return $data->result_array();
-	}
+	// function tampil_kopi_roaster($limit,$idr)
+	// {
+	// 	$this->db->where('id_roaster', $idr);
+	// 	$this->db->order_by('id_kopi', 'desc');
+	// 	$data = $this->db->get('kopi', $limit);
+	// 	return $data->result_array();
+	// }
 
 	function tampil_kopi_roaster_list($idr)
 	{
@@ -203,6 +228,7 @@ class Mkopi extends CI_Model {
 	// 	$this->db->insert('view', $input);
 	// }
 }
+
 
 /* End of file Mkopi.php */
 /* Location: ./application/models/Mkopi.php */

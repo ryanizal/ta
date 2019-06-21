@@ -16,7 +16,7 @@ class Roaster extends CI_Controller {
 		$idr = $_SESSION['roaster']['id_roaster'];
 		// print_r($data);
 
-		$data['new'] = $this->Mkopi->tampil_kopi_roaster(2,$idr);
+		// $data['new'] = $this->Mkopi->tampil_kopi_roaster(2,$idr);
 
 		$this->load->view('user/roaster/header');
 		$this->load->view('user/roaster/main', $data);
@@ -33,8 +33,6 @@ class Roaster extends CI_Controller {
 		{
 			$input['id_roaster'] = $idr;
 			$this->Mkopi->save_kopi($input, $_FILES);
-			var_dump($input);
-			die();
 			redirect('roaster/list_kopi');
 		}
 
@@ -54,7 +52,6 @@ class Roaster extends CI_Controller {
 
 		$this->load->view('user/roaster/header');
 		$data['new'] = $this->Mkopi->tampil_kopi_roaster_list($idr);
-		// $data['kopi']=$this->Mkopi->view_kopi();
 		$this->load->view('user/roaster/daftar_kopi', $data);
 		$this->load->view('user/roaster/footer');
 	}
