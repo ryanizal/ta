@@ -102,7 +102,7 @@
 								<option value="" disabled selected>Roast Profile</option>
 								
 								<?php foreach ($profile_roast as $key => $value): ?>
-									<option value="<?php echo $value ?>"><?php echo $value ?> </option>
+									<option value="<?php echo $value->id_roast_prof ?>"><?php echo $value->nama_roast_prof ?> </option>
 								<?php endforeach ?>
 							</select>
 						</div>
@@ -114,7 +114,7 @@
 								<option value="" disabled selected>Coffee's Kind</option>
 								
 								<?php foreach ($jenis_kopi as $key => $value): ?>
-									<option value="<?php echo $value ?>"><?php echo $value ?> </option>
+									<option value="<?php echo $value->id_jenis_kopi ?>"><?php echo $value->jenis_kopi ?> </option>
 								<?php endforeach ?>
 							</select>
 						</div>
@@ -126,12 +126,28 @@
 								<option value="" disabled selected>Process</option>
 								
 								<?php foreach ($proses_kopi as $key => $value): ?>
-									<option value="<?php echo $value ?>"><?php echo $value ?> </option>
+									<option value="<?php echo $value->id_proses_kopi ?>"><?php echo $value->nama_proses ?> </option>
 								<?php endforeach ?>
 							</select>
 						</div>
 					</div>
+					<div class="form-group">
+						<div class="input-group-icon mt-10">
+							<div class="icon"><i class="fa fa-fire" aria-hidden="true"></i></div>
+							<div class="form-selectaste" id="default-select">
+								<select name="tastes">
+									<option value="" disabled selected>Taste Note's</option>
 
+									<?php foreach ($tastes as $key => $value): ?>
+										<option value="<?php echo $value->id_tastes ?>"><?php echo $value->nama_tastes ?> </option>
+									<?php endforeach ?>
+								</select>
+							</div>
+						</div>
+
+						<button type="button" class="addp genric-btn info circle" title="Add More"> + </button>
+						<button type="button" class="removep genric-btn danger circle" title="Remove"> x </button>	
+					</div>
 					<div class="mt-10">
 						<textarea name="deskripsi_kopi" placeholder="About This Coffee" onfocus="this.placeholder = ''" onblur="this.placeholder = 'About This Coffee'" required class="single-input"></textarea>
 					</div>
@@ -159,3 +175,18 @@
 		</div>
 		<!-- </div> -->
 	</div>
+
+	<script>
+		$('.addp').click(function () {
+			console.log($(this));
+			var fg = $(this).parent().clone(true, true);
+
+			$('#dynamic_field').append(fg);
+		});
+
+		$('.removep').click(function () {
+			if ($('#dynamic_field > div').length > 1) {
+				$(this).parent().remove();
+			}
+		});
+	</script>

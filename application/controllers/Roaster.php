@@ -39,6 +39,7 @@ class Roaster extends CI_Controller {
 		$data['profile_roast'] = $this->Mkopi->profile_roast();
 		$data['jenis_kopi'] = $this->Mkopi->jenis_kopi();
 		$data['proses_kopi'] = $this->Mkopi->proses_kopi();
+		$data['tastes'] = $this->Mkopi->tastes();
 
 
 		$this->load->view('user/roaster/header');

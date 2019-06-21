@@ -10,26 +10,26 @@ class Mkopi extends CI_Model {
 		return $array;
 	}
 
-	function view_jenis()
-	{
-		$get = $this->db->get("jenis_kopi");
-		$array = $get->result_array();
-		return $array;
-	}
+	// function view_jenis()
+	// {
+	// 	$get = $this->db->get("jenis_kopi");
+	// 	$array = $get->result_array();
+	// 	return $array;
+	// }
 
-	function view_profile()
-	{
-		$get = $this->db->get("roast_prof");
-		$array = $get->result_array();
-		return $array;
-	}
+	// function view_profile()
+	// {
+	// 	$get = $this->db->get("roast_prof");
+	// 	$array = $get->result_array();
+	// 	return $array;
+	// }
 
-	function view_proses()
-	{
-		$get = $this->db->get("proses_kopi");
-		$array = $get->result_array();
-		return $array;
-	}
+	// function view_proses()
+	// {
+	// 	$get = $this->db->get("proses_kopi");
+	// 	$array = $get->result_array();
+	// 	return $array;
+	// }
 
 
 
@@ -164,20 +164,62 @@ class Mkopi extends CI_Model {
 
 	function profile_roast()
 	{
-		$profile_roast = array("Light", "Light to Medium", "Medium", "Medium to Dark", "Dark");
-		return $profile_roast;
+		$this->db->select('*');
+		$this->db->from('roast_prof');
+		$query = $this->db->get(); 
+		if ($query->num_rows() >0)
+		{ 
+			foreach ($query->result() as $data) {
+				$profile_roast[] = $data;
+			}
+			return $profile_roast;
+		}
 	}
+
 
 	function jenis_kopi()
 	{
-		$jenis_kopi = array("Arabica", "Robusta", "Blend");
-		return $jenis_kopi;
+		$this->db->select('*');
+		$this->db->from('jenis_kopi');
+
+		$query = $this->db->get(); 
+		if ($query->num_rows() >0)
+		{ 
+			foreach ($query->result() as $data) {
+				$jenis_kopi[] = $data;
+			}
+			return $jenis_kopi;
+		}
 	}
 
 	function proses_kopi()
 	{
-		$proses_kopi = array("Natural", "Washed", "Semi Washed");
-		return $proses_kopi;
+		$this->db->select('*');
+		$this->db->from('proses_kopi');
+
+		$query = $this->db->get(); 
+		if ($query->num_rows() >0)
+		{ 
+			foreach ($query->result() as $data) {
+				$proses_kopi[] = $data;
+			}
+			return $proses_kopi;
+		}
+	}
+
+	function tastes()
+	{
+		$this->db->select('*');
+		$this->db->from('tastes');
+
+		$query = $this->db->get(); 
+		if ($query->num_rows() >0)
+		{ 
+			foreach ($query->result() as $data) {
+				$tastes[] = $data;
+			}
+			return $tastes;
+		}
 	}
 
 	function simpan_komentar($input)

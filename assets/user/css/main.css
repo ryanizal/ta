@@ -1832,12 +1832,31 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
 }
 
+.form-selectaste .nice-select {
+  border: none;
+  border-radius: 0px;
+  height: 40px;
+  background: #96794529;
+  padding-left: 45px;
+  padding-right: 40px;
+  width: 90%;
+}
+
 .form-select .nice-select .list {
   margin-top: 0;
   border: none;
   border-radius: 0px;
   box-shadow: none;
   width: 100%;
+  padding: 10px 0 10px 0px;
+}
+
+.form-selectaste .nice-select .list {
+  margin-top: 0;
+  border: none;
+  border-radius: 0px;
+  box-shadow: none;
+  width: 70%;
   padding: 10px 0 10px 0px;
 }
 
@@ -1853,7 +1872,23 @@ h1, h2, h3, h4, h5, h6 {
   padding-left: 45px;
 }
 
+.form-selectaste .nice-select .list .option {
+  font-weight: 300;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  line-height: 28px;
+  min-height: 28px;
+  font-size: 12px;
+  padding-left: 45px;
+}
+
 .form-select .nice-select .list .option.selected {
+  color: #b68834;
+  background: transparent;
+}
+.form-selectaste .nice-select .list .option.selected {
   color: #b68834;
   background: transparent;
 }
@@ -1863,7 +1898,16 @@ h1, h2, h3, h4, h5, h6 {
   background: transparent;
 }
 
+.form-selectaste .nice-select .list .option:hover {
+  color: #b68834;
+  background: transparent;
+}
+
 .form-select .current {
+  margin-right: 50px;
+  font-weight: 300;
+}
+.form-selectaste .current {
   margin-right: 50px;
   font-weight: 300;
 }
@@ -1872,6 +1916,9 @@ h1, h2, h3, h4, h5, h6 {
   right: 20px;
 }
 
+.form-selectaste .nice-select::after {
+  right: 20px;
+}
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
@@ -2762,4 +2809,13 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .penuhin{
   width: 100% !important;
+}
+
+.cosw{
+  border: none;
+  border-radius: 0px;
+  height: 40px;
+  background: #f9f9ff;
+  padding-left: 20px;
+  padding-right: 40px;
 }
