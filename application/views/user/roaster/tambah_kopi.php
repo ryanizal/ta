@@ -98,7 +98,7 @@
 					<div class="input-group-icon mt-10">
 						<div class="icon"><i class="fa fa-fire" aria-hidden="true"></i></div>
 						<div class="form-select" id="default-select"">
-							<select name="profile_roast">
+							<select name="roast_prof_id_roast_prof">
 								<option value="" disabled selected>Roast Profile</option>
 								
 								<?php foreach ($profile_roast as $key => $value): ?>
@@ -110,7 +110,7 @@
 					<div class="input-group-icon mt-10">
 						<div class="icon"><i class="fa fa-fire" aria-hidden="true"></i></div>
 						<div class="form-select" id="default-select"">
-							<select name="jenis_kopi">
+							<select name="jenis_kopi_id_jenis_kopi">
 								<option value="" disabled selected>Coffee's Kind</option>
 								
 								<?php foreach ($jenis_kopi as $key => $value): ?>
@@ -122,7 +122,7 @@
 					<div class="input-group-icon mt-10">
 						<div class="icon"><i class="fa fa-fire" aria-hidden="true"></i></div>
 						<div class="form-select" id="default-select"">
-							<select name="proses_kopi">
+							<select name="proses_kopi_id_proses_kopi">
 								<option value="" disabled selected>Process</option>
 								
 								<?php foreach ($proses_kopi as $key => $value): ?>
@@ -156,9 +156,9 @@
 						<!-- <label class=" mt-10 control-label">Photo's</label> -->
 					</div>
 					<div class="mt-10">
-						<input type="file" name="foto_1" class="">
-						<input type="file" name="foto_2" class="">
-						<input type="file" name="foto_3" class="">
+						<input type="file" name="nama_foto[]" class="">
+						<input type="file" name="nama_foto[]" class="">
+						<input type="file" name="nama_foto[]" class="">
 					</div>
 
 					<div class="col-lg-3 col-md-3 pull-right">

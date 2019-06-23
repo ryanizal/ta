@@ -41,7 +41,7 @@
 								<option>agak penting(7)</option>
 								<option>penting(5)</option>
 								<option>ga terlalu penting(3)</option>
-								<option>ga penting(1)</option>
+								<option>ga penting(2)</option>
 							</select>
 						</div>
 
@@ -79,8 +79,8 @@
 						<div class="col-md-5 form-select" id="default-select">
 
 							<select name="kriteria1" class="penuhin">
-								<option>sangat penting (9)</option>
-								<option>agak penting(7)</option>
+								<option value="9">sangat penting (9)</option>
+								<option value="7">agak penting(7)</option>
 								<option>penting(5)</option>
 								<option>ga terlalu penting(3)</option>
 								<option>ga penting(1)</option>

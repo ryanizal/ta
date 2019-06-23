@@ -31,29 +31,83 @@ class Mkopi extends CI_Model {
 	// 	return $array;
 	// }
 
-
-
-	
-
-	function save_kopi($input, $file)
+	function save_kopi($input, $files)
 	{
-		foreach ($file as $nama_foto => $atribut) {
+		$this->db->insert('kopi', array_intersect_key($input, array_flip([
+			'nama_kopi', 'acidity', 'sweet', 'bitter', 'savory', 'origin', 'deskripsi_kopi', 'roaster_id_roaster', 'roast_prof_id_roast_prof', 'jenis_kopi_id_jenis_kopi', 'proses_kopi_id_proses_kopi'
+		])));
 
-			$config['upload_path'] = './assets/img/coffee';
-			$config['allowed_types'] = 'gif|jpg|png';
+		$id_kopi = $this->db->insert_id();
 
-			$this->upload->initialize($config);
-			
-			$u = $this->upload->do_upload($nama_foto);
+		$extractFileDetail = function ($files, $index) {
+			$data = [
+				'name' => '',
+				'type' => '',
+				'tmp_name' => '',
+				'error' => 0,
+				'size' => 0,
+			];
 
-			if ($u)
+			foreach ($data as $key => $value) {
+				$data[$key] = array_key_exists($key, $files)
+				? (array_key_exists($index, $files[$key]) ? $files[$key][$index] : $data[$key])
+				: $data[$key];
+			}
+
+			return $data;
+		};
+
+		if (array_key_exists('nama_foto', $files)) {
+			foreach ($files['nama_foto']['name'] as $index => $value)
 			{
-				$data_upload = $this->upload->data();
-				$input[$nama_foto] = $data_upload['file_name'];
-				
+				if (empty($value)) {
+					break;
+				}
+
+				$fileKey = $this->uuid->v4();
+				$uploadDir = 'assets/img/coffee';
+
+				$uploadPath = FCPATH . $uploadDir;
+				$fileExt = pathinfo($value, PATHINFO_EXTENSION);
+				$fileName = $this->uuid->v4() . '.' . $fileExt;
+				$fullpath = $uploadPath . '/' . $fileName;
+				$urlPath = $uploadDir . '/' . $fileName;
+
+				while (is_file($fullpath)) {
+					$fileName = $this->uuid->v4() . '.' . $fileExt;
+					$fullpath = $uploadPath . '/' . $fileName;
+				}
+
+				$config['upload_path'] = $uploadPath;
+				$config['allowed_types'] = 'gif|jpg|png';
+				$config['file_name'] = $fileName;
+
+				$this->upload->initialize($config);
+
+				$_FILES[$fileKey] = $extractFileDetail($files['nama_foto'], $index);
+
+				$u = $this->upload->do_upload($fileKey);
+
+				if ($u) {
+					$data_upload = $this->upload->data();
+				} else {
+					var_dump($this->upload->display_errors());die();
+					throw new Exception("Gagal Upload foto ke $index");
+				}
+
+				$this->db->insert('foto', [
+					'path_foto' => $urlPath,
+					'kopi_id_kopi' => $id_kopi,
+				]);
 			}
 		}
-		$this->db->insert("kopi", $input);
+		// print_r($input);
+		// die();
+
+		$this->db->insert('kopi_has_tastes', [
+			'kopi_id_kopi' => $id_kopi,
+			'tastes_id_tastes' => $input['tastes'],
+		]);
 	}
 
 	function get_kopi($id_kopi)
@@ -132,7 +186,7 @@ class Mkopi extends CI_Model {
 
 	function tampil_kopi_roaster_list($idr)
 	{
-		$this->db->where('id_roaster', $idr);
+		$this->db->where('roaster_id_roaster', $idr);
 		$data = $this->db->get('kopi');
 		return $data->result_array();
 
@@ -149,10 +203,10 @@ class Mkopi extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from('view v');
-		$this->db->join('kopi k', 'k.id_kopi = v.id_kopi');
-		$this->db->where('v.id_member', $id_member);
-		$this->db->order_by('v.id_view', 'desc');
-		$this->db->group_by('v.id_kopi');
+		$this->db->join('kopi k', 'k.id_kopi = v.kopi_id_kopi');
+		$this->db->where('v.member_id_member', $id_member);
+		$this->db->order_by('v.waktu_view', 'desc');
+		$this->db->group_by('v.kopi_id_kopi');
 		$data = $this->db->get('',$limit);
 
 		

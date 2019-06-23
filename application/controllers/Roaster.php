@@ -28,10 +28,11 @@ class Roaster extends CI_Controller {
 		$input = $this->input->post();
 		$idr = $_SESSION['roaster']['id_roaster'];
 
-
 		if($input)
 		{
-			$input['id_roaster'] = $idr;
+			// print_r($input);
+			// die();
+			$input['roaster_id_roaster'] = $idr;
 			$this->Mkopi->save_kopi($input, $_FILES);
 			redirect('roaster/list_kopi');
 		}
