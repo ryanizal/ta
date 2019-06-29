@@ -1,9 +1,9 @@
 <div  class="container">
-	<h3 class="panel-title"> <?php echo $k['nama_kopi'] ?></h3>
+	<h3 class="panel-title"> <?php echo $kopi->nama_kopi ?></h3>
 	<br>
 	<div class="row">
 		<div class="col-md-3">
-			<img src="<?php echo base_url('assets/img/coffee/'.$k['foto_1']); ?>" class="img-responsive">
+			<img src="<?php echo base_url('assets/img/coffee/'.$kopi->foto->path_foto); ?>" class="img-responsive">
 		</div>
 		<div class="col-md-9 single-menu">
 
@@ -12,49 +12,49 @@
 				<div class="form-group">
 					<label class="control-label col-sm-2">Acidity</label>
 					<div class="col-sm-10 pull-right">
-						<p class="form-control-static">: <?php echo $k['acidity'] ?></p>
+						<p class="form-control-static">: <?php echo $kopi->acidity?></p>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2">Sweetness</label>
 					<div class="col-sm-10 pull-right">
-						<p class="form-control-static">: <?php echo $k['sweet'] ?></p>
+						<p class="form-control-static">: <?php echo $kopi->sweet ?></p>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2">Bitterness</label>
 					<div class="col-sm-10 pull-right">
-						<p class="form-control-static">: <?php echo $k['bitter'] ?></p>
+						<p class="form-control-static">: <?php echo $kopi->bitter ?></p>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2">Savoriness</label>
 					<div class="col-sm-10 pull-right">
-						<p class="form-control-static">: <?php echo $k['savory'] ?></p>
+						<p class="form-control-static">: <?php echo $kopi->savory ?></p>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2">Origin</label>
 					<div class="col-sm-10 pull-right">
-						<p class="form-control-static">: <?php echo $k['origin'] ?></p>
+						<p class="form-control-static">: <?php echo $kopi->origin ?></p>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2">Roast by</label>
 					<div class="col-sm-10 pull-right">
-						<p class="form-control-static">: <?php echo $k['id_roaster'] ?></p>
+						<p class="form-control-static">: <?php echo $kopi->roaster->nama_roaster ?></p>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2">Roast Profile</label>
 					<div class="col-sm-10 pull-right">
-						<p class="form-control-static">: <?php echo $k['profile_roast'] ?></p>
+						<p class="form-control-static">: <?php echo $kopi->profile->nama_roast_prof?></p>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2">Description</label>
 					<div class="col-sm-10 pull-right">
-						<p class="form-control-static">: <?php echo $k['deskripsi_kopi'] ?></p>
+						<p class="form-control-static">: <?php echo $kopi->deskripsi_kopi ?></p>
 					</div>
 				</div>
 			</form>
@@ -67,10 +67,10 @@
 		<br>
 		<div class="col-md-10">
 			<!-- <pre>
-				<?php print_r($komentar) ?>
+				<?php print_r($kopiomentar) ?>
 			</pre> -->
 			<section class="comment-list">
-				<?php foreach ($komentar as $key => $value): ?>
+				<?php foreach ($kopiomentar as $kopiey => $value): ?>
 					<article class="row">
 						<div class="col-md-2 col-sm-2 hidden-xs">
 							<figure class="thumbnail">
@@ -92,7 +92,7 @@
 									</div>
 									<?php if ($value['id_member'] == $id_member): ?>
 										
-									<p class="text-right"><a href="<?php echo base_url("Member/hapus_komentar/$k[id_kopi]/$value[id_komentar]") ?>" class="btn btn-default btn-sm"><i class="fa fa-trash"></i></a></p>
+									<p class="text-right"><a href="<?php echo base_url("Member/hapus_komentar/$kopi[id_kopi]/$value[id_komentar]") ?>" class="btn btn-default btn-sm"><i class="fa fa-trash"></i></a></p>
 									<?php endif ?>
 								</div>
 							</div>

@@ -21,7 +21,8 @@ class Welcome extends CI_Controller {
 		{
 			$query->limit(5);
 		}])->get();
-
+// print_r($data);
+// die();
 		// $data['kopi']=$this->Mkopi->view_kopi();
 		$data['new'] = $this->Mkopi->tampil_kopi_member(0);
 		$this->load->view('user/main',$data);

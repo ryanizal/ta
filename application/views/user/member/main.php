@@ -1,13 +1,10 @@
 <div class="container">
 	<h3 class="text-heading">
-		Welcome, <?php echo $nama_member; ?>		
+		Member, <?php echo $nama_member; ?>		
 	</h3>
 	
-	<p><b><?php echo date("D"); ?></b> <?php echo date("Y M d"); ?></p>
-	
-	
-
-	<section class="blog-area section-gap" id="blog">
+	<p><b><?php echo date("D"); ?></b> <?php echo date("Y M d"); ?></p>	
+	<section class="video-sec-area pt-30" id="blog">
 		<div class="container">
 			<div class="row d-flex justify-content-center">
 				<div class="menu-content pb-60 col-lg-10">
@@ -21,11 +18,11 @@
 				<?php foreach ($kopi as $value): ?>
 
 					<div class="col-lg-5 col-md-5 single-blog single-menu">
-						<a href="<?php echo base_url('Welcome/detail_kopi/'.$value->id_kopi);?>">
+						<a href="<?php echo base_url('Member/detail_kopi/'.$value->id_kopi);?>">
 							<img class="img-fluid" src="<?php echo base_url($value->foto->first()->path_foto);?>" alt="">
 
 							<hr>
-							<a href="<?php echo base_url('Welcome/detail_kopi/'.$value['id_kopi']);?>">
+							<a href="<?php echo base_url('Member/detail_kopi/'.$value['id_kopi']);?>">
 								<h4>
 									<?php echo $value->nama_kopi; ?>
 

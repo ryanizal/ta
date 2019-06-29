@@ -48,7 +48,12 @@ class MkopiEL extends Eloquent {
 		
 	}
 
-	function last_seen_member($limit, $id_member)
+	public function view()
+	{
+		return $this->belongsToMany('MmemberEL', 'view', 'member_id_member', 'kopi_id_kopi');
+	}
+
+	public function last_view($limit, $id_member)
 	{
 		$this->db->select('*');
 		$this->db->from('view v');

@@ -300,8 +300,8 @@ class Mkopi extends CI_Model
 
 	function simpan_view($id_kopi, $member, $waktu)
 	{
-		$input["id_kopi"] = $id_kopi;
-		$input["id_member"] = $member;
+		$input["kopi_id_kopi"] = $id_kopi;
+		$input["member_id_member"] = $member;
 		$input["waktu_view"] = $waktu;
 		$this->db->insert('view', $input);
 	}

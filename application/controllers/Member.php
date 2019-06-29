@@ -18,9 +18,21 @@ class Member extends CI_Controller {
 		{
 			$query->limit(5);
 		}])->get();
+
+//belum selesai
+		$data['last'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'=>function($query)
+		{
+			$query->limit(5);
+		},
+		'view'=>function($query)
+		{
+			$query->orderBy('waktu_view','desc');
+		}])->get();
+
+
+		// $data['new'] = $this->Mkopi->tampil_kopi_member(0);
+		// $data['last'] = $this->Mkopi->last_seen_member(5, $id_member);
 		// $data['kopi']=$this->Mkopi->view_kopi();
-		$data['new'] = $this->Mkopi->tampil_kopi_member(0);
-		$data['last'] = $this->Mkopi->last_seen_member(5, $id_member);
 		
 
 		$this->load->view('user/member/header');
@@ -67,8 +79,13 @@ class Member extends CI_Controller {
 
 	function detail_kopi($id_kopi)
 	{
-		$get['komentar'] = $this->Mkopi->tampil_komentar($id_kopi);
-		$get['k'] = $this->Mkopi->get_kopi($id_kopi);
+		// $get['komentar'] = $this->Mkopi->tampil_komentar($id_kopi);
+		$get['kopi'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'=>function($query)
+		{
+			$query->limit(5);
+		}])->where('id_kopi',$id_kopi)->get();
+// print_r($get);
+// die();
 		$get['id_member'] = $_SESSION['member']['id_member'];
 
 		$this->Mkopi->simpan_view($id_kopi, $get['id_member'], date("Y-m-d H:i:s"));
@@ -77,8 +94,8 @@ class Member extends CI_Controller {
 		if ($input)
 		{
 			$input['waktu_komentar'] = date("Y-m-d H:i:s");
-			$input['id_member'] = $_SESSION['member']['id_member'];
-			$input['id_kopi'] = $id_kopi;
+			$input['member_id_member'] = $_SESSION['member']['id_member'];
+			$input['kopi_id_kopi'] = $id_kopi;
 
 			$this->Mkopi->simpan_komentar($input);
 		}
