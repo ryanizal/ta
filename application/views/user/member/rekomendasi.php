@@ -131,16 +131,36 @@
 
 						<div class="col-md-3">
 							<h6>Savoriness</h6>
-						</div>		
-						<div class="col-md-3 pull-right">
-							<a href="<?php echo base_url('Member/hasil_rekomendasi') ?>"><button class="btn btn-success">Submit</button></a>
+						</div>	
+
+						<div class="row mb-10">
+
+							<div class="col-md-1">
+								<h6>Bitterness</h6>
+							</div>
+							<div  class="col-md-5">
+								<div class="d-flex justify-content-center my-4">
+									<span class="font-weight-bold indigo-text mr-2 mt-1">10</span>
+									<form class="range-field w-25">
+										<input class="border-0" type="range" min="1" max="9" />
+									</form>
+									<span class="font-weight-bold indigo-text ml-2 mt-1">10</span>
+								</div>
+
+							</div>
+							<div class="col-md-3">
+								<h6>Savoriness</h6>
+							</div>
+
+							<div class="col-md-3 pull-right">
+								<a href="<?php echo base_url('Member/hasil_rekomendasi') ?>"><button class="btn btn-success">Submit</button></a>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</form>
+			</form>
+		</div>
 	</div>
-</div>
 
 </div>
 

@@ -14,7 +14,11 @@ class Member extends CI_Controller {
 	{
 		$data['nama_member'] = $_SESSION['member']['nama_member'];
 		$id_member = $_SESSION['member']['id_member'];
-		$data['kopi']=$this->Mkopi->view_kopi();
+		$data['kopi'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'=>function($query)
+		{
+			$query->limit(5);
+		}])->get();
+		// $data['kopi']=$this->Mkopi->view_kopi();
 		$data['new'] = $this->Mkopi->tampil_kopi_member(0);
 		$data['last'] = $this->Mkopi->last_seen_member(5, $id_member);
 		
@@ -28,9 +32,9 @@ class Member extends CI_Controller {
 	{
 		$id_member= $_SESSION['member']['id_member'];
 		$m['profile']=$this->Mmember->get_member($id_member);
-		// $m['nama_member'] = $_SESSION['member']['nama_member'];
-		// $m['username_member'] = $_SESSION['member']['username_member'];
-		// $m['keterangan_member'] = $_SESSION['member']['keterangan_member'];
+		$m['nama_member'] = $_SESSION['member']['nama_member'];
+		$m['username_member'] = $_SESSION['member']['username_member'];
+		$m['keterangan_member'] = $_SESSION['member']['keterangan_member'];
 
 		$this->load->view('user/member/header');
 		$this->load->view('user/member/profile',$m);

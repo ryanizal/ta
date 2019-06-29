@@ -1,10 +1,22 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Mkopi extends CI_Model {
+
+class Mkopi extends CI_Model 
+{
 
 	function view_kopi()
 	{
+
+		// $this->db->select('*');
+		// $this->db->from('kopi k');
+		// $this->db->join('roaster r', 'r.id_roaster = k.roaster_id_roaster','inner');
+		// $this->db->join('foto f', 'f.kopi_id_kopi = k.id_kopi','inner');
+		// $this->db->join('jenis_kopi j', 'j.id_jenis_kopi = k.jenis_kopi_id_jenis_kopi','inner');
+		// $this->db->join('roast_prof p', 'p.id_roast_prof = k.roast_prof_id_roast_prof','inner');
+		// $this->db->join('proses_kopi o', 'o.id_proses_kopi = k.proses_kopi_id_proses_kopi','inner');
+		// $this->db->where('k.id_kopi', $id_kopi);
+
 		$get = $this->db->get("kopi");
 		$array = $get->result_array();
 		return $array;
@@ -114,8 +126,13 @@ class Mkopi extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from('kopi k');
-		$this->db->join('roaster r', 'r.id_roaster = k.id_roaster','left');
+		$this->db->join('roaster r', 'r.id_roaster = k.roaster_id_roaster');
+		$this->db->join('foto f', 'f.kopi_id_kopi = k.id_kopi');
+		$this->db->join('roast_profile p', 'p.id_roast_prof = k.roast_prof_id_roast_prof');
+		$this->db->join('jenis_kopi j', 'j.id_jenis_kopi = k.jenis_kopi_id_jenis_kopi');
+		$this->db->join('proses_kopi o', 'o.id_proses_kopi = k.proses_kopi_id_proses_kopi');
 		$this->db->where('k.id_kopi', $id_kopi);
+
 		$ambil = $this->db->get('kopi');
 
 		$data_kopi = $ambil->row_array();

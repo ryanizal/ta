@@ -18,30 +18,56 @@
 				</div>
 			</div>						
 			<div class="row">
-				<?php foreach ($new as $key => $value): ?>
+				<?php foreach ($kopi as $value): ?>
 
-					<div class="col-lg-5 col-md-5 single-menu">
-						<a href="<?php echo base_url('Member/detail_kopi/'.$value['id_kopi']);?>">
-							<img class="img-fluid" src="<?php echo base_url('assets/img/coffee/'.$value['foto_1']);?>" alt="">
-							<ul class="post-tags">
-								<li><a href="#"><?php echo $value['profile_roast']; ?></a></li>
-								<!-- <li><a href="#">Atribut B</a></li> -->
-							</ul>
-							<a href="<?php echo base_url('Member/detail_kopi/'.$value['id_kopi']);?>">
+					<div class="col-lg-5 col-md-5 single-blog single-menu">
+						<a href="<?php echo base_url('Welcome/detail_kopi/'.$value->id_kopi);?>">
+							<img class="img-fluid" src="<?php echo base_url($value->foto->first()->path_foto);?>" alt="">
+
+							<hr>
+							<a href="<?php echo base_url('Welcome/detail_kopi/'.$value['id_kopi']);?>">
 								<h4>
-									<?php echo $value['nama_kopi']; ?>
+									<?php echo $value->nama_kopi; ?>
 
 								</h4>
 							</a>
 							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore.
+								<b>Descrption:  </b><?php echo  $value->deskripsi_kopi ?>
+
+
 							</p>
-							<a href=""><p class="post-date">Roasted by <?php echo $value['id_roaster'] ?></p></a>
+							<br>
+							<br>
+
+							<span class="genric-btn primary-border small">
+								<?php echo $value->jenis->jenis_kopi;?>
+							</span>
+
+							<span class="genric-btn primary-border small">
+								<?php echo $value->profil->nama_roast_prof;?>
+							</span>
+
+							<span class="genric-btn primary-border small">
+								<?php echo $value->proses->nama_proses;?>
+							</span>
+							<br>
+							<br>
+							<?php  foreach ($value->tastes as $taste) { ?>
+								<span class="badge badge-warning large">
+									<?php echo $taste->nama_tastes;?>
+								</span>
+							<?php  } ?>
+
+							<br>
+							<br>
+
+
+							<a href=""><p class="post-date">Roasted by <?php echo $value->roaster->nama_roaster;?></p></a>
 						</a>
 					</div>
 					<div class="col-lg-1 col-md-1">
-					
-				</div>
+
+					</div>
 				<?php endforeach; ?>
 
 			</div>
@@ -54,15 +80,15 @@
 		<div class="row">
 			
 			<?php foreach ($last as $key => $value): ;?>
-			<div class="col-md-4 single-menu">
-				<div class="single-defination">
-					<h4 class="mb-20"><?php echo $value['nama_kopi']; ?></h4>
-					<a href=""><img src="<?php echo base_url();?>assets/user/img/b1.jpg" class="img-responsive"></a>
+				<div class="col-md-4 single-menu">
+					<div class="single-defination">
+						<h4 class="mb-20"><?php echo $value['nama_kopi']; ?></h4>
+						<a href=""><img src="<?php echo base_url();?>assets/user/img/b1.jpg" class="img-responsive"></a>
+					</div>
 				</div>
-			</div>
-			<div class="col-md-1">
-				
-			</div>
+				<div class="col-md-1">
+
+				</div>
 			<?php endforeach; ?>
 		</div>
 	</div>
