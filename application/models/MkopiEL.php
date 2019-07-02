@@ -53,22 +53,7 @@ class MkopiEL extends Eloquent {
 		return $this->belongsToMany('MmemberEL', 'view', 'member_id_member', 'kopi_id_kopi');
 	}
 
-	public function last_view($limit, $id_member)
-	{
-		$this->db->select('*');
-		$this->db->from('view v');
-		$this->db->join('kopi k', 'k.id_kopi = v.kopi_id_kopi');
-		$this->db->where('v.member_id_member', $id_member);
-		$this->db->order_by('v.waktu_view', 'desc');
-		$this->db->group_by('v.kopi_id_kopi');
-		$data = $this->db->get('',$limit);
-
-		
-		// print_r($data->result_array());
-		// die();
-		return $data->result_array(); 
-
-	}
+	
 
 
 }

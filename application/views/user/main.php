@@ -105,12 +105,12 @@
 									</h4>
 								</a>
 								<p>
-									<b>Descrption:  </b><?php echo  $value->deskripsi_kopi ?>
+									<b>Descrption:  </b><?php echo  $value->deskripsi_kopi ?>  <a href="">more...</a>
 
 
 								</p>
 								<br>
-								<br>
+								
 
 								<span class="genric-btn primary-border medium">
 									<?php echo $value->jenis->jenis_kopi;?>
@@ -124,7 +124,7 @@
 									<?php echo $value->proses->nama_proses;?>
 								</span>
 								<br>
-								<br>
+								
 								<?php  foreach ($value->tastes as $taste) { ?>
 									<span class="badge badge-pill badge-primary">
 										<?php echo $taste->nama_tastes;?>
@@ -132,7 +132,7 @@
 								<?php  } ?>
 
 								<br>
-								<br>
+								
 								
 
 								<a href=""><p class="post-date">Roasted by <?php echo $value->roaster->nama_roaster;?></p></a>

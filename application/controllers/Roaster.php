@@ -14,9 +14,19 @@ class Roaster extends CI_Controller {
 	{
 		$data['nama_roaster'] = $_SESSION['roaster']['nama_roaster'];
 		$idr = $_SESSION['roaster']['id_roaster'];
+
+		$data['new'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'=>function($query)
+		{
+			$query->limit(5);
+		}])->where('roaster_id_roaster', $idr)->orderBy('id_kopi','desc')->take(5)->get();
+		
 		// print_r($data);
 
 		// $data['new'] = $this->Mkopi->tampil_kopi_roaster(2,$idr);
+
+		$data['total_produk'] = MkopiEL::where('roaster_id_roaster', $idr)->count();
+		// print_r($total_produk);
+		// die();
 
 		$this->load->view('user/roaster/header');
 		$this->load->view('user/roaster/main', $data);
@@ -53,7 +63,8 @@ class Roaster extends CI_Controller {
 		$idr = $_SESSION['roaster']['id_roaster'];
 
 		$this->load->view('user/roaster/header');
-		$data['new'] = $this->Mkopi->tampil_kopi_roaster_list($idr);
+		// $data['new'] = $this->Mkopi->tampil_kopi_roaster_list($idr);
+		$data['new'] = MkopiEL::with(['profil','jenis','proses','foto','roaster'])->where('roaster_id_roaster', $idr)->get();
 		$this->load->view('user/roaster/daftar_kopi', $data);
 		$this->load->view('user/roaster/footer');
 	}

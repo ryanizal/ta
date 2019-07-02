@@ -25,15 +25,15 @@
 				</thead>
 				<tbody>
 					<?php $no=1; ?>
-					<?php foreach ($new as $key => $value): ?>
+					<?php foreach ($new as $value): ?>
 					
 					<tr>
 						<td><?php echo $no++ ?></td>
-						<td><?php echo $value['nama_kopi'] ?></td>
-						<td><?php echo $value['origin'] ?></td>
-						<td><?php echo $value['profile_roast'] ?></td>
-						<td><?php echo $value['jenis_kopi'] ?></td>
-						<td><?php echo $value['proses_kopi'] ?></td>
+						<td><?php echo $value->nama_kopi; ?></td>
+						<td><?php echo $value->origin; ?></td>
+						<td><?php echo $value->profil->nama_roast_prof ;?></td>
+						<td><?php echo $value->jenis->jenis_kopi ;?></td>
+						<td><?php echo $value->proses->nama_proses; ?></td>
 						<!-- <td><?php echo $value['id_roaster'] ?></td> -->
 						<td>
 							<a href="<?php echo base_url('Roaster/detail_kopi/'.$value['id_kopi']);?>" class="btn btn-info btn-sm"><i class="fa fa-info-circle"></i></a>

@@ -29,7 +29,7 @@
 								</h4>
 							</a>
 							<p>
-								<b>Descrption:  </b><?php echo  $value->deskripsi_kopi ?>
+								<b>Descrption:  </b><a href="<?php echo  $value->deskripsi_kopi ?>"><?php echo  $value->deskripsi_kopi ?></a>
 
 
 							</p>

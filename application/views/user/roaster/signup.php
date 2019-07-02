@@ -11,7 +11,8 @@
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
     <link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/linearicons.css">
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/bootstrap.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/magnific-popup.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/nice-select.css">          
@@ -62,37 +63,43 @@
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Username</label>
                   <div class="col-sm-12">
-                    <input class="single-input" type="text" name="username_roaster">
+                    <input class="single-input" type="text" name="username_roaster" required>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Email</label>
                   <div class="col-sm-12">
-                    <input class="single-input" type="email" name="email_roaster">
+                    <input class="single-input" type="email" name="email_roaster" required>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Password</label>
                   <div class="col-sm-12">
-                    <input class="single-input" type="password" name="password_roaster">
+                    <input class="single-input" type="password" name="password_roaster" required>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 control-label">Full Name</label>
+                  <label class="col-sm-2 control-label">Roastery's Name</label>
                   <div class="col-sm-12">
-                    <input class="single-input" type="text" name="nama_roaster">
+                    <input class="single-input" type="text" name="nama_roaster" required>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-5 control-label">About Your Rosatery</label>
                   <div class="col-sm-12">
-                    <textarea class="single-input" name="deskripsi_roaster"></textarea>
+                    <textarea class="single-input" name="deskripsi_roaster" required></textarea>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Your Address</label>
                   <div class="col-sm-12">
-                    <input class="single-input" type="text" name="alamat_roaster">
+                    <input class="single-input" type="text" name="alamat_roaster" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-5 control-label">Roastery's on Map  <i class="fas fa-question-circle" data-toggle="tooltip" title="Just copy your Roastery's google maps link. If you dont have it, just skip it."></i></label>
+                  <div class="col-sm-12">
+                    <input class="single-input" name="lokasi"></input>
                   </div>
                 </div>
                 <div class="form-group">
@@ -104,7 +111,7 @@
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Profile Picture</label>
                   <div class="col-sm-12">
-                    <input class="" type="file" name="foto_roaster">
+                    <input class="" type="file" name="foto_roaster" required>
                   </div>
                 </div>
                 <br>
@@ -120,7 +127,11 @@
 
 
 
-
+      <script>
+        $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip(); 
+        });
+      </script>
       <script src="<?php echo base_url();?>assets/user/js/vendor/jquery-2.2.4.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
       <script src="<?php echo base_url();?>assets/user/js/vendor/bootstrap.min.js"></script>      
