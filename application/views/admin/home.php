@@ -33,45 +33,47 @@
 			</div> -->
 
 			<div class="row counter-row">
-				<br>
-				<div class=" col-sm-2 single-counter">
-				</div>
-				<div class=" col-sm-2 single-counter single-menu text-center btn-group">
-					<a href="<?php echo base_url('administrator/Member'); ?>" class="clickable">
-						<h1 class="counter">123</h1>
-						<div class="icon">
-							<i class="fa fa-users fa-5x"></i>
-						</div>
-						<p>Total Member</p>
-						
-					</a>
-
-				</div>
-				<div class=" col-sm-1 single-counter">
-				</div>
-				<div class="col-sm-2 single-counter single-menu text-center">
-					<a href="<?php echo base_url('administrator/Roaster'); ?>" class="clickable">
-
-					<h1 class="counter">456</h1>
-					<div class="icon">
-						<i class="fa fa-registered fa-5x"></i>
+			
+					<br>
+					<div class=" col-sm-2 single-counter">
 					</div>
-					<p>Total Roaster</p>
-				</a>
-				</div>
-				<div class="col-sm-1 single-counter ">
-				</div>
-				<div class="col-sm-2 single-counter single-menu text-center">
-					<a href="<?php echo base_url('administrator/Coffee'); ?>" class="clickable">
-					<h1 class="counter">7890</h1>
-					<div class="icon">
-						<i class="fa fa-archive fa-5x"></i>
+					<div class=" col-sm-2 single-counter single-menu text-center btn-group">
+						<a href="<?php echo base_url('administrator/Member'); ?>" class="clickable">
+							<h1 class="counter"><?php echo $member; ?></h1>
+							<div class="icon">
+								<i class="fa fa-users fa-5x"></i>
+							</div>
+							<p>Total Member</p>
+
+						</a>
+
 					</div>
-					<p>Total Coffee </p>
-				</a>
-				</div>
-				<div class=" col-sm-2 single-counter">
-				</div>
+					<div class=" col-sm-1 single-counter">
+					</div>
+					<div class="col-sm-2 single-counter single-menu text-center">
+						<a href="<?php echo base_url('administrator/Roaster'); ?>" class="clickable">
+
+							<h1 class="counter"><?php echo $roaster; ?></h1>
+							<div class="icon">
+								<i class="fa fa-registered fa-5x"></i>
+							</div>
+							<p>Total Roaster</p>
+						</a>
+					</div>
+					<div class="col-sm-1 single-counter ">
+					</div>
+					<div class="col-sm-2 single-counter single-menu text-center">
+						<a href="<?php echo base_url('administrator/Coffee'); ?>" class="clickable">
+							<h1 class="counter"><?php echo $kopi; ?></h1>
+							<div class="icon">
+								<i class="fa fa-archive fa-5x"></i>
+							</div>
+							<p>Total Coffee </p>
+						</a>
+					</div>
+					<div class=" col-sm-2 single-counter">
+					</div>
+				
 			</div>
 		</div>
 	</div>

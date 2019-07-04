@@ -111,7 +111,7 @@ class Roaster extends CI_Controller {
 
 	function detail_kopi($id_kopi)
 	{
-		$get['k'] = $this->Mkopi->get_kopi($id_kopi);
+		$get['k']  = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'])->where('id_kopi', $id_kopi)->get();
 		$this->load->view('user/roaster/header');
 		$this->load->view('user/roaster/detail_kopi',$get);
 		$this->load->view('user/roaster/footer');

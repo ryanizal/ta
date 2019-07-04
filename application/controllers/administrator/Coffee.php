@@ -11,8 +11,12 @@ class Coffee extends CI_Controller {
 
 	public function index()
 	{
+		$data['kopi'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'=>function($query)
+		{
+			$query->limit(5);
+		}])->get();
+
 		$this->load->view('admin/header');
-		$data['kopi']=$this->Mkopi->view_kopi();
 		$this->load->view('admin/coffee/tampil',$data);
 		$this->load->view('admin/footer');
 	}

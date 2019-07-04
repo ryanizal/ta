@@ -333,6 +333,13 @@ class Mkopi extends CI_Model
 		return $this->db->get()->result_array();
 	}
 
+	function jumlah_kopi()
+	{
+		$query = $this->db->query("SELECT * from kopi");
+		$row = $query->num_rows();
+		return $row;
+
+	}
 	// function simpan_view($id_kopi, $member, $waktu)
 	// {
 	// 	$input['id_kopi'] = $id_kopi;

@@ -23,7 +23,7 @@
 
 							<hr>
 							<a href="<?php echo base_url('Member/detail_kopi/'.$value['id_kopi']);?>">
-								<h4>
+								<h4 align="center">
 									<?php echo $value->nama_kopi; ?>
 
 								</h4>
@@ -76,11 +76,11 @@
 		<h3 class="mb-30">Last Seen Product</h3>
 		<div class="row">
 			
-			<?php foreach ($last as $key => $value): ;?>
+			<?php foreach ($last as $value): ;?>
 				<div class="col-md-4 single-menu">
-					<div class="single-defination">
-						<h4 class="mb-20"><?php echo $value['nama_kopi']; ?></h4>
-						<a href=""><img src="<?php echo base_url();?>assets/user/img/b1.jpg" class="img-responsive"></a>
+					<div align="center" class="single-defination">
+						<h4 class="mb-20"><?php echo $value->nama_kopi; ?></h4>
+						<a href=""><img class="img-fluid" src="<?php echo base_url($value->foto->first()->path_foto);?>" class="img-responsive"></a>
 					</div>
 				</div>
 				<div class="col-md-1">

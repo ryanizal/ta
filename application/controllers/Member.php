@@ -13,21 +13,22 @@ class Member extends CI_Controller {
 	public function index()
 	{
 		$data['nama_member'] = $_SESSION['member']['nama_member'];
-		$id_member = $_SESSION['member']['id_member'];
+		$idm = $_SESSION['member']['id_member'];
 		$data['kopi'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'=>function($query)
+		{
+			$query->limit(5);
+		}])->orderBy('id_kopi','desc')->get();
+
+//belum selesai
+		$data['last'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','view'=>function($query)
+			{
+				$idm = $_SESSION['member']['id_member'];
+				$query->where('member_id_member', $idm)->orderBy('waktu_view','desc');
+			},'tastes'=>function($query)
 		{
 			$query->limit(5);
 		}])->get();
 
-//belum selesai
-		$data['last'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'=>function($query)
-		{
-			$query->limit(5);
-		},
-		'view'=>function($query)
-		{
-			$query->orderBy('waktu_view','desc');
-		}])->get();
 
 
 		// $data['new'] = $this->Mkopi->tampil_kopi_member(0);
@@ -79,13 +80,19 @@ class Member extends CI_Controller {
 
 	function detail_kopi($id_kopi)
 	{
-		// $get['komentar'] = $this->Mkopi->tampil_komentar($id_kopi);
+		
 		$get['kopi'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'=>function($query)
 		{
 			$query->limit(5);
 		}])->where('id_kopi',$id_kopi)->get();
-// print_r($get);
-// die();
+
+		$get['komentar'] = MkopiEL::with(['komentar_member'=>function($query)
+			{
+				$query->where('kopi_id_kopi', 14);
+			}])->get();
+		print_r($get['komentar']);
+		die();
+
 		$get['id_member'] = $_SESSION['member']['id_member'];
 
 		$this->Mkopi->simpan_view($id_kopi, $get['id_member'], date("Y-m-d H:i:s"));

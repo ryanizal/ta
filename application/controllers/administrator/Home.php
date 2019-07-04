@@ -5,8 +5,17 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
+		$this->load->model('Mkopi');
+		$this->load->model('Mroaster');
+		$this->load->model('Mmember');
+
+		$data['kopi']= $this->Mkopi->jumlah_kopi();
+		$data['member']= $this->Mmember->jumlah_member();
+		$data['roaster']= $this->Mroaster->jumlah_roaster();
+		
+
 		$this->load->view('admin/header');
-		$this->load->view('admin/home');
+		$this->load->view('admin/home', $data);
 		$this->load->view('admin/footer');
 	}
 

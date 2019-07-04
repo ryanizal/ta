@@ -45,13 +45,13 @@
 							<td><?php echo $value['bitter'] ?></td>
 							<td><?php echo $value['savory'] ?></td>
 							<td><?php echo $value['origin'] ?></td>
-							<td><?php echo $value['profile_roast'] ?></td>
-							<td><?php echo $value['jenis_kopi'] ?></td>
-							<td><?php echo $value['proses_kopi'] ?></td>
+							<td><?php echo $value->profil->nama_roast_prof; ?></td>
+							<td><?php echo $value->jenis->jenis_kopi; ?></td>
+							<td><?php echo $value->proses->nama_proses;?></td>
 							<!-- <td><img src="../assets/img/coffee/<?php echo $value['foto_1'] ?>" class="img-circle" height="100" width="100"></td>
 							<td><img src="../assets/img/coffee/<?php echo $value['foto_2'] ?>" class="img-circle" height="100" width="100"></td>
 							<td><img src="../assets/img/coffee/<?php echo $value['foto_3'] ?>" class="img-circle" height="100" width="100"></td> -->
-							<td><?php echo $value['id_roaster'] ?></td>
+							<td><?php echo $value->roaster->nama_roaster ?></td>
 							<td>
 								<!-- <a href="" class="btn btn-info btn-sm"> Detail</a> -->
 								<a href="<?php echo base_url('administrator/Coffee/detail/'.$value['id_kopi']);?>" class="btn btn-info btn-sm"> Detail</a>

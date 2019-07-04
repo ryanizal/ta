@@ -20,11 +20,11 @@ class Welcome extends CI_Controller {
 		$data['kopi'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'=>function($query)
 		{
 			$query->limit(5);
-		}])->get();
+		}])->orderBy('id_kopi', 'desc')->get();
 // print_r($data);
 // die();
 		// $data['kopi']=$this->Mkopi->view_kopi();
-		$data['new'] = $this->Mkopi->tampil_kopi_member(0);
+		// $data['new'] = $this->Mkopi->tampil_kopi_member(0);
 		$this->load->view('user/main',$data);
 		$this->load->view('user/footer');
 	}
@@ -110,9 +110,12 @@ class Welcome extends CI_Controller {
 
 	function detail_kopi($id_kopi)
 	{
-		$get['k'] = $this->Mkopi->get_kopi($id_kopi);
 
-		$this->load->view('user/detail_kopi',$get);
+		$data['k'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'])->where('id_kopi', $id_kopi)->get();
+		// $get['k'] = $this->Mkopi->get_kopi($id_kopi);
+// print_r($data);
+// die();
+		$this->load->view('user/detail_kopi',$data);
 		$this->load->view('user/footer');
 	}
 

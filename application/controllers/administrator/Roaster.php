@@ -11,7 +11,14 @@ class Roaster extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('admin/header');
-		$data['roaster']=$this->Mroaster->view_roaster();
+		
+
+		$data['roaster']=MroasterEL::with(['kopi'=>function($query)
+			{
+				$query->where('roaster_id_roaster','id_roaster')->count();
+			}])->get();
+		// print_r($data['roaster']);
+		// die();
 		$this->load->view('admin/roaster/tampil',$data);
 		$this->load->view('admin/footer');
 	}

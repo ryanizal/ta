@@ -33,8 +33,8 @@
 					<tr>
 						<th>No</th>
 						<th>Nama Roaster</th>
-						<th>Deskripsi</th>
-						<th>Alamat</th>
+						<th>Email</th>
+						<!-- <th>Jumlah Kopi</th> -->
 						<th>No Telp</th>
 						<th>Opsi</th>
 					</tr>
@@ -43,17 +43,17 @@
 					<?php foreach ($roaster as $key => $value): ?>
 						<tr>
 							<td><?php echo $key+1 ?></td>
-							<td><?php echo $value['nama_roaster'] ?></td>
-							<td><?php echo $value['deskripsi_roaster'] ?></td>
-							<td><?php echo $value['alamat_roaster'] ?></td>
-							<td><?php echo $value['telp_roaster'] ?></td>
+							<td><?php echo $value->nama_roaster ?></td>
+							<td><?php echo $value->email_roaster ?></td>
+							<!-- <td><?php echo $value['email_roaster'] ?></td> -->
+							<td><?php echo $value->telp_roaster ?></td>
 							<td>
 								<!-- <a href="" class="btn btn-info btn-sm"> Detail</a> -->
-								<a href="<?php echo base_url('administrator/roaster/edit/'.$value['id_roaster']);?>" class="btn btn-warning btn-xs"> Ubah</a>
-								<a href="<?php echo base_url('administrator/roaster/hapus/'.$value['id_roaster']);?>" class="btn btn-danger btn-xs"> Hapus</a>
+								<a href="<?php echo base_url('administrator/roaster/edit/'.$value->id_roaster);?>" class="btn btn-warning btn-xs"> Ubah</a>
+								<a href="<?php echo base_url('administrator/roaster/hapus/'.$value->id_roaster);?>" class="btn btn-danger btn-xs"> Hapus</a>
 							</td>
 						</tr>
-					<?php endforeach ?>
+					<?php endforeach ;?>
 
 				</tbody>
 			</table>

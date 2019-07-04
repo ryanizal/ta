@@ -58,12 +58,13 @@
 			<h3 class="mb-30"><?php echo $value->nama_kopi; ?> </h3>
 			<div class="row single-menu">
 				<div class="col-md-3">
-					<a href="<?php echo base_url('Roaster/detail_kopi/'.$value->id_kopi); ?>"><img src="<?php echo $value->foto->first()->path_foto;?>" alt="" class="img-fluid"></a>
+					<a href="<?php echo base_url('Roaster/detail_kopi/'.$value->id_kopi); ?>"><img src="<?php echo base_url().$value->foto->first()->path_foto;?>" alt="" class="img-fluid"></a>
 				</div>
 				<div class="col-md-9 mt-sm-20">
 					<p><b>Deskripsi kopi</b> <?php echo $value->deskripsi_kopi; ?></p>
 				</div>
 			</div>
+			<hr>
 		<?php endforeach ?>
 	</div>
 </div>

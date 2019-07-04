@@ -94,6 +94,13 @@ class Mmember extends CI_Model {
 
 		}
 	}
+
+	function jumlah_member()
+	{
+		$query = $this->db->query("SELECT * from member");
+		$row = $query->num_rows();
+		return $row;
+	}
 }
 
 /* End of file Mmember.php */

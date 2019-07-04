@@ -27,6 +27,12 @@ class MkopiEL extends Eloquent {
 		return $this->belongsToMany('MtastesEL', 'kopi_has_tastes', 'kopi_id_kopi', 'tastes_id_tastes');
 	}
 
+	public function komentar_member()
+	{
+		return $this->belongsToMany('MmemberEL', 'komentar', 'kopi_id_kopi', 'member_id_member');
+
+	}
+
 	public function profil()
 	{
 

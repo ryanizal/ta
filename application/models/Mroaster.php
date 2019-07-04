@@ -97,6 +97,20 @@ class Mroaster extends CI_Model {
 
 		}
 	}
+
+	function jumlah_roaster()
+	{
+		$query = $this->db->query("SELECT * from roaster");
+		$row = $query->num_rows();
+		return $row;
+	}
+
+	function jumlah_kopi()
+	{
+		$jml=MkopiEL::with(['roaster'])->where('roaster_id_roaster', 3)->get()->count();
+		return $jml;
+
+	}
 }
 
 /* End of file Mroaster.php */

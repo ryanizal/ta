@@ -99,7 +99,7 @@
 								
 								<hr>
 								<a href="<?php echo base_url('Welcome/detail_kopi/'.$value['id_kopi']);?>">
-									<h4>
+									<h4 align="center">
 										<?php echo $value->nama_kopi; ?>
 
 									</h4>
