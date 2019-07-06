@@ -6,6 +6,9 @@ class Roaster extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		if($this->session->userdata('status') != "login"){
+			redirect("Welcome/login");
+		}
 		$this->load->model('Mroaster');
 		$this->load->model('Mkopi');
 	}
@@ -19,6 +22,8 @@ class Roaster extends CI_Controller {
 		{
 			$query->limit(5);
 		}])->where('roaster_id_roaster', $idr)->orderBy('id_kopi','desc')->take(5)->get();
+
+
 		
 		// print_r($data);
 
@@ -71,8 +76,10 @@ class Roaster extends CI_Controller {
 
 	function profile()
 	{
+
 		$id_roaster= $_SESSION['roaster']['id_roaster'];
-		$r['profile']=$this->Mroaster->get_roaster($id_roaster);
+		$data['roaster'] = $this->Mroaster->view_roaster_m($id_roaster);
+		// $r['profile']=$this->Mroaster->get_roaster($id_roaster);
 
 		// $r['id_roaster'] = $_SESSION['roaster']['id_roaster'];
 		// $r['nama_roaster'] = $_SESSION['roaster']['nama_roaster'];
@@ -82,7 +89,7 @@ class Roaster extends CI_Controller {
 		// $r['telp_roaster'] = $_SESSION['roaster']['telp_roaster'];
 		// $r['foto_roaster'] = $_SESSION['roaster']['foto_roaster'];
 		$this->load->view('user/roaster/header');
-		$this->load->view('user/roaster/profile',$r);
+		$this->load->view('user/roaster/profile',$data);
 		$this->load->view('user/roaster/footer');
 	}
 
@@ -111,10 +118,36 @@ class Roaster extends CI_Controller {
 
 	function detail_kopi($id_kopi)
 	{
-		$get['k']  = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'])->where('id_kopi', $id_kopi)->get();
+		$get['kopi'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'=>function($query)
+		{
+			$query->limit(5);
+		}])->where('id_kopi',$id_kopi)->get();
+
+		$get['komentar'] = MkomentarEL::with(['kopi', 'roaster', 'member'])->where('kopi_id_kopi', $id_kopi)->get();
+
+		$get['id_roaster'] = $_SESSION['roaster']['id_roaster'];
+
+		$input = $this->input->post(); 
+		if ($input)
+		{
+			$input['waktu_komentar'] = date("Y-m-d H:i:s");
+			$input['roaster_id_roaster'] = $_SESSION['roaster']['id_roaster'];
+			$input['kopi_id_kopi'] = $id_kopi;
+
+			$this->Mkopi->simpan_komentar($input);
+			redirect('Roaster/detail_kopi/'.$id_kopi.'','refresh');
+
+		}
+
 		$this->load->view('user/roaster/header');
 		$this->load->view('user/roaster/detail_kopi',$get);
 		$this->load->view('user/roaster/footer');
+	}
+
+	function hapus_komentar($id_kopi, $id_komentar)
+	{
+		$this->Mkopi->hapus_komentar($id_komentar);
+		redirect('Roaster/detail_kopi/'.$id_kopi.'','refresh');
 	}
 
 	function edit_kopi($id_kopi){

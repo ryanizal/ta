@@ -5,7 +5,7 @@
 		<div class="col-md-12 single-menu">
 			<p>Please fill your taste preferable criteria below</p>	
 			<hr>
-			<form method="post">
+			<form method="post" action="<?php echo site_url('member/hasil_rekomendasi'); ?>">
 				<div class="col-md-12 col-sm-12 ">
 					<div class="row mb-10">
 						
@@ -14,18 +14,48 @@
 						</div>
 						<div class="col-md-5 form-select" id="default-select">
 
-							<select name="kriteria1" class="penuhin">
-								<option>sangat penting (9)</option>
-								<option>agak penting(7)</option>
-
-								<option>penting(5)</option>
-								<option>ga terlalu penting(3)</option>
-								<option>ga penting(1)</option>
+							<select name="kriteria_1_2" class="penuhin">
+								<option value="9">Extreme Importance (9)</option>
+								<option value="7">Very Strong Importance (7)</option>
+								<option value="5">Strong Importance (5)</option>
+								<option value="3">Moderate Importance (3)</option>
+								<option value="1">Equal Importance (1)</option>
+								<option value="<?php echo (1/9); ?>">Sweetness are Extreme Important (1/9)</option>
+								<option value="<?php echo (1/7); ?>">Sweetness are Very Strong Important (1/7)</option>
+								<option value="<?php echo (1/5); ?>">Sweetness are Strong Important (1/5)</option>
+								<option value="<?php echo (1/3); ?>">Sweetness are Moderate Important (1/3)</option>
 							</select>
 						</div>
 
 						<div class="col-md-3">
 							<h6>Sweetness</h6>
+						</div>		
+					</div>
+
+					
+
+					<div class="row mb-10">
+						
+						<div class="col-md-1">
+							<h6>Acidity</h6>
+						</div>
+						<div class="col-md-5 form-select" id="default-select">
+
+							<select name="kriteria_1_3" class="penuhin">
+								<option value="9">Extreme Importance (9)</option>
+								<option value="7">Very Strong Importance (7)</option>
+								<option value="5">Strong Importance (5)</option>
+								<option value="3">Moderate Importance (3)</option>
+								<option value="1">Equal Importance (1)</option>
+								<option value="<?php echo (1/9); ?>">Savoriness are Extreme Important (1/9)</option>
+								<option value="<?php echo (1/7); ?>">Savoriness are Very Strong Important (1/7)</option>
+								<option value="<?php echo (1/5); ?>">Savoriness are Strong Important (1/5)</option>
+								<option value="<?php echo (1/3); ?>">Savoriness are Moderate Important (1/3)</option>
+							</select>
+						</div>
+
+						<div class="col-md-3">
+							<h6>Savoriness</h6>
 						</div>		
 					</div>
 
@@ -36,54 +66,16 @@
 						</div>
 						<div class="col-md-5 form-select" id="default-select">
 
-							<select name="kriteria1" class="penuhin">
-								<option>sangat penting (9)</option>
-								<option>agak penting(7)</option>
-								<option>penting(5)</option>
-								<option>ga terlalu penting(3)</option>
-								<option>ga penting(2)</option>
-							</select>
-						</div>
-
-						<div class="col-md-3">
-							<h6>Bitterness</h6>
-						</div>		
-					</div>
-
-					<div class="row mb-10">
-						
-						<div class="col-md-1">
-							<h6>Acidity</h6>
-						</div>
-						<div class="col-md-5 form-select" id="default-select">
-
-							<select name="kriteria1" class="penuhin">
-								<option>sangat penting (9)</option>
-								<option>agak penting(7)</option>
-								<option>penting(5)</option>
-								<option>ga terlalu penting(3)</option>
-								<option>ga penting(1)</option>
-							</select>
-						</div>
-
-						<div class="col-md-3">
-							<h6>Savoriness</h6>
-						</div>		
-					</div>
-
-					<div class="row mb-10">
-						
-						<div class="col-md-1">
-							<h6>Sweetness</h6>
-						</div>
-						<div class="col-md-5 form-select" id="default-select">
-
-							<select name="kriteria1" class="penuhin">
-								<option value="9">sangat penting (9)</option>
-								<option value="7">agak penting(7)</option>
-								<option>penting(5)</option>
-								<option>ga terlalu penting(3)</option>
-								<option>ga penting(1)</option>
+							<select name="kriteria_1_4" class="penuhin">
+								<option value="9">Extreme Importance (9)</option>
+								<option value="7">Very Strong Importance (7)</option>
+								<option value="5">Strong Importance (5)</option>
+								<option value="3">Moderate Importance (3)</option>
+								<option value="1">Equal Importance (1)</option>
+								<option value="<?php echo (1/9); ?>">Bitterness are Extreme Important (1/9)</option>
+								<option value="<?php echo (1/7); ?>">Bitterness are Very Strong Important (1/7)</option>
+								<option value="<?php echo (1/5); ?>">Bitterness are Strong Important (1/5)</option>
+								<option value="<?php echo (1/3); ?>">Bitterness are Moderate Important (1/3)</option>
 							</select>
 						</div>
 
@@ -99,12 +91,16 @@
 						</div>
 						<div class="col-md-5 form-select" id="default-select">
 
-							<select name="kriteria1" class="penuhin">
-								<option>sangat penting (9)</option>
-								<option>agak penting(7)</option>
-								<option>penting(5)</option>
-								<option>ga terlalu penting(3)</option>
-								<option>ga penting(1)</option>
+							<select name="kriteria_2_3" class="penuhin">
+								<option value="9">Extreme Importance (9)</option>
+								<option value="7">Very Strong Importance (7)</option>
+								<option value="5">Strong Importance (5)</option>
+								<option value="3">Moderate Importance (3)</option>
+								<option value="1">Equal Importance (1)</option>
+								<option value="<?php echo (1/9); ?>">Savoriness are Extreme Important (1/9)</option>
+								<option value="<?php echo (1/7); ?>">Savoriness are Very Strong Important (1/7)</option>
+								<option value="<?php echo (1/5); ?>">Savoriness are Strong Important (1/5)</option>
+								<option value="<?php echo (1/3); ?>">Savoriness are Moderate Important (1/3)</option>
 							</select>
 						</div>
 
@@ -116,24 +112,54 @@
 					<div class="row mb-10">
 						
 						<div class="col-md-1">
-							<h6>Bitterness</h6>
+							<h6>Sweetness</h6>
 						</div>
 						<div class="col-md-5 form-select" id="default-select">
 
-							<select name="kriteria1" class="penuhin">
-								<option>sangat penting (9)</option>
-								<option>agak penting(7)</option>
-								<option>penting(5)</option>
-								<option>ga terlalu penting(3)</option>
-								<option>ga penting(1)</option>
+							<select name="kriteria_2_4" class="penuhin">
+								<option value="9">Extreme Importance (9)</option>
+								<option value="7">Very Strong Importance (7)</option>
+								<option value="5">Strong Importance (5)</option>
+								<option value="3">Moderate Importance (3)</option>
+								<option value="1">Equal Importance (1)</option>
+								<option value="<?php echo (1/9); ?>">Bitterness are Extreme Important (1/9)</option>
+								<option value="<?php echo (1/7); ?>">Bitterness are Very Strong Important (1/7)</option>
+								<option value="<?php echo (1/5); ?>">Bitterness are Strong Important (1/5)</option>
+								<option value="<?php echo (1/3); ?>">Bitterness are Moderate Important (1/3)</option>
 							</select>
 						</div>
 
 						<div class="col-md-3">
+							<h6>Bitterness</h6>
+						</div>		
+					</div>
+					
+
+					<div class="row mb-10">
+						
+						<div class="col-md-1">
 							<h6>Savoriness</h6>
+						</div>
+						<div class="col-md-5 form-select" id="default-select">
+
+							<select name="kriteria_3_4" class="penuhin">
+								<option value="9">Extreme Importance (9)</option>
+								<option value="7">Very Strong Importance (7)</option>
+								<option value="5">Strong Importance (5)</option>
+								<option value="3">Moderate Importance (3)</option>
+								<option value="1">Equal Importance (1)</option>
+								<option value="<?php echo (1/9); ?>">Bitterness are Extreme Important (1/9)</option>
+								<option value="<?php echo (1/7); ?>">Bitterness are Very Strong Important (1/7)</option>
+								<option value="<?php echo (1/5); ?>">Bitterness are Strong Important (1/5)</option>
+								<option value="<?php echo (1/3); ?>">Bitterness are Moderate Important (1/3)</option>
+							</select>
+						</div>
+
+						<div class="col-md-3">
+							<h6>Bitterness</h6>
 						</div>	
 
-						<div class="row mb-10">
+						<!-- <div class="row mb-10">
 
 							<div class="col-md-1">
 								<h6>Bitterness</h6>
@@ -151,16 +177,16 @@
 							<div class="col-md-3">
 								<h6>Savoriness</h6>
 							</div>
-
-							<div class="col-md-3 pull-right">
-								<a href="<?php echo base_url('Member/hasil_rekomendasi') ?>"><button class="btn btn-success">Submit</button></a>
-							</div>
+						-->
+						<div class="col-md-3 pull-right">
+							<a href="<?php echo base_url('Member/hasil_rekomendasi') ?>"><button class="btn btn-success">Submit</button></a>
 						</div>
 					</div>
 				</div>
-			</form>
-		</div>
+			</div>
+		</form>
 	</div>
+</div>
 
 </div>
 

@@ -86,6 +86,7 @@ iframe {
 a, a:focus, a:hover {
   text-decoration: none;
   outline: 0;
+  color: inherit;
 }
 
 .btn.active.focus,
@@ -2483,6 +2484,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   border-radius: 10px;
   padding: 30px 30px;
   margin-bottom: 30px;
+  position: relative;
 }
 
 .single-menu .title-div {

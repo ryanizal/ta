@@ -39,10 +39,35 @@
 			<?php endforeach; ?>
 
 		</div>
-		<div class="pull-right">
-			<a href="<?php echo base_url()?>Roaster/edit_profile" class="genric-btn primary circle">Update</a>
-		</div>
 		<br>
-		
-	</section>	
-	
+
+	</section>
+	<div class="row d-flex justify-content-center">
+		<div class="menu-content pb-60 col-lg-10">
+			<div class="title text-center">
+				<h1 class="mb-10">Coffee From This Roastery</h1>  
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<?php foreach ($kopi as $value): ?>
+			<div class="col-lg-4 text-center"><a href="<?php echo base_url('Member/detail_kopi/').$value->id_kopi; ?>">
+			<div class="single-menu">
+				<!-- <div class=" text-center"> -->
+					<div class="">
+						<h5 >
+							<?php echo $value->nama_kopi;?>
+
+						</h5>
+					</div>
+					<br>
+					<img src="<?php echo base_url().$value->foto->first()->path_foto;?>" class="center" width="200" height="200">
+					<!-- </div> -->
+				</div>
+			</div>
+		</a>
+	<?php endforeach; ?>
+</div>
+
+</div>

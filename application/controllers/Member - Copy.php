@@ -6,13 +6,8 @@ class Member extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		if($this->session->userdata('status') != "login"){
-			redirect("Welcome/login");
-		}
 		$this->load->model('Mkopi');
 		$this->load->model('Mmember');
-		$this->load->model('Mroaster');
-
 	}
 
 	public function index()
@@ -25,14 +20,14 @@ class Member extends CI_Controller {
 		}])->orderBy('id_kopi','desc')->get();
 
 //belum selesai
-		$idm = $_SESSION['member']['id_member'];
-		$data['last'] = MmemberEL::find($idm)->kopi()->with(['profil','jenis','proses','foto','roaster','tastes'=>function($query)
+		$data['last'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','view'=>function($query)
+			{
+				$idm = $_SESSION['member']['id_member'];
+				$query->where('member_id_member', $idm)->orderBy('waktu_view','desc');
+			},'tastes'=>function($query)
 		{
 			$query->limit(5);
-		}])->orderBy('pivot_kopi_id_kopi','desc')->groupBy('pivot_kopi_id_kopi')->limit(5)->get();
-
-		// print_r($data['last']->toArray());
-		// die();
+		}])->get();
 
 
 
@@ -86,20 +81,19 @@ class Member extends CI_Controller {
 	function detail_kopi($id_kopi)
 	{
 		
-
 		$get['kopi'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'=>function($query)
 		{
 			$query->limit(5);
 		}])->where('id_kopi',$id_kopi)->get();
 
-		$get['komentar'] = MkomentarEL::with(['kopi', 'roaster', 'member'])->where('kopi_id_kopi', $id_kopi)->get();
-		// print_r($get['komentar']);
-		// die();
-
+		$get['komentar'] = MkopiEL::with(['komentar_member'=>function($query)
+			{
+				$query->where('kopi_id_kopi', 14);
+			}])->get();
+		print_r($get['komentar']);
+		die();
 
 		$get['id_member'] = $_SESSION['member']['id_member'];
-		// $get['user_auth'] = $_SESSION['member']['id_member'];
-
 
 		$this->Mkopi->simpan_view($id_kopi, $get['id_member'], date("Y-m-d H:i:s"));
 		$input = $this->input->post(); 
@@ -144,40 +138,40 @@ class Member extends CI_Controller {
 		$matriks_nilai_kriteria = array();
 		$jumlah = array();
 
-		for ($i=0;$i<=3;$i++){
+		for ($i=1;$i<=4;$i++){
 			$jumlah[$i] = 0;
 		}
-		for ($i=0;$i<=3;$i++){
-			for ($j=0;$j<=3;$j++){
+		for ($i=1;$i<=4;$i++){
+			for ($j=1;$j<=4;$j++){
 				if ($i == $j) {
 					$matriks_nilai_kriteria[$i][$j] = 1;
 				} else if ($i < $j){
-					$matriks_nilai_kriteria[$i][$j] = $this->input->post('kriteria_'.($i+1).'_'.($j+1));
+					$matriks_nilai_kriteria[$i][$j] = $this->input->post('kriteria_'.$i.'_'.$j);
 				} else {
-					$matriks_nilai_kriteria[$i][$j] = 1 / $this->input->post('kriteria_'.($j+1).'_'.($i+1));
+					$matriks_nilai_kriteria[$i][$j] = 1 / $this->input->post('kriteria_'.$j.'_'.$i);
 				}
 				$jumlah[$j]+=$matriks_nilai_kriteria[$i][$j];
 			}	
 		}
 
 		$matriks_hasil_normalisasi = array();
-		for ($i=0;$i<=3;$i++){
-			for ($j=0;$j<=3;$j++){
+		for ($i=1;$i<=4;$i++){
+			for ($j=1;$j<=4;$j++){
 				$matriks_hasil_normalisasi[$i][$j]=$matriks_nilai_kriteria[$i][$j]/$jumlah[$j];
 			}	
 		}
 
 		$eigen = array();
-		for ($i=0;$i<=3;$i++){
+		for ($i=1;$i<=4;$i++){
 			$eigen[$i]=array_sum($matriks_hasil_normalisasi[$i])/count($matriks_nilai_kriteria[$i]);	
 		}
 
 		$rasio = array();
 		$jumlah_baris = array();
 		$jumlah_baris_eigen = array();
-		for ($i=0;$i<=3;$i++){
+		for ($i=1;$i<=4;$i++){
 			$jumlah_baris[$i]=0;
-			for ($j=0;$j<=3;$j++){
+			for ($j=1;$j<=4;$j++){
 				$rasio[$i][$j]=$matriks_nilai_kriteria[$i][$j]*$eigen[$j];
 				$jumlah_baris[$i]+=$rasio[$i][$j];
 			}	
@@ -192,92 +186,31 @@ class Member extends CI_Controller {
 		$datakopi = $this->Mkopi->view_kopi();
 
 		$i=0;
-		$id_kopi = array();
 		foreach ($datakopi as $row) {
-			// if ($i>=3) { break; }
-			$id_kopi[$i] = $row['id_kopi'];
-			$matriks_bobot_alternatif[$i][0] = $row['acidity'];
-			$matriks_bobot_alternatif[$i][1] = $row['sweet'];
-			$matriks_bobot_alternatif[$i][2] = $row['savory'];
-			$matriks_bobot_alternatif[$i][3] = $row['bitter'];
+			for ($j=1;$i<=4;$i++){
+				$matriks_bobot_alternatif[]
+			}
 			$i++;
 		}
 
-		$matriks_hasil = array();
-		$hasil_akhir = array();
-		for ($i=0;$i<count($matriks_bobot_alternatif);$i++){
-			for ($j=0;$j<=3;$j++){
-				$matriks_hasil[$i][$j]=$matriks_bobot_alternatif[$i][$j]*$eigen[$j];
-			}	
-			$hasil_akhir[$i] = array_sum($matriks_hasil[$i]);
-		}
 
-		// $hasil_rangking = array(array());
-		// $i=0;
-		// foreach ($datakopi as $row) {
-		// 	if ($i>=3) { break; }
-		// 	$hasil_rangking[] = array("id_kopi"=>$row['id_kopi'], "nilai"=>$hasil_akhir[$i]);
-		// 	$i++;
-		// }
-
-		// $nilai = array_column($hasil_rangking, 'nilai');
-		// @array_multisort($nilai, SORT_ASC, $hasil_rangking);
+		print_r($matriks_nilai_kriteria);
+		print_r($jumlah);
+		print_r($matriks_hasil_normalisasi);
+		print_r($eigen);
+		print_r($rasio);
+		print_r($jumlah_baris);
+		print_r($jumlah_baris_eigen);
+		print_r($lambda_max);
+		print_r($ri);
+		print_r($ci);
+		print_r($cr);
 
 
-		$id_rangking = array();
-		$hasil_rangking = array();
 
-		$i=0;
-		for ($i=0;$i<count($id_kopi);$i++){
-			$id_rangking[$i] = $id_kopi[$i];
-			$hasil_rangking[$i] = $hasil_akhir[$i];
-		}
-
-		for ($i=0;$i<count($id_kopi);$i++){
-			for ($j=$i;$j<count($id_kopi);$j++){
-				if ($hasil_rangking[$i] < $hasil_rangking[$j]) {
-					$tmp_id_kopi = $id_rangking[$i];
-					$tmp_hasil_rangking = $hasil_rangking[$i];
-
-					$id_rangking[$i] = $id_rangking[$j];
-					$hasil_rangking[$i] = $hasil_rangking[$j];
-
-					$id_rangking[$j] = $tmp_id_kopi;
-					$hasil_rangking[$j] = $tmp_hasil_rangking;
-				}
-			}
-		}
-
-		for($i=0;$i<count($id_rangking);$i++) {
-			$kopi_rangking[$i] = MkopiEL::with(['profil','jenis','proses','foto'])->where('id_kopi',$id_rangking[$i])->get();
-		}
-
-		// print_r($matriks_nilai_kriteria);
-		// print_r($jumlah);
-		// print_r($matriks_hasil_normalisasi);
-		// print_r($eigen);
-		// print_r($rasio);
-		// print_r($jumlah_baris);
-		// print_r($jumlah_baris_eigen);
-		// print_r($lambda_max);
-		// print_r($ri);
-		// print_r($ci);
-		// print_r($cr);
-
-		// print_r($matriks_bobot_alternatif);
-		// print_r($matriks_hasil);
-		// print_r($id_kopi);
-		// print_r($hasil_akhir);
-
-		// print_r($id_rangking);
-		// print_r($hasil_rangking);
-
-		$data['kopi_rangking'] = $kopi_rangking;
-		$data['hasil_rangking'] = $hasil_rangking;
-
-		$this->load->view('user/member/header');
-		$this->load->view('user/member/hasil_rekomendasi', $data);
-		$this->load->view('user/member/footer');
+		// $this->load->view('user/member/header');
+		// $this->load->view('user/member/hasil_rekomendasi');
+		// $this->load->view('user/member/footer');
 
 	}
 
@@ -289,17 +222,6 @@ class Member extends CI_Controller {
 		$k = $keyword;
 		$this->load->view('user/member/header');
 		$this->load->view('user/member/hasil_cari',$data);
-		$this->load->view('user/member/footer');
-
-	}
-
-	function tampil_roaster($id_roaster)
-	{
-		$data['roaster'] = $this->Mroaster->view_roaster_m($id_roaster);
-		$data['kopi'] = MkopiEL::with('roaster','foto')->where('roaster_id_roaster', $id_roaster)->orderBy('id_kopi', 'desc')->get();
-		
-		$this->load->view('user/member/header');
-		$this->load->view('user/member/tampil_roaster',$data);
 		$this->load->view('user/member/footer');
 
 	}

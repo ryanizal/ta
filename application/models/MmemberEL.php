@@ -7,7 +7,12 @@ class MmemberEL extends Eloquent
 {
 
 	protected $table = "member";
-	protected $primaryKey = 'id_member';	
+	protected $primaryKey = 'id_member';
+
+	public function kopi()
+	{
+		return $this->belongsToMany('MkopiEL', 'view', 'member_id_member', 'kopi_id_kopi' );
+	}	
 
 }
 

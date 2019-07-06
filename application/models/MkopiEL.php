@@ -29,7 +29,12 @@ class MkopiEL extends Eloquent {
 
 	public function komentar_member()
 	{
-		return $this->belongsToMany('MmemberEL', 'komentar', 'kopi_id_kopi', 'member_id_member');
+		return $this->hasMany('MmemberEL', 'kopi_id_kopi', 'id_kopi');
+
+	}
+	public function komentar_roaster()
+	{
+		return $this->hasMany('MroasterEL', 'kopi_id_kopi', 'id_kopi');
 
 	}
 
@@ -54,10 +59,7 @@ class MkopiEL extends Eloquent {
 		
 	}
 
-	public function view()
-	{
-		return $this->belongsToMany('MmemberEL', 'view', 'member_id_member', 'kopi_id_kopi');
-	}
+	
 
 	
 

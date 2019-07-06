@@ -27,7 +27,7 @@
           <div class="form-group">
             <label class="col-sm-5 control-label">About Your Rosatery</label>
             <div class="col-sm-12">
-              <textarea class="single-input" name="deskripsi_roaster" value="<?php echo $deskripsi_roaster; ?>"></textarea>
+              <textarea class="single-input" name="deskripsi_roaster" ><?php echo $deskripsi_roaster; ?></textarea>
             </div>
           </div>
           <div class="form-group">
@@ -59,7 +59,7 @@
               
             </script>
             <button onclick="goBack()" class="genric-btn danger circle">Cancel</button>
-            <button type="submit" class="genric-btn success circle">Update</button>
+            <button onclick="javascript: return confirm('Are you sure ?')" type="submit" class="genric-btn success circle">Update</button>
           </div>
         </div>
       </div>

@@ -306,13 +306,13 @@ class Mkopi extends CI_Model
 		$this->db->insert('view', $input);
 	}
 
-	function tampil_komentar($kopi)
-	{
-		$this->db->join('member', 'member.id_member = komentar.id_member');
-		$this->db->where('id_kopi', $kopi);
-		$data = $this->db->get('komentar');
-		return $data->result_array(); 
-	}
+	// function tampil_komentar($kopi)
+	// {
+	// 	$this->db->join('member', 'member.id_member = komentar.id_member');
+	// 	$this->db->where('id_kopi', $kopi);
+	// 	$data = $this->db->get('komentar');
+	// 	return $data->result_array(); 
+	// }
 
 	function hapus_komentar($id_komentar)
 	{

@@ -111,6 +111,14 @@ class Mroaster extends CI_Model {
 		return $jml;
 
 	}
+
+	function view_roaster_m($id_roaster)
+	{
+		$this->db->select('*');
+		$this->db->from('roaster');
+		$this->db->where('id_roaster',$id_roaster);
+		return $this->db->get()->result_array();
+	}
 }
 
 /* End of file Mroaster.php */
