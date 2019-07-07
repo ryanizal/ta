@@ -22,14 +22,14 @@
 							<img class="img-fluid" src="<?php echo base_url($value->foto->first()->path_foto);?>" alt="">
 
 							<hr>
-							<a href="<?php echo base_url('Member/detail_kopi/'.$value['id_kopi']);?>">
+							
 								<h4 align="center">
 									<?php echo $value->nama_kopi; ?>
 
 								</h4>
-							</a>
+							
 							<p>
-								<b>Descrption:  </b><a href="<?php echo  $value->deskripsi_kopi ?>"><?php echo  $value->deskripsi_kopi ?></a>
+								<b>Descrption:  </b><?php echo  $value->deskripsi_kopi ?>. <b> More...</b>
 
 
 							</p>

@@ -11,7 +11,7 @@
 		</div>
 
 		<div class="panel-body">
-				<a href="<?php echo base_url();?>administrator/member/tambah"><button class="btn btn-success col-md-offset-11">Tambah Member</button></a>
+				<!-- <a href="<?php echo base_url();?>administrator/member/tambah"><button class="btn btn-success col-md-offset-11">Tambah Member</button></a> -->
 				<br>
 				<br>
 
@@ -24,7 +24,7 @@
 				<th>Nama Member</th>
 				<!-- <th>Bio</th>
 				<th>Foto Member</th> -->
-				<th>action</th>
+				<!-- <th>action</th> -->
 			</tr>
 		</thead>
 		<tbody>
@@ -37,11 +37,10 @@
 				<td><?php echo $value['nama_member'] ?></td>
 				<!-- <td><?php echo $value['keterangan_member'] ?></td>
 				<td><img src="../assets/img/member/<?php echo $value['foto_member'] ?>" class="img-circle" height="100" width="100"></td> -->
-				<td>
-					<!-- <a href="" class="btn btn-info btn-sm"> Detail</a> -->
+				<!-- <td>
 					<a href="<?php echo base_url('administrator/member/edit/'.$value['id_member']);?>" class="btn btn-warning btn-sm"> Ubah</a>
 					<a href="<?php echo base_url('administrator/member/hapus/'.$value['id_member']);?>" class="btn btn-danger btn-sm"> Hapus</a>
-				</td>
+				</td> -->
 			</tr>
 			<?php endforeach ?>
 			

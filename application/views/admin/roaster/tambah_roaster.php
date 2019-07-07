@@ -19,6 +19,12 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label class="col-sm-1 control-label">Email</label>
+					<div class="col-sm-11">
+						<input class="form-control" type="email" name="email_roaster">
+					</div>
+				</div>
+				<div class="form-group">
 					<label class="col-sm-1 control-label">Password</label>
 					<div class="col-sm-11">
 						<input class="form-control" type="password" name="password_roaster">
@@ -40,6 +46,12 @@
 					<label class="col-sm-1 control-label">Alamat</label>
 					<div class="col-sm-11">
 						<textarea class="form-control" type="text" name="alamat_roaster" rows="8"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-1 control-label">link google maps<i class="fas fa-question-circle" data-toggle="tooltip" title="Just copy your Roastery's google maps link. If you dont have it, just skip it."></i></label>
+					<div class="col-sm-11">
+						<input class="form-control" type="text" name="lokasi">
 					</div>
 				</div>
 				<div class="form-group">

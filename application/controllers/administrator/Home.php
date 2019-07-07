@@ -19,9 +19,10 @@ class Home extends CI_Controller {
 		$this->load->view('admin/footer');
 	}
 
-	function login()
+	function logout()
 	{
-
+		$this->session->unset_userdata('admin');
+		redirect('welcome','refresh');
 	}
 
 }

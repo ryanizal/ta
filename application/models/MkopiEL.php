@@ -59,6 +59,18 @@ class MkopiEL extends Eloquent {
 		
 	}
 
+	// public function view()
+	// {
+	// 	return $this->belongsTo('Mproses', 'proses_kopi_id_proses_kopi', 'id_proses_kopi');
+
+	// }
+
+	public function komentar()
+	{
+		return $this->hasMany('MkomentarEL', 'kopi_id_kopi', 'id_kopi');
+
+	}
+
 	
 
 	

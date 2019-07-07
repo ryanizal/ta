@@ -11,42 +11,43 @@
 		</div>
 
 		<div class="panel-body">
+			<?php foreach ($kopi as $value): ;?>
 			<form class="form-horizontal" method="post" enctype="multipart/form-data" >
 				<div class="form-group">
 					<label class="col-sm-1 control-label">Nama Kopi</label>
 					<div class="col-sm-11">
-						<input class="form-control" type="text" name="nama_kopi"value="<?php echo $k['nama_kopi'] ?>">
+						<input class="form-control" type="text" name="nama_kopi"value="<?php echo $value->nama_kopi ?>">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-1 control-label">Acidity</label>
 					<div class="col-sm-11">
-						<input class="form-control" type="text" name="acidity"value="<?php echo $k['acidity'] ?>">
+						<input class="form-control" type="text" name="acidity"value="<?php echo $value->acidity ?>">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-1 control-label">Sweetness</label>
 					<div class="col-sm-11">
-						<input class="form-control" type="text" name="sweet"value="<?php echo $k['sweet'] ?>">
+						<input class="form-control" type="text" name="sweet"value="<?php echo $value->sweet ?>">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-1 control-label">Bitterness</label>
 					<div class="col-sm-11">
-						<input class="form-control" type="text" name="bitter"value="<?php echo $k['bitter'] ?>">
+						<input class="form-control" type="text" name="bitter"value="<?php echo $value->bitter ?>">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-1 control-label">Savoriness</label>
 					<div class="col-sm-11">
-						<input class="form-control" type="text" name="savory"value="<?php echo $k['savory'] ?>">
+						<input class="form-control" type="text" name="savory"value="<?php echo $value->savory ?>">
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label class="col-sm-1 control-label">Roaster</label>
 					<div class="col-sm-11">
-						<input class="form-control" type="text" name="id_roaster"value="<?php echo $k['id_roaster'] ?>">
+						<input class="form-control" type="text" name="id_roaster"value="<?php echo $value->roaster->nama_roaster ?>">
 					</div>
 				</div>
 				<div class="form-group">
@@ -98,25 +99,27 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label class="col-sm-1 control-label">Deskripsi</label>
+					<div class="col-sm-11">
+						<textarea id="textareaChars" maxlength="500" class="form-control" type="text" name="deskripsi_kopi" rows="4">
+							<?php echo $value->deskripsi_kopi ?>
+						</textarea>
+						<span id="chars">500</span> sisa karakter
+					</div>
+				</div>
+				<div class="form-group">
 					<label class="col-sm-1 control-label">Foto </label>
 					<div class="col-sm-3">
-						<img src="<?php echo base_url("assets/img/coffee/$k[foto_1] ") ?>" class="img-responsive">	
-						<input class="form-control" type="file" name="foto_1" >
+						<img src="<?php echo base_url().$value->foto->first()->path_foto ?>" class="img-responsive">	
+						<input class="form-control" type="file" name="path_foto" >
 					</div>
-					<div class="col-sm-3">	
-						<img src="<?php echo base_url("assets/img/coffee/$k[foto_2] ") ?>" class="img-responsive">	
-						<input class="form-control" type="file" name="foto_2">
-					</div>
-					<div class="col-sm-3">	
-
-						<img src="<?php echo base_url("assets/img/coffee/$k[foto_3] ") ?>" class="img-responsive">	
-						<input class="form-control" type="file" name="foto_3">
-					</div>
+					
 
 				</div>
 				
 				<button type="submit" class="btn btn-success col-lg-offset-11">Submit</button>
 			</form>
+		<?php endforeach; ?>
 		</div>
 	</div>
 </div>

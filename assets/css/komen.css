@@ -200,6 +200,11 @@ margin-right: 7px;
   margin-top: 6px;
 }
 
+textarea {
+  display:block;
+  margin:1em 0;
+}
+
 
 
 

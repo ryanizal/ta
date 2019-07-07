@@ -29,13 +29,19 @@
 								</div>
 							</div>
 							<div class="form-group">
+								<label class="col-sm-3 control-label">Email</label>
+								<div class="col-sm-9">
+									<input class="form-control" type="text" name="email_roaster" value="<?php echo $r['email_roaster'] ?>">
+								</div>
+							</div>
+							<div class="form-group">
 								<label class="col-sm-3 control-label">Password</label>
 								<div class="col-sm-9">
 									<input class="form-control" type="password" name="password_roaster" value="<?php echo $r['password_roaster'] ?>">
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-sm-3 control-label">Nama Lengkap</label>
+								<label class="col-sm-3 control-label">Nama Roaster</label>
 								<div class="col-sm-9">
 									<input class="form-control" type="text" name="nama_roaster" value="<?php echo $r['nama_roaster'] ?>">
 								</div>
@@ -43,10 +49,21 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Bio</label>
 								<div class="col-sm-9">
-									<textarea class="form-control" type="text" name="deskripsi_roaster" rows="8" value="<?php echo $r['deskripsi_roaster'] ?>"></textarea>
+									<textarea class="form-control" type="text" name="deskripsi_roaster" rows="8"><?php echo $r['deskripsi_roaster'] ?></textarea>
 								</div>
 							</div>
-							
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Alamat</label>
+								<div class="col-sm-9">
+									<textarea class="form-control" type="text" name="alamat_roaster" rows="8" ><?php echo $r['alamat_roaster'] ?></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">No telp</label>
+								<div class="col-sm-9">
+									<input class="form-control" type="text" name="telp_roaster" value="<?php echo $r['telp_roaster'] ?>">
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

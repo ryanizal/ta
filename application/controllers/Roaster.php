@@ -6,11 +6,11 @@ class Roaster extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		if($this->session->userdata('status') != "login"){
-			redirect("Welcome/login");
-		}
+		
 		$this->load->model('Mroaster');
 		$this->load->model('Mkopi');
+		$this->load->model('Mkomentar');
+		$this->load->model('Mview');
 	}
 
 	public function index()
@@ -30,6 +30,17 @@ class Roaster extends CI_Controller {
 		// $data['new'] = $this->Mkopi->tampil_kopi_roaster(2,$idr);
 
 		$data['total_produk'] = MkopiEL::where('roaster_id_roaster', $idr)->count();
+		$data['total_komentar'] = $this->Mkomentar->hitung($idr);
+		$data['total_view'] = $this->Mview->hitung($idr);
+
+		// MkomentarEL::with(['kopi', 'roaster'=>function($query)
+		// {
+		// 	$query->where('roaster_id', $idr);
+		// }])->count();
+		// print_r($data['total_komentar'] );
+		// die();
+
+		// $data['total_view'] = MkopiEL::with('view')->where('roaster_id_roaster', $idr)->count();
 		// print_r($total_produk);
 		// die();
 

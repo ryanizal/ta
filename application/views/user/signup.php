@@ -56,7 +56,7 @@
         <div class="row">
           <div class="col-lg-12 col-md-12 single-menu">
             <h3 class="mb-30 text-center">Register a new membership</h3>
-            <a href="<?php echo base_url('Welcome/signup_roaster'); ?>"><p class="pull-right">I am a Roaster</p></a>
+            <a href="<?php echo base_url('Welcome/signup_roaster'); ?>"><p class="pull-right genric-btn info circle arrow">I'm a Roaster</p></a>
             <br>
             <form method="post" enctype="multipart/form-data" class="form-horizontal">
               <div class="form-group">

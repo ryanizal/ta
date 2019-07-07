@@ -149,7 +149,9 @@
 						<button type="button" class="removep genric-btn danger circle" title="Remove"> x </button>	
 					</div>
 					<div class="mt-10">
-						<textarea name="deskripsi_kopi" placeholder="About This Coffee" onfocus="this.placeholder = ''" onblur="this.placeholder = 'About This Coffee'" required class="single-input"></textarea>
+						<textarea id="textareaChars" name="deskripsi_kopi" placeholder="About This Coffee" onfocus="this.placeholder = ''" onblur="this.placeholder = 'About This Coffee'" required class="single-input" maxlength="500"></textarea>
+						  <span id="chars">500</span> characters remaining
+
 					</div>
 					<div class="mt-10">
 						<p>Photo's</p>

@@ -6,9 +6,8 @@ class Member extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		if($this->session->userdata('status') != "login"){
-			redirect("Welcome/login");
-		}
+		
+		
 		$this->load->model('Mkopi');
 		$this->load->model('Mmember');
 		$this->load->model('Mroaster');

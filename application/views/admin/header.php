@@ -35,9 +35,9 @@
         <li><a href="<?php echo base_url("administrator/Roaster") ?>"><i class="fas fa-users"></i> Roaster</a></li>
         <li><a href="<?php echo base_url("administrator/Member") ?>"><i class="fas fa-users"></i> Member</a></li>
         <li><a href="<?php echo base_url("administrator/Coffee") ?>"><i class="fas fa-users"></i> Coffee</a></li>
-        <li><a href=""><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        <li><a href="<?php echo base_url("administrator/Home/logout") ?>"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
 
       </ul>
-    </div>
+    </div>sad
   </nav>
   

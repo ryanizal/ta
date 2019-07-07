@@ -7,6 +7,7 @@ class Coffee extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Mkopi');
+		$this->load->model('Mroaster');
 	}
 
 	public function index()
@@ -32,6 +33,8 @@ class Coffee extends CI_Controller {
 		$data['profile_roast'] = $this->Mkopi->profile_roast();
 		$data['jenis_kopi'] = $this->Mkopi->jenis_kopi();
 		$data['proses_kopi'] = $this->Mkopi->proses_kopi();
+		$data['tastes'] = $this->Mkopi->tastes(); 
+		$data['roaster'] = $this->Mroaster->view_roaster(); 
 		$this->load->view('admin/header');
 		$this->load->view('admin/coffee/tambah_kopi', $data); 
 		$this->load->view('admin/footer');
@@ -40,9 +43,12 @@ class Coffee extends CI_Controller {
 	function detail($id_kopi){
 
 		
-		$get['k'] = $this->Mkopi->get_kopi($id_kopi);
+		$data['k'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'=>function($query)
+		{
+			$query->limit(5);
+		}])->where('id_kopi', $id_kopi)->get();
 		$this->load->view('admin/header'); 
-		$this->load->view('admin/coffee/detail_kopi',$get);
+		$this->load->view('admin/coffee/detail_kopi',$data);
 		
 		$this->load->view('admin/footer');
 
@@ -63,10 +69,10 @@ class Coffee extends CI_Controller {
 			$this->Mkopi->edit_kopi($input, $_FILES, $id_kopi);
 			redirect('administrator/Coffee');
 		}
-		$data['k'] = $this->Mkopi->get_kopi($id_kopi);
-		$data['profile_roast'] = $this->Mkopi->profile_roast();
-		$data['jenis_kopi'] = $this->Mkopi->jenis_kopi();
-		$data['proses_kopi'] = $this->Mkopi->proses_kopi();
+		$data['kopi'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'=>function($query)
+		{
+			$query->limit(5);
+		}])->where('id_kopi', $id_kopi)->get();
 
 		$this->load->view('admin/header');
 		$this->load->view('admin/coffee/edit_kopi',$data);

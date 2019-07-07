@@ -9,7 +9,9 @@
 
 		<div class="row counter-row">
 			<div class="col-lg-3 col-md-3 single-counter single-menu text-center">
-				<h1 class="counter">123</h1>
+				<?php foreach ($total_view as $value):;?>
+				<h1 class="counter"><?php echo $value['COUNT(*)'];?></h1>
+			<?php endforeach; ?>
 				<div class="icon">
 					<i class="fa fa-eye fa-5x"></i>
 					
@@ -22,7 +24,9 @@
 			</div>
 
 			<div class="col-lg-3 col-md-3 single-counter single-menu text-center">
-				<h1 class="counter">321</h1>
+				<?php foreach ($total_komentar as $value):;?>
+				<h1 class="counter"><?php echo $value['COUNT(id_komentar)']; ?></h1>
+			<?php endforeach; ?>
 				<div class="icon">
 					<i class="fa fa-comments fa-5x"></i>
 					

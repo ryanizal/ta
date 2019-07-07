@@ -20,7 +20,7 @@
 			<div style="margin-bottom: 0em">
 				<div class="row">
 					<div class="col-md-3 col-md-push-9 text-right">
-						<a class="btn btn-primary" href="<?php echo base_url();?>administrator/roaster/tambah">Tambah Roaster</a>
+						<!-- <a class="btn btn-primary" href="<?php echo base_url();?>administrator/roaster/tambah">Tambah Roaster</a> -->
 						
 					</div>
 				</div>
@@ -36,7 +36,7 @@
 						<th>Email</th>
 						<!-- <th>Jumlah Kopi</th> -->
 						<th>No Telp</th>
-						<th>Opsi</th>
+						<!-- <th>Opsi</th> -->
 					</tr>
 				</thead>
 				<tbody>
@@ -47,11 +47,11 @@
 							<td><?php echo $value->email_roaster ?></td>
 							<!-- <td><?php echo $value['email_roaster'] ?></td> -->
 							<td><?php echo $value->telp_roaster ?></td>
-							<td>
+							<!-- <td> -->
 								<!-- <a href="" class="btn btn-info btn-sm"> Detail</a> -->
-								<a href="<?php echo base_url('administrator/roaster/edit/'.$value->id_roaster);?>" class="btn btn-warning btn-xs"> Ubah</a>
-								<a href="<?php echo base_url('administrator/roaster/hapus/'.$value->id_roaster);?>" class="btn btn-danger btn-xs"> Hapus</a>
-							</td>
+								<!-- <a href="<?php echo base_url('administrator/roaster/edit/'.$value->id_roaster);?>" class="btn btn-warning btn-xs"> Ubah</a> -->
+								<!-- <a href="<?php echo base_url('administrator/roaster/hapus/'.$value->id_roaster);?>" class="btn btn-danger btn-xs"> Hapus</a> -->
+							<!-- </td> -->
 						</tr>
 					<?php endforeach ;?>
 

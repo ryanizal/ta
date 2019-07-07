@@ -105,22 +105,22 @@
 									</h4>
 								</a>
 								<p>
-									<b>Descrption:  </b><?php echo  $value->deskripsi_kopi ?>  <a href="">more...</a>
+									<b>Descrption:  </b><?php echo  $value->deskripsi_kopi ?>.  <a href="<?php echo base_url('Welcome/detail_kopi/'.$value->id_kopi);?>"><b> More...</b></a>
 
 
 								</p>
 								<br>
 								
 
-								<span class="genric-btn primary-border medium">
+								<span class="genric-btn primary-border medium disabled">
 									<?php echo $value->jenis->jenis_kopi;?>
 								</span>
 
-								<span class="genric-btn primary-border medium">
+								<span class="genric-btn primary-border medium disabled">
 									<?php echo $value->profil->nama_roast_prof;?>
 								</span>
 
-								<span class="genric-btn primary-border medium">
+								<span class="genric-btn primary-border medium disabled">
 									<?php echo $value->proses->nama_proses;?>
 								</span>
 								<br>
