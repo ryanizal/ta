@@ -1,10 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 use \Illuminate\Database\Eloquent\Model as Eloquent;
+use \Staudenmeir\EloquentEagerLimit\HasEagerLimit;
 
 class MkomentarEL extends Eloquent 
 {
 
+	use HasEagerLimit;
 	protected $table = "komentar";
 	protected $primaryKey = 'id_komentar';
 

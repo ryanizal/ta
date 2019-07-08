@@ -131,38 +131,39 @@
 							</select>
 						</div>
 					</div>
-					<div class="form-group">
-						<div class="input-group-icon mt-10">
-							<div class="icon"><i class="fa fa-fire" aria-hidden="true"></i></div>
-							<div class="form-selectaste" id="default-select">
-								<select name="tastes">
-									<option value="" disabled selected>Taste Note's</option>
-
-									<?php foreach ($tastes as $key => $value): ?>
-										<option value="<?php echo $value->id_tastes ?>"><?php echo $value->nama_tastes ?> </option>
-									<?php endforeach ?>
-								</select>
+					<div class="form-group" id="dynamic_field">
+						<div class="row">
+							<div class="input-group-icon mt-10 col-md-4">
+								<div class="icon"><i class="fa fa-fire" aria-hidden="true"></i></div>
+								<div class="">
+									<select name="tastes[]">
+										<option value="" disabled selected>Taste Note's</option>
+										<?php foreach ($tastes as $value): ?>
+											<option value="<?php echo $value->id_tastes ?>"><?php echo $value->nama_tastes ?> </option>
+										<?php endforeach ?>
+									</select>
+								</div>
 							</div>
+							<div class="col-md-5">
+								<button type="button" class="addp genric-btn info circle" title="Add More"> + </button>
+								<button type="button" class="removep genric-btn danger circle" title="Remove"> x </button>
+							</div>	
 						</div>
-
-						<button type="button" class="addp genric-btn info circle" title="Add More"> + </button>
-						<button type="button" class="removep genric-btn danger circle" title="Remove"> x </button>	
 					</div>
 					<div class="mt-10">
 						<textarea id="textareaChars" name="deskripsi_kopi" placeholder="About This Coffee" onfocus="this.placeholder = ''" onblur="this.placeholder = 'About This Coffee'" required class="single-input" maxlength="500"></textarea>
-						  <span id="chars">500</span> characters remaining
-
+						<span id="chars">500</span> characters remaining
 					</div>
-					<div class="mt-10">
-						<p>Photo's</p>
-						<!-- <label class=" mt-10 control-label">Photo's</label> -->
+					<h6>Photo's</h6>
+					<div class="form-group" id="dynamic_field2">
+						<div class="row">
+							<div class="mt-10 col-md-7" >
+								<input type="file" name="nama_foto[]" class="">
+								<button type="button" class="addp2 genric-btn info circle" title="Add More"> + </button>
+								<button type="button" class="removep2 genric-btn danger circle" title="Remove"> x </button>
+							</div>
+						</div>
 					</div>
-					<div class="mt-10">
-						<input type="file" name="nama_foto[]" class="">
-						<input type="file" name="nama_foto[]" class="">
-						<input type="file" name="nama_foto[]" class="">
-					</div>
-
 					<div class="col-lg-3 col-md-3 pull-right">
 						<br>
 						<br>
@@ -181,14 +182,29 @@
 	<script>
 		$('.addp').click(function () {
 			console.log($(this));
-			var fg = $(this).parent().clone(true, true);
+			var fg = $(this).parent().parent().clone(true, true);
 
 			$('#dynamic_field').append(fg);
 		});
 
 		$('.removep').click(function () {
 			if ($('#dynamic_field > div').length > 1) {
-				$(this).parent().remove();
+				$(this).parent().parent().remove();
+			}
+		});
+	</script>
+
+	<script>
+		$('.addp2').click(function () {
+			console.log($(this));
+			var fg = $(this).parent().parent().clone(true, true);
+
+			$('#dynamic_field2').append(fg);
+		});
+
+		$('.removep2').click(function () {
+			if ($('#dynamic_field2 > div').length > 1) {
+				$(this).parent().parent().remove();
 			}
 		});
 	</script>

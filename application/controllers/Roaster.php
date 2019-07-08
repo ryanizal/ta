@@ -54,12 +54,16 @@ class Roaster extends CI_Controller {
 		$input = $this->input->post();
 		$idr = $_SESSION['roaster']['id_roaster'];
 
+
 		if($input)
 		{
-			// print_r($input);
-			// die();
+			
+			$input['tastes'] = $input['tastes[]'];
+			print_r($input);
+			die();
+			$input['foto'] = $input['nama_foto[]'];
 			$input['roaster_id_roaster'] = $idr;
-			$this->Mkopi->save_kopi($input, $_FILES);
+			$this->Mkopi->save_kopi($input);
 			redirect('roaster/list_kopi');
 		}
 

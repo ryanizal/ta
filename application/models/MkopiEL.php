@@ -1,25 +1,24 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+// use \Staudenmeir\EloquentEagerLimit\HasEagerLimit;
 use \Illuminate\Database\Eloquent\Model as Eloquent;
 
-class MkopiEL extends Eloquent {
+class MkopiEL extends Eloquent 
+{
+	// use HasEagerLimit;
 
 	protected $table = "kopi";
 	protected $primaryKey = 'id_kopi';
 
 	public function foto()
 	{
-
 		return $this->hasMany('Mfoto', 'kopi_id_kopi', 'id_kopi');
-
 	}
 
 	public function roaster()
 	{
-
 		return $this->belongsTo('MroasterEL', 'roaster_id_roaster', 'id_roaster');
-		
 	}
 
 	public function tastes()
@@ -27,22 +26,25 @@ class MkopiEL extends Eloquent {
 		return $this->belongsToMany('MtastesEL', 'kopi_has_tastes', 'kopi_id_kopi', 'tastes_id_tastes');
 	}
 
+	public function five_tastes()
+	{
+		return $this->belongsToMany('MtastesEL', 'kopi_has_tastes', 'kopi_id_kopi', 'tastes_id_tastes')->limit(5);
+
+	}
+
 	public function komentar_member()
 	{
 		return $this->hasMany('MmemberEL', 'kopi_id_kopi', 'id_kopi');
-
 	}
+
 	public function komentar_roaster()
 	{
 		return $this->hasMany('MroasterEL', 'kopi_id_kopi', 'id_kopi');
-
 	}
 
 	public function profil()
 	{
-
 		return $this->belongsTo('Mprofil', 'roast_prof_id_roast_prof', 'id_roast_prof');
-		
 	}
 
 	public function jenis()
@@ -70,6 +72,8 @@ class MkopiEL extends Eloquent {
 		return $this->hasMany('MkomentarEL', 'kopi_id_kopi', 'id_kopi');
 
 	}
+
+
 
 	
 

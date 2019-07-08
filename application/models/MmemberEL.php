@@ -1,11 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+use \Staudenmeir\EloquentEagerLimit\HasEagerLimit;
 use \Illuminate\Database\Eloquent\Model as Eloquent;
 
 class MmemberEL extends Eloquent 
 {
 
+	use HasEagerLimit;
 	protected $table = "member";
 	protected $primaryKey = 'id_member';
 

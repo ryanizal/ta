@@ -11,9 +11,10 @@
 		"source": "https://github.com/bcit-ci/CodeIgniter"
 	},
 	"require": {
-		"php": ">=5.3.7",
-		"illuminate/database": "5.0.28",
-		"illuminate/support": "5.0.28"
+		"php": ">=7.0",
+		"illuminate/database": "5.5.44",
+		"illuminate/support": "5.5.44",
+		"staudenmeir/eloquent-eager-limit": "^1.2"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"

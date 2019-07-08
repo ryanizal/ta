@@ -43,13 +43,19 @@ class Mkopi extends CI_Model
 	// 	return $array;
 	// }
 
-	function save_kopi($input, $files)
+	function save_kopi($input)
 	{
 		$this->db->insert('kopi', array_intersect_key($input, array_flip([
 			'nama_kopi', 'acidity', 'sweet', 'bitter', 'savory', 'origin', 'deskripsi_kopi', 'roaster_id_roaster', 'roast_prof_id_roast_prof', 'jenis_kopi_id_jenis_kopi', 'proses_kopi_id_proses_kopi'
 		])));
 
 		$id_kopi = $this->db->insert_id();
+
+		foreach ($data['tastes'] as $t) 
+		{
+			$this->db->query("INSERT INTO kopi_has_tastes (kopi_id_kopi, tastes_id_tastes) values ('{$id_kopi}','{$t}')");
+		}
+
 
 		$extractFileDetail = function ($files, $index) {
 			$data = [
@@ -69,57 +75,61 @@ class Mkopi extends CI_Model
 			return $data;
 		};
 
-		if (array_key_exists('nama_foto', $files)) {
-			foreach ($files['nama_foto']['name'] as $index => $value)
-			{
-				if (empty($value)) {
-					break;
-				}
+		foreach ($data['foto'] as $f) {
 
-				$fileKey = $this->uuid->v4();
-				$uploadDir = 'assets/img/coffee';
 
-				$uploadPath = FCPATH . $uploadDir;
-				$fileExt = pathinfo($value, PATHINFO_EXTENSION);
-				$fileName = $this->uuid->v4() . '.' . $fileExt;
-				$fullpath = $uploadPath . '/' . $fileName;
-				$urlPath = $uploadDir . '/' . $fileName;
+			if (array_key_exists('nama_foto', $f)) {
+				foreach ($f['nama_foto']['name'] as $index => $value)
+				{
+					if (empty($value)) {
+						break;
+					}
 
-				while (is_file($fullpath)) {
+					$fileKey = $this->uuid->v4();
+					$uploadDir = 'assets/img/coffee';
+
+					$uploadPath = FCPATH . $uploadDir;
+					$fileExt = pathinfo($value, PATHINFO_EXTENSION);
 					$fileName = $this->uuid->v4() . '.' . $fileExt;
 					$fullpath = $uploadPath . '/' . $fileName;
+					$urlPath = $uploadDir . '/' . $fileName;
+
+					while (is_file($fullpath)) {
+						$fileName = $this->uuid->v4() . '.' . $fileExt;
+						$fullpath = $uploadPath . '/' . $fileName;
+					}
+
+					$config['upload_path'] = $uploadPath;
+					$config['allowed_types'] = 'gif|jpg|png';
+					$config['file_name'] = $fileName;
+
+					$this->upload->initialize($config);
+
+					$_FILES[$fileKey] = $extractFileDetail($f['nama_foto'], $index);
+
+					$u = $this->upload->do_upload($fileKey);
+
+					if ($u) {
+						$data_upload = $this->upload->data();
+					} else {
+						var_dump($this->upload->display_errors());die();
+						throw new Exception("Gagal Upload foto ke $index");
+					}
+
+					$this->db->insert('foto', [
+						'path_foto' => $urlPath,
+						'kopi_id_kopi' => $id_kopi,
+					]);
 				}
-
-				$config['upload_path'] = $uploadPath;
-				$config['allowed_types'] = 'gif|jpg|png';
-				$config['file_name'] = $fileName;
-
-				$this->upload->initialize($config);
-
-				$_FILES[$fileKey] = $extractFileDetail($files['nama_foto'], $index);
-
-				$u = $this->upload->do_upload($fileKey);
-
-				if ($u) {
-					$data_upload = $this->upload->data();
-				} else {
-					var_dump($this->upload->display_errors());die();
-					throw new Exception("Gagal Upload foto ke $index");
-				}
-
-				$this->db->insert('foto', [
-					'path_foto' => $urlPath,
-					'kopi_id_kopi' => $id_kopi,
-				]);
 			}
-		}
 		// print_r($input);
 		// die();
 
-		$this->db->insert('kopi_has_tastes', [
-			'kopi_id_kopi' => $id_kopi,
-			'tastes_id_tastes' => $input['tastes'],
-		]);
+		// $this->db->insert('kopi_has_tastes', [
+		// 	'kopi_id_kopi' => $id_kopi,
+		// 	'tastes_id_tastes' => $input['tastes'],
+		// ]);
+		}
 	}
 
 	function get_kopi($id_kopi)
@@ -143,6 +153,9 @@ class Mkopi extends CI_Model
 	
 
 	function hapus_kopi($id_kopi){
+
+		$this->db->where('k.id_kopi', $id_kopi);
+
 
 		$detail_kopi = $this->get_kopi($id_kopi);
 		$old = $detail_kopi['foto_1'];

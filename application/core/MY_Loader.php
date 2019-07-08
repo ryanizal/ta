@@ -20,6 +20,7 @@ class MY_Loader extends CI_Loader {
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
+			'strict'	=> false
 		));
 		$capsule->setAsGlobal();
 		$capsule->bootEloquent();

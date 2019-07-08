@@ -20,6 +20,7 @@
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/main.css">
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/css/komen.css">
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/css/range.css">
+		<script src="<?php echo base_url();?>assets/user/js/vendor/jquery-2.2.4.min.js"></script>
 		
 	</head>
 	<body class="menu-area">

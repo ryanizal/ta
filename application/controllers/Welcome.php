@@ -17,14 +17,8 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		$data['kopi'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'=>function($query)
-		{
-			$query->limit(5);
-		}])->orderBy('id_kopi', 'desc')->get();
-// print_r($data);
-// die();
-		// $data['kopi']=$this->Mkopi->view_kopi();
-		// $data['new'] = $this->Mkopi->tampil_kopi_member(0);
+		$data['kopi'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','five_tastes'])->orderBy('id_kopi', 'desc')->get();
+
 		$this->load->view('user/main',$data);
 		$this->load->view('user/footer');
 	}
