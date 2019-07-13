@@ -121,7 +121,7 @@
 					</div>
 					<div class="input-group-icon mt-10">
 						<div class="icon"><i class="fa fa-fire" aria-hidden="true"></i></div>
-						<div class="form-select" id="default-select"">
+						<div class="form-select" id="default-select">
 							<select name="proses_kopi_id_proses_kopi">
 								<option value="" disabled selected>Process</option>
 								
@@ -135,10 +135,10 @@
 						<div class="row">
 							<div class="input-group-icon mt-10 col-md-4">
 								<div class="icon"><i class="fa fa-fire" aria-hidden="true"></i></div>
-								<div class="">
+								<div class="form-select" id="default-select">
 									<select name="tastes[]">
-										<option value="" disabled selected>Taste Note's</option>
 										<?php foreach ($tastes as $value): ?>
+										<option value="<?php echo $value->id_tastes ?>" disabled selected>Taste Note's</option>
 											<option value="<?php echo $value->id_tastes ?>"><?php echo $value->nama_tastes ?> </option>
 										<?php endforeach ?>
 									</select>
@@ -154,8 +154,8 @@
 						<textarea id="textareaChars" name="deskripsi_kopi" placeholder="About This Coffee" onfocus="this.placeholder = ''" onblur="this.placeholder = 'About This Coffee'" required class="single-input" maxlength="500"></textarea>
 						<span id="chars">500</span> characters remaining
 					</div>
-					<h6>Photo's</h6>
-					<div class="form-group" id="dynamic_field2">
+					<h6 class="mt-15">Photo's</h6>
+					<!-- <div class="form-group" id="dynamic_field2">
 						<div class="row">
 							<div class="mt-10 col-md-7" >
 								<input type="file" name="nama_foto[]" class="">
@@ -163,6 +163,9 @@
 								<button type="button" class="removep2 genric-btn danger circle" title="Remove"> x </button>
 							</div>
 						</div>
+					</div> -->
+					<div class="file-uploader">
+						<input type="file" name="photos" class="fileuploader-area">
 					</div>
 					<div class="col-lg-3 col-md-3 pull-right">
 						<br>

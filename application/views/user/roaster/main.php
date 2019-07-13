@@ -10,8 +10,8 @@
 		<div class="row counter-row">
 			<div class="col-lg-3 col-md-3 single-counter single-menu text-center">
 				<?php foreach ($total_view as $value):;?>
-				<h1 class="counter"><?php echo $value['COUNT(*)'];?></h1>
-			<?php endforeach; ?>
+					<h1 class="counter"><?php echo $value['COUNT(*)'];?></h1>
+				<?php endforeach; ?>
 				<div class="icon">
 					<i class="fa fa-eye fa-5x"></i>
 					
@@ -25,8 +25,8 @@
 
 			<div class="col-lg-3 col-md-3 single-counter single-menu text-center">
 				<?php foreach ($total_komentar as $value):;?>
-				<h1 class="counter"><?php echo $value['COUNT(id_komentar)']; ?></h1>
-			<?php endforeach; ?>
+					<h1 class="counter"><?php echo $value['COUNT(id_komentar)']; ?></h1>
+				<?php endforeach; ?>
 				<div class="icon">
 					<i class="fa fa-comments fa-5x"></i>
 					
@@ -65,7 +65,32 @@
 					<a href="<?php echo base_url('Roaster/detail_kopi/'.$value->id_kopi); ?>"><img src="<?php echo base_url().$value->foto->first()->path_foto;?>" alt="" class="img-fluid"></a>
 				</div>
 				<div class="col-md-9 mt-sm-20">
-					<p><b>Deskripsi kopi</b> <?php echo $value->deskripsi_kopi; ?></p>
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label class="control-label col-sm-2">Variety</label>
+							<div class="col-sm-10 pull-right">
+								<p class="form-control-static">: <?php echo $value->jenis->jenis_kopi ?></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2">Process</label>
+							<div class="col-sm-10 pull-right">
+								<p class="form-control-static">: <?php echo $value->proses->nama_proses ?></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2">Roast Profile</label>
+							<div class="col-sm-10 pull-right">
+								<p class="form-control-static">: <?php echo $value->profil->nama_roast_prof ?></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2">Description</label>
+							<div class="col-sm-10 pull-right">
+								<p class="form-control-static">: <?php echo $value->deskripsi_kopi ?></p>
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
 			<hr>

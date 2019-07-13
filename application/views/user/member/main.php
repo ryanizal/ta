@@ -1,9 +1,11 @@
 <div class="container">
-	<h3 class="text-heading">
-		Member, <?php echo $nama_member; ?>		
-	</h3>
-	
-	<p><b><?php echo date("D"); ?></b> <?php echo date("Y M d"); ?></p>	
+	<div class="single-menu">
+		<h4>
+			Welcome, <?php echo $nama_member; ?>		
+		</h4>
+
+		<p><b><?php echo date("D"); ?></b> <?php echo date("Y M d"); ?></p>
+	</div>	
 	<section class="video-sec-area pt-30" id="blog">
 		<div class="container">
 			<div class="row d-flex justify-content-center">
@@ -12,6 +14,7 @@
 						<h1 class="mb-10">Newest Coffee That Just In!</h1>
 						<p>Freshly roasted coffee beans from local Roastery.</p>
 					</div>
+					<hr>
 				</div>
 			</div>						
 			<div class="row">
@@ -23,10 +26,10 @@
 
 							<hr>
 							
-								<h4 align="center">
-									<?php echo $value->nama_kopi; ?>
+							<h4 align="center">
+								<?php echo $value->nama_kopi; ?>
 
-								</h4>
+							</h4>
 							
 							<p>
 								<b>Descrption:  </b><?php echo  $value->deskripsi_kopi ?>. <b> More...</b>

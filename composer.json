@@ -14,7 +14,8 @@
 		"php": ">=7.0",
 		"illuminate/database": "5.5.44",
 		"illuminate/support": "5.5.44",
-		"staudenmeir/eloquent-eager-limit": "^1.2"
+		"staudenmeir/eloquent-eager-limit": "^1.2",
+		"ralouphie/mimey": "^2.1"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"

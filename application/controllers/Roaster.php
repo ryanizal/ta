@@ -1,4 +1,4 @@
-<?php
+ <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Roaster extends CI_Controller {
@@ -20,7 +20,7 @@ class Roaster extends CI_Controller {
 
 		$data['new'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'=>function($query)
 		{
-			$query->limit(5);
+			$query->limit(5); 
 		}])->where('roaster_id_roaster', $idr)->orderBy('id_kopi','desc')->take(5)->get();
 
 
@@ -59,11 +59,10 @@ class Roaster extends CI_Controller {
 		{
 			
 			$input['tastes'] = $input['tastes[]'];
-			print_r($input);
-			die();
-			$input['foto'] = $input['nama_foto[]'];
+			// print_r($input);
+			// die();
 			$input['roaster_id_roaster'] = $idr;
-			$this->Mkopi->save_kopi($input);
+			$this->Mkopi->save_kopi($input, $_FILES);
 			redirect('roaster/list_kopi');
 		}
 
@@ -84,7 +83,7 @@ class Roaster extends CI_Controller {
 
 		$this->load->view('user/roaster/header');
 		// $data['new'] = $this->Mkopi->tampil_kopi_roaster_list($idr);
-		$data['new'] = MkopiEL::with(['profil','jenis','proses','foto','roaster'])->where('roaster_id_roaster', $idr)->get();
+		$data['new'] = MkopiEL::with(['profil','jenis','proses','foto','roaster'])->where('roaster_id_roaster', $idr)->orderBy('id_kopi', 'desc')->get();
 		$this->load->view('user/roaster/daftar_kopi', $data);
 		$this->load->view('user/roaster/footer');
 	}
@@ -112,12 +111,12 @@ class Roaster extends CI_Controller {
 	{
 		$input = $this->input->post(); 
 
-		if($input){
-			
+		if($input) {
 			$id_roaster= $_SESSION['roaster']['id_roaster'];
 			$this->Mroaster->edit_roaster($input, $id_roaster);
 			redirect('roaster/profile');
 		}
+
 		$r['id_roaster'] = $_SESSION['roaster']['id_roaster'];
 		$r['nama_roaster'] = $_SESSION['roaster']['nama_roaster'];
 		$r['username_roaster'] = $_SESSION['roaster']['username_roaster'];
@@ -165,20 +164,26 @@ class Roaster extends CI_Controller {
 		redirect('Roaster/detail_kopi/'.$id_kopi.'','refresh');
 	}
 
-	function edit_kopi($id_kopi){
+	function edit_kopi($id_kopi)
+	{
 		$input = $this->input->post(); 
+		$data['profile_roast'] = Mprofil::get();
+		$data['jenis_kopi'] = MjenisEL::get();
+		$data['proses_kopi'] = Mproses::get();
+		$data['tastes'] = MtastesEL::get();
+		$data['kopi'] = $kopi = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'])->findOrFail($id_kopi);
 
-		if($input)
+		if ($input)
 		{
-			
 			$this->Mkopi->edit_kopi($input, $_FILES, $id_kopi);
 			redirect('Roaster/list_kopi');
 		}
-		$data['k'] = $this->Mkopi->get_kopi($id_kopi);
-		$data['profile_roast'] = $this->Mkopi->profile_roast();
-		$data['jenis_kopi'] = $this->Mkopi->jenis_kopi();
-		$data['proses_kopi'] = $this->Mkopi->proses_kopi();
-		
+		// $data['k'] = $this->Mkopi->get_kopi($id_kopi);
+		// $data['profile_roast'] = $this->Mkopi->profile_roast();
+		// $data['jenis_kopi'] = $this->Mkopi->jenis_kopi();
+		// $data['proses_kopi'] = $this->Mkopi->proses_kopi();
+
+		$data['photos'] = $this->Mkopi->convertToFileuploader($kopi->foto);
 
 		$this->load->view('user/roaster/header');
 		$this->load->view('user/roaster/edit_kopi',$data);
@@ -204,7 +209,9 @@ class Roaster extends CI_Controller {
 	{
 		// var_dump('hai');die();
 		$keyword = $this->input->post('keyword');
-		$data['kopi']=$this->Mkopi->cari_kopi($keyword);
+		// $data['kopi']=$this->Mkopi->cari_kopi($keyword);
+		$data['k'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'])->where('nama_kopi', 'like', '%' . $keyword . '%')->get();
+		
 		$k = $keyword;
 		$this->load->view('user/roaster/header');
 		$this->load->view('user/roaster/hasil_cari',$data);

@@ -7,7 +7,7 @@
 		<meta name="description" content="">
 		<meta name="keywords" content="">
 		<meta charset="UTF-8">
-		<title>Coffee</title>
+		<title>Roaster</title>
 
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/linearicons.css">
@@ -20,8 +20,11 @@
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/main.css">
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/css/komen.css">
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/css/range.css">
+		<link rel="stylesheet" href="<?php echo base_url();?>assets/fileuploader/font/font-fileuploader.css">
+		<link rel="stylesheet" href="<?php echo base_url();?>assets/fileuploader/jquery.fileuploader.min.css">
+		<link rel="stylesheet" href="<?php echo base_url();?>assets/fileuploader/jquery.fileuploader-theme-thumbnails.css">
 		<script src="<?php echo base_url();?>assets/user/js/vendor/jquery-2.2.4.min.js"></script>
-		
+		<script src="<?php echo base_url();?>assets/fileuploader/jquery.fileuploader.min.js"></script>
 	</head>
 	<body class="menu-area">
 
@@ -42,7 +45,7 @@
 					<div class="col-md-6 col-sm-6">
 						<div class="single-footer-widget">
 							<div class="" >
-								<form action="<?php echo base_url();?>Member/cari_kopi" method="post" class="form-inline">
+								<form action="<?php echo base_url();?>Roaster/cari_kopi" method="post" class="form-inline">
 									<input class="form-control" name="keyword" placeholder="Search Coffee..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Coffee... '" required="" type="text">
 									<button class="click-btn btn btn-default" type="submit">
 										<i class="fa fa-search" aria-hidden="true"></i>
@@ -59,7 +62,7 @@
 							<li><a href="<?php echo base_url('roaster/profile'); ?>">Profile</a></li>
 							<li class="menu-has-children"><a href="#">Coffee</a>
 								<ul>
-									<li><a href="<?php echo base_url('roaster/'); ?>">See Coffee</a></li>
+									<!-- <li><a href="<?php echo base_url('roaster/'); ?>">See Coffee</a></li> -->
 									<li><a href="<?php echo base_url('roaster/list_kopi'); ?>">My Coffee</a></li>
 									<li><a href="<?php echo base_url('roaster/tambah_kopi'); ?>">Add Coffee</a></li>
 								</ul>

@@ -1,6 +1,6 @@
- <!DOCTYPE html>
- <html lang="zxx" class="no-js">
- <head>
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="shortcut icon" href="<?php echo base_url();?>assets/user/img/fav.png">
   <meta name="author" content="codepixer">
@@ -95,11 +95,15 @@
                   <input class="" type="file" name="foto_member">
                 </div>
               </div>
+              <?php if ($eror):?>
+                <div class="alert alert-danger col-md-12"><?php echo $eror; ?></div>
+              <?php endif ?>
               <br>
               <div class="col-lg-2 col-md-2 pull-right">
                 <button type="submit" class="genric-btn info circle arrow">Signup</button>
               </div>
-            </div>
+
+            </div> 
           </div>
           <!-- </section> -->
         </div>

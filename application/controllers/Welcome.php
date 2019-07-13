@@ -9,6 +9,8 @@ class Welcome extends CI_Controller {
 		$this->load->model('Mroaster');
 		$this->load->model('Mmember');
 		$this->load->model('Mkopi');
+		$this->load->model('Mkomentar');
+
 		// $this->load->model('MkopiEL');
 		// $this->load->model('MroasterEL');
 		// $this->load->model('MtastesEL');
@@ -18,7 +20,8 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$data['kopi'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','five_tastes'])->orderBy('id_kopi', 'desc')->get();
-
+		// print_r($data['kopi']->toArray());
+		// die();
 		$this->load->view('user/main',$data);
 		$this->load->view('user/footer');
 	}
@@ -81,34 +84,63 @@ class Welcome extends CI_Controller {
 	public function signup()
 	{
 		$inputan=$this->input->post();
-		if ($inputan) 
+		$this->form_validation->set_rules('username_member', 'Username', 'required');
+		$this->form_validation->set_rules('username_member', 'Username', 'is_unique[member.username_member]');
+		$this->form_validation->set_rules('password_member', 'Password', 'required');
+		$this->form_validation->set_rules('nama_member', 'Fullname', 'required');
+		// $this->form_validation->set_rules('foto_member', 'Profile Picture', 'required');
+		$this->form_validation->set_message('is_unique', '%s has already registered. Choose another username');
+
+		// if ($inputan($_FILES['userfile']['name']))
+		// {
+		// 	$this->form_validation->set_rules('userfile', 'Document', 'required');
+		// }
+
+		if ($this->form_validation->run() == TRUE) 
 		{
 			$this->Mmember->save_member($inputan);
 			echo "<script>alert('Registration success, please login');</script>";
 
 			redirect('Welcome/login','refresh');
 		}
-		$this->load->view('user/signup');
+
+		else
+		{
+			$data['eror']=validation_errors();
+		}
+		$this->load->view('user/signup',$data);
 	}
 
 	public function signup_roaster()
 	{
+		$this->form_validation->set_rules('username_roaser', 'Username', 'required');
+		$this->form_validation->set_rules('username_roaser', 'Username', 'is_unique[roaster.username_roaster]');
+		$this->form_validation->set_message('is_unique', '%s has already registered. Choose another username');
+		$this->form_validation->set_rules('password_roaster', 'Password', 'required');
+		$this->form_validation->set_rules('nama_roaster', 'Fullname', 'required');
+		$this->form_validation->set_rules('foto_roaster', 'Profile Picture', 'required');
+
 		$inputan=$this->input->post();
-		if ($inputan) 
+		if ($this->form_validation->run() == TRUE) 
 		{
 			$this->Mroaster->save_roaster($inputan);
+			echo "<script>alert('Registration success, please login');</script>";
 			redirect('Welcome/login_roaster','refresh');
 		}
-		$this->load->view('user/roaster/signup');
+		else
+		{
+			$data['eror']=validation_errors();
+
+		}
+		$this->load->view('user/roaster/signup', $data);
 	}
 
 	function detail_kopi($id_kopi)
 	{
 
 		$data['k'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'])->where('id_kopi', $id_kopi)->get();
-		// $get['k'] = $this->Mkopi->get_kopi($id_kopi);
-// print_r($data);
-// die();
+		$data['komentar'] = MkomentarEL::with(['kopi', 'roaster', 'member'])->where('kopi_id_kopi', $id_kopi)->get();
+		
 		$this->load->view('user/detail_kopi',$data);
 		$this->load->view('user/footer');
 	}
@@ -117,7 +149,7 @@ class Welcome extends CI_Controller {
 	{
 		// var_dump('hai');die();
 		$keyword = $this->input->post('keyword');
-		$data['kopi']=$this->Mkopi->cari_kopi($keyword);
+		$data['k'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'])->where('nama_kopi', 'like', '%' . $keyword . '%')->get();
 		$k = $keyword;
 		$this->load->view('user/hasil_cari',$data);
 

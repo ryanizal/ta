@@ -193,12 +193,12 @@ class Member extends CI_Controller {
 		$i=0;
 		$id_kopi = array();
 		foreach ($datakopi as $row) {
-			// if ($i>=3) { break; }
+			if ($i>=3) { break; }
 			$id_kopi[$i] = $row['id_kopi'];
 			$matriks_bobot_alternatif[$i][0] = $row['acidity'];
 			$matriks_bobot_alternatif[$i][1] = $row['sweet'];
 			$matriks_bobot_alternatif[$i][2] = $row['savory'];
-			$matriks_bobot_alternatif[$i][3] = $row['bitter'];
+			$matriks_bobot_alternatif[$i][3] = $row['bitter']; 
 			$i++;
 		}
 
@@ -248,7 +248,7 @@ class Member extends CI_Controller {
 		}
 
 		for($i=0;$i<count($id_rangking);$i++) {
-			$kopi_rangking[$i] = MkopiEL::with(['profil','jenis','proses','foto'])->where('id_kopi',$id_rangking[$i])->get();
+			$kopi_rangking[$i] = MkopiEL::with(['profil','jenis','proses','foto','roaster'])->where('id_kopi',$id_rangking[$i])->get();
 		}
 
 		// print_r($matriks_nilai_kriteria);
@@ -284,7 +284,8 @@ class Member extends CI_Controller {
 	{
 		// var_dump('hai');die();
 		$keyword = $this->input->post('keyword');
-		$data['kopi']=$this->Mkopi->cari_kopi($keyword);
+		// $data['kopi']=$this->Mkopi->cari_kopi($keyword);
+		$data['k'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'])->where('nama_kopi', 'like', '%' . $keyword . '%')->get();
 		$k = $keyword;
 		$this->load->view('user/member/header');
 		$this->load->view('user/member/hasil_cari',$data);

@@ -36,7 +36,7 @@
 						<th>Email</th>
 						<!-- <th>Jumlah Kopi</th> -->
 						<th>No Telp</th>
-						<!-- <th>Opsi</th> -->
+						<th>Aksi</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -47,11 +47,11 @@
 							<td><?php echo $value->email_roaster ?></td>
 							<!-- <td><?php echo $value['email_roaster'] ?></td> -->
 							<td><?php echo $value->telp_roaster ?></td>
-							<!-- <td> -->
+							<td>
 								<!-- <a href="" class="btn btn-info btn-sm"> Detail</a> -->
 								<!-- <a href="<?php echo base_url('administrator/roaster/edit/'.$value->id_roaster);?>" class="btn btn-warning btn-xs"> Ubah</a> -->
-								<!-- <a href="<?php echo base_url('administrator/roaster/hapus/'.$value->id_roaster);?>" class="btn btn-danger btn-xs"> Hapus</a> -->
-							<!-- </td> -->
+								<a  class="btn btn-danger btn-xs" onClick="hapus()"> Hapus</a>
+							</td>
 						</tr>
 					<?php endforeach ;?>
 
@@ -60,3 +60,14 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	function hapus() {
+		
+		var r = confirm("Are you sure you want to delete this item?");
+		if (r == true) 
+		{	
+			window.location = "<?php echo base_url('administrator/roaster/hapus/'.$value->id_roaster);?>"					
+		}
+	}
+</script>  

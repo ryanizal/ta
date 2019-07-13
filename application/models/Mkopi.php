@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+use finfo as Finfo;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 
 class Mkopi extends CI_Model 
 {
@@ -43,92 +46,21 @@ class Mkopi extends CI_Model
 	// 	return $array;
 	// }
 
-	function save_kopi($input)
+	function save_kopi($input, $files)
 	{
-		$this->db->insert('kopi', array_intersect_key($input, array_flip([
+		$this->db->insert('kopi', Arr::only($input, [
 			'nama_kopi', 'acidity', 'sweet', 'bitter', 'savory', 'origin', 'deskripsi_kopi', 'roaster_id_roaster', 'roast_prof_id_roast_prof', 'jenis_kopi_id_jenis_kopi', 'proses_kopi_id_proses_kopi'
-		])));
+		]));
 
 		$id_kopi = $this->db->insert_id();
 
-		foreach ($data['tastes'] as $t) 
+		foreach ($input['tastes'] as $t) 
 		{
 			$this->db->query("INSERT INTO kopi_has_tastes (kopi_id_kopi, tastes_id_tastes) values ('{$id_kopi}','{$t}')");
 		}
 
-
-		$extractFileDetail = function ($files, $index) {
-			$data = [
-				'name' => '',
-				'type' => '',
-				'tmp_name' => '',
-				'error' => 0,
-				'size' => 0,
-			];
-
-			foreach ($data as $key => $value) {
-				$data[$key] = array_key_exists($key, $files)
-				? (array_key_exists($index, $files[$key]) ? $files[$key][$index] : $data[$key])
-				: $data[$key];
-			}
-
-			return $data;
-		};
-
-		foreach ($data['foto'] as $f) {
-
-
-			if (array_key_exists('nama_foto', $f)) {
-				foreach ($f['nama_foto']['name'] as $index => $value)
-				{
-					if (empty($value)) {
-						break;
-					}
-
-					$fileKey = $this->uuid->v4();
-					$uploadDir = 'assets/img/coffee';
-
-					$uploadPath = FCPATH . $uploadDir;
-					$fileExt = pathinfo($value, PATHINFO_EXTENSION);
-					$fileName = $this->uuid->v4() . '.' . $fileExt;
-					$fullpath = $uploadPath . '/' . $fileName;
-					$urlPath = $uploadDir . '/' . $fileName;
-
-					while (is_file($fullpath)) {
-						$fileName = $this->uuid->v4() . '.' . $fileExt;
-						$fullpath = $uploadPath . '/' . $fileName;
-					}
-
-					$config['upload_path'] = $uploadPath;
-					$config['allowed_types'] = 'gif|jpg|png';
-					$config['file_name'] = $fileName;
-
-					$this->upload->initialize($config);
-
-					$_FILES[$fileKey] = $extractFileDetail($f['nama_foto'], $index);
-
-					$u = $this->upload->do_upload($fileKey);
-
-					if ($u) {
-						$data_upload = $this->upload->data();
-					} else {
-						var_dump($this->upload->display_errors());die();
-						throw new Exception("Gagal Upload foto ke $index");
-					}
-
-					$this->db->insert('foto', [
-						'path_foto' => $urlPath,
-						'kopi_id_kopi' => $id_kopi,
-					]);
-				}
-			}
-		// print_r($input);
-		// die();
-
-		// $this->db->insert('kopi_has_tastes', [
-		// 	'kopi_id_kopi' => $id_kopi,
-		// 	'tastes_id_tastes' => $input['tastes'],
-		// ]);
+		if (array_key_exists('photos', $files)) {
+			$this->save_foto((array) $files['photos'], $id_kopi, Arr::get($input, 'selected-photos'));
 		}
 	}
 
@@ -150,8 +82,6 @@ class Mkopi extends CI_Model
 		return $data_kopi;
 	}
 
-	
-
 	function hapus_kopi($id_kopi){
 
 		$this->db->where('k.id_kopi', $id_kopi);
@@ -169,40 +99,139 @@ class Mkopi extends CI_Model
 
 		$this->db->where('id_kopi', $id_kopi);
 		$this->db->delete('kopi');
-
 	}
 
-	function edit_kopi($input,$file,$id_kopi)
+	function edit_kopi($input, $files, $id_kopi)
 	{
-		$detail_kopi = $this->get_kopi($id_kopi);
-		foreach ($file as $nama_foto => $atribut) 
-		{
-			
-			if (!empty($atribut["tmp_name"])) 
-			{
-				$foto_lama = $detail_kopi[$nama_foto];
+		if (array_key_exists('photos', $files)) {
+			$this->save_foto((array) $files['photos'], $id_kopi, Arr::get($input, 'selected-photos'));
+		}
 
-				if (file_exists("assets/img/coffee/".$foto_lama)) 
-				{
-					unlink("assets/img/coffee/".$foto_lama);
-				}
-				$config['upload_path'] = './assets/img/coffee';
-				$config['allowed_types'] = 'gif|jpg|png';
+		$this->db->where('id_kopi', $id_kopi);
+		$this->db->update('kopi', Arr::only($input, [
+			'nama_kopi', 'acidity', 'sweet', 'bitter', 'savory', 'origin', 'deskripsi_kopi', 'roaster_id_roaster', 'roast_prof_id_roast_prof', 'jenis_kopi_id_jenis_kopi', 'proses_kopi_id_proses_kopi'
+		]));
+	}
 
-				$this->load->library('upload', $config);
-				$u = $this->upload->do_upload($nama_foto);
+	function convertFromFileuploader($file = [])
+	{
+		$entry = Arr::get($file, 'name', []);
+		$result = [];
 
+		$i = 0;
+		foreach ($entry as $f) {
+			$tmpName = Arr::get($file, "tmp_name.{$i}");
 
-				if ($u)
-				{
-					$data_upload = $this->upload->data();
-					$input[$nama_foto] = $data_upload['file_name'];
-
-				}
+			if (! file_exists($tmpName)) {
+				continue;
 			}
 
-			$this->db->where('id_kopi', $id_kopi);
-			$this->db->update('kopi', $input);
+			$result[] = [
+				'name' => Arr::get($file, "name.{$i}"),
+				'tmp_name' => $tmpName,
+				'type' => Arr::get($file, "type.{$i}"),
+				'error' => Arr::get($file, "error.{$i}"),
+				'size' => Arr::get($file, "size.{$i}"),
+			];
+
+			$i++;
+		}
+
+		return $result;
+	}
+
+	function convertToFileuploader($files = [])
+	{
+		return Collection::make($files)->map(function ($file, $key) {
+			$path = FCPATH . Arr::get($file, 'path_foto');
+
+			if (! file_exists($path)) {
+				return;
+			}
+
+			$finfo = new Finfo(FILEINFO_MIME_TYPE);
+        	$mimetype = $finfo->file($path);
+        	$key++;
+
+			return [
+				'name' => "Foto {$key}",
+				'size' => filesize($path),
+				'type' => $mimetype,
+				'file' => base_url($file->path_foto),
+				'data' => [
+					'source_id' => $file->id_foto,
+				]
+			];
+		})->filter()->values();
+	}
+
+	function save_foto($foto, $id_kopi, $selectedIds = [])
+	{
+		$selectedIds = array_filter(Arr::wrap($selectedIds));
+		$kopi = MkopiEL::findOrFail($id_kopi);
+
+		$current = $kopi->foto->whereNotIn('id_foto', $selectedIds);
+
+		$foto = $this->convertFromFileuploader($foto);
+
+		foreach ($current as $oldFoto) {
+			$path_foto = FCPATH . $oldFoto->path_foto;
+			if (file_exists($path_foto)) {
+				unlink($path_foto);
+			}
+		}
+
+		$kopi->foto()->whereNotIn('id_foto', $selectedIds)->delete();
+
+		$mimes = new \Mimey\MimeTypes;
+
+		$i = 0;
+		foreach ($foto as $f) {
+			if (array_key_exists('tmp_name', $f)) {
+				if (! file_exists($f['tmp_name'])) {
+					break;
+				}
+
+				$fileKey = $this->uuid->v4();
+				$uploadDir = 'assets/img/coffee';
+
+				$uploadPath = FCPATH . $uploadDir;
+				$ext = $mimes->getExtension($f['type']);
+				$fileExt = $ext ? $ext : pathinfo($f['tmp_name'], PATHINFO_EXTENSION);
+				$fileName = $this->uuid->v4() . '.' . $fileExt;
+				$fullpath = $uploadPath . '/' . $fileName;
+				$urlPath = $uploadDir . '/' . $fileName;
+
+				while (is_file($fullpath)) {
+					$fileName = $this->uuid->v4() . '.' . $fileExt;
+					$fullpath = $uploadPath . '/' . $fileName;
+				}
+
+				$config['upload_path'] = $uploadPath;
+				$config['allowed_types'] = 'jpg|png|jpeg|image/jpeg|image/png';
+				$config['file_name'] = $fileName;
+
+				$this->upload->initialize($config);
+
+				$_FILES[$fileKey] = $f;
+
+				$u = $this->upload->do_upload($fileKey);
+
+				if ($u) {
+					$data_upload = $this->upload->data();
+				} else {
+					$idx = $i + 1;
+					// var_dump($this->upload->display_errors());die();
+					throw new Exception("Gagal Upload foto ke $idx");
+				}
+
+				$this->db->insert('foto', [
+					'path_foto' => $urlPath,
+					'kopi_id_kopi' => $id_kopi,
+				]);
+
+				$i++;
+			}
 		}
 	}
 
@@ -239,11 +268,7 @@ class Mkopi extends CI_Model
 		$this->db->group_by('v.kopi_id_kopi');
 		$data = $this->db->get('',$limit);
 
-		
-		// print_r($data->result_array());
-		// die();
 		return $data->result_array(); 
-
 	}
 
 	function profile_roast()

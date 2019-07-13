@@ -7,7 +7,7 @@
 		<meta name="description" content="">
 		<meta name="keywords" content="">
 		<meta charset="UTF-8">
-		<title>Coffee</title>
+		<title>Member</title>
 
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/linearicons.css">

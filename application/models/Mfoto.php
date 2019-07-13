@@ -10,9 +10,9 @@ class Mfoto extends Eloquent
 	use HasEagerLimit;
 	protected $table = "foto";
 	protected $primaryKey = 'id_foto';
-
-
 }
+
+
 
 /* End of file Mfoto.php */
 /* Location: ./application/models/Mfoto.php */

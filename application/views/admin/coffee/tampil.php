@@ -56,7 +56,7 @@
 								<!-- <a href="" class="btn btn-info btn-sm"> Detail</a> -->
 								<a href="<?php echo base_url('administrator/Coffee/detail/'.$value['id_kopi']);?>" class="btn btn-info btn-sm"> Detail</a>
 								<a href="<?php echo base_url('administrator/Coffee/edit/'.$value['id_kopi']);?>" class="btn btn-warning btn-sm"> Ubah</a>
-								<a href="<?php echo base_url('administrator/Coffee/hapus/'.$value['id_kopi']);?>" class="btn btn-danger btn-sm"> Hapus</a>
+								<a class="btn btn-danger btn-sm" onClick="hapus()"> Hapus</a>
 							</td>
 						</tr>
 					<?php endforeach ?>
@@ -66,3 +66,14 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	function hapus() {
+		
+		var r = confirm("Are you sure you want to delete this item?");
+		if (r == true) 
+		{	
+			window.location = "<?php echo base_url('administrator/Coffee/hapus/'.$value['id_kopi']);?>"					
+		}
+	}
+</script> 

@@ -114,6 +114,9 @@
                     <input class="" type="file" name="foto_roaster" required>
                   </div>
                 </div>
+                <?php if ($eror):?>
+                  <div class="alert alert-danger col-md-12"><?php echo $eror; ?></div>
+                <?php endif ?>
                 <br>
                 <div class="col-lg-2 col-md-2 pull-right">
                   <button type="submit" class="genric-btn info circle arrow">Signup</button>

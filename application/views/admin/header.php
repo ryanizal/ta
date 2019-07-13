@@ -5,10 +5,15 @@
   <link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet">
   <link href="<?php echo base_url();?>assets/fa/css/all.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/datatables/css/datatables.min.css"/>
- 
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/fileuploader/font/font-fileuploader.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/fileuploader/jquery.fileuploader.min.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/fileuploader/jquery.fileuploader-theme-thumbnails.css"> 
+  <script src="<?php echo base_url();?>assets/user/js/vendor/jquery-2.2.4.min.js"></script>
+  <script src="<?php echo base_url();?>assets/fileuploader/jquery.fileuploader.min.js"></script>
+  
 
 
-	<title></title>
+  <title></title>
 </head>
 <body>
 	<div id="wrapper">
@@ -31,13 +36,13 @@
       <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
           
-        <li><a href="<?php echo base_url("administrator/Home") ?>"><i class="fas fa-home"></i> Home</a></li>
-        <li><a href="<?php echo base_url("administrator/Roaster") ?>"><i class="fas fa-users"></i> Roaster</a></li>
-        <li><a href="<?php echo base_url("administrator/Member") ?>"><i class="fas fa-users"></i> Member</a></li>
-        <li><a href="<?php echo base_url("administrator/Coffee") ?>"><i class="fas fa-users"></i> Coffee</a></li>
-        <li><a href="<?php echo base_url("administrator/Home/logout") ?>"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+          <li><a href="<?php echo base_url("administrator/Home") ?>"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="<?php echo base_url("administrator/Roaster") ?>"><i class="fas fa-users"></i> Roaster</a></li>
+          <li><a href="<?php echo base_url("administrator/Member") ?>"><i class="fas fa-users"></i> Member</a></li>
+          <li><a href="<?php echo base_url("administrator/Coffee") ?>"><i class="fas fa-users"></i> Coffee</a></li>
+          <li><a href="<?php echo base_url("administrator/Home/logout") ?>"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
 
-      </ul>
-    </div>sad
-  </nav>
-  
+        </ul>
+      </div>
+    </nav>
+    
