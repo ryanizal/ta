@@ -6,7 +6,16 @@ class Member extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		
+		if (!@$_SESSION['member']['id_member']) {
+			//echo "<script>alert('Belum Login');</script>";
+			$this->session->set_flashdata('pesan', '<div class="alert alert-warning" role="alert">Logged Out / Not Login yet
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>');
+			redirect('Welcome/login');
+			exit;
+		}
 		
 		$this->load->model('Mkopi');
 		$this->load->model('Mmember');
@@ -18,13 +27,43 @@ class Member extends CI_Controller {
 	{
 		$data['nama_member'] = $_SESSION['member']['nama_member'];
 		$idm = $_SESSION['member']['id_member'];
-		$data['kopi'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'=>function($query)
-		{
-			$query->limit(5);
-		}])->orderBy('id_kopi','desc')->get();
+		// $data['kopi'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'=>function($query)
+		// {
+		// 	$query->limit(5);
+		// }])->orderBy('id_kopi','desc')->limit(2, 5)->get();
+		$data['kopi'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'])->orderBy('id_kopi','desc')->skip($this->uri->segment(3))->take(5)->get();
+
+		$this->load->library('pagination');
+
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+		$config['attributes'] = ['class' => 'page-link'];
+		$config['first_link'] = false;
+		$config['last_link'] = false;
+		$config['first_tag_open'] = '<li class="page-item">';
+		$config['first_tag_close'] = '</li>';
+		$config['prev_link'] = '&laquo';
+		$config['prev_tag_open'] = '<li class="page-item">';
+		$config['prev_tag_close'] = '</li>';
+		$config['next_link'] = '&raquo';
+		$config['next_tag_open'] = '<li class="page-item">';
+		$config['next_tag_close'] = '</li>';
+		$config['last_tag_open'] = '<li class="page-item">';
+		$config['last_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="page-item active"><a href="#" class="page-link">';
+		$config['cur_tag_close'] = '<span class="sr-only">(current)</span></a></li>';
+		$config['num_tag_open'] = '<li class="page-item">';
+		$config['num_tag_close'] = '</li>';
+		$config['base_url'] = site_url('member/index/');//http://example.com/index.php/test/page/';
+		$config['total_rows'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'])->count();
+		$config['per_page'] = 5;
+
+		$this->pagination->initialize($config);
+
+		$data['links'] = $this->pagination->create_links();
 
 //belum selesai
-		$idm = $_SESSION['member']['id_member'];
+		$idm = $_SESSION['member']['id_member']; //$this->session->userdata('member')['id_member'];
 		$data['last'] = MmemberEL::find($idm)->kopi()->with(['profil','jenis','proses','foto','roaster','tastes'=>function($query)
 		{
 			$query->limit(5);
@@ -183,9 +222,16 @@ class Member extends CI_Controller {
 			$jumlah_baris_eigen[$i] = $jumlah_baris[$i] + $eigen[$i];
 		}
 		$lambda_max = array_sum($jumlah_baris_eigen);
+
 		$ri = 0.9;
 		$ci = ($lambda_max - 4) / 3;
 		$cr = $ci/$ri;
+
+		if ($cr>$ri) {
+			echo "<script>alert('Input Not Consistent. Try Again! ')</script>";
+			redirect('Member/rekomendasi','refresh');
+		}
+
 
 		$matriks_bobot_alternatif = array();
 		$datakopi = $this->Mkopi->view_kopi();
@@ -262,6 +308,7 @@ class Member extends CI_Controller {
 		// print_r($ri);
 		// print_r($ci);
 		// print_r($cr);
+		// die();
 
 		// print_r($matriks_bobot_alternatif);
 		// print_r($matriks_hasil);
@@ -270,6 +317,8 @@ class Member extends CI_Controller {
 
 		// print_r($id_rangking);
 		// print_r($hasil_rangking);
+
+
 
 		$data['kopi_rangking'] = $kopi_rangking;
 		$data['hasil_rangking'] = $hasil_rangking;

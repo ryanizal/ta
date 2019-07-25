@@ -18,8 +18,42 @@ class Welcome extends CI_Controller {
 	}
 
 	public function index()
-	{
-		$data['kopi'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','five_tastes'])->orderBy('id_kopi', 'desc')->get();
+	{ 
+		// $data['kopi'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','five_tastes'])->orderBy('id_kopi', 'desc')->get();
+
+		$data['kopi'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'])->orderBy('id_kopi','desc')->skip($this->uri->segment(3))->take(5)->get();
+
+		$this->load->library('pagination');
+		
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+		$config['attributes'] = ['class' => 'page-link'];
+		$config['first_link'] = false;
+		$config['last_link'] = false;
+		$config['first_tag_open'] = '<li class="page-item">';
+		$config['first_tag_close'] = '</li>';
+		$config['prev_link'] = '&laquo';
+		$config['prev_tag_open'] = '<li class="page-item">';
+		$config['prev_tag_close'] = '</li>';
+		$config['next_link'] = '&raquo';
+		$config['next_tag_open'] = '<li class="page-item">';
+		$config['next_tag_close'] = '</li>';
+		$config['last_tag_open'] = '<li class="page-item">';
+		$config['last_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="page-item active"><a href="#" class="page-link">';
+		$config['cur_tag_close'] = '<span class="sr-only">(current)</span></a></li>';
+		$config['num_tag_open'] = '<li class="page-item">';
+		$config['num_tag_close'] = '</li>';
+
+		// $config['full_tag_open'] = '<p>';
+		// $config['full_tag_close'] = '</p>';
+		$config['base_url'] = site_url('welcome/index/');//http://example.com/index.php/test/page/';
+		$config['total_rows'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'])->count();
+		$config['per_page'] = 5;
+
+		$this->pagination->initialize($config);
+
+		$data['links'] = $this->pagination->create_links();
 		// print_r($data['kopi']->toArray());
 		// die();
 		$this->load->view('user/main',$data);
@@ -85,7 +119,7 @@ class Welcome extends CI_Controller {
 	{
 		$inputan=$this->input->post();
 		$this->form_validation->set_rules('username_member', 'Username', 'required');
-		$this->form_validation->set_rules('username_member', 'Username', 'is_unique[member.username_member]');
+		// $this->form_validation->set_rules('username_member', 'Username', 'is_unique[member.username_member]');
 		$this->form_validation->set_rules('password_member', 'Password', 'required');
 		$this->form_validation->set_rules('nama_member', 'Fullname', 'required');
 		// $this->form_validation->set_rules('foto_member', 'Profile Picture', 'required');
@@ -113,8 +147,8 @@ class Welcome extends CI_Controller {
 
 	public function signup_roaster()
 	{
-		$this->form_validation->set_rules('username_roaser', 'Username', 'required');
-		$this->form_validation->set_rules('username_roaser', 'Username', 'is_unique[roaster.username_roaster]');
+		$this->form_validation->set_rules('username_roaster', 'Username', 'required');
+		$this->form_validation->set_rules('username_roaster', 'Username', 'is_unique[roaster.username_roaster]');
 		$this->form_validation->set_message('is_unique', '%s has already registered. Choose another username');
 		$this->form_validation->set_rules('password_roaster', 'Password', 'required');
 		$this->form_validation->set_rules('nama_roaster', 'Fullname', 'required');

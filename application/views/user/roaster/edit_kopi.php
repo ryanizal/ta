@@ -12,27 +12,92 @@
 						<input type="text" name="nama_kopi" placeholder="Coffee's Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Coffees Name'" required class="single-input" value="<?php echo $kopi->nama_kopi ?>">
 					</div>
 					
-					<div class="mt-10">
+					<div class="mt-20">
+						<p>Acidity</p>
+					</div>
+					<div class="mt-20 mb-20">
+						<div class="range">
+							<input name="acidity" type="range" min="1" max="9" steps="1" value="<?php echo $kopi->acidity ?>">
+						</div>
+
+						<ul class="range-labels">
+							<li class="active selected">1</li>
+							<li>2</li>
+							<li>3</li>
+							<li>4</li>
+							<li>5</li>
+							<li>6</li>
+							<li>7</li>
+							<li>8</li>
+							<li>9</li>
+						</ul>
+					</div>
+					<br>
+					<div class="mt-20">
 						<p>Sweetness</p>
-						
 					</div>
-					<div class="mt-10">	
-						<input type="text" name="sweet" placeholder="Sweetness" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Sweetness'" required class="single-input" value="<?php echo $kopi->sweet ?>">
+					<div class="mt-20 mb-20">
+						<div class="range">
+							<input name="sweet" type="range" min="1" max="9" steps="1" value="<?php echo $kopi->sweet ?>">
+						</div>
+
+						<ul class="range-labels">
+							<li class="active selected">1</li>
+							<li>2</li>
+							<li>3</li>
+							<li>4</li>
+							<li>5</li>
+							<li>6</li>
+							<li>7</li>
+							<li>8</li>
+							<li>9</li>
+						</ul>
 					</div>
-					<div class="mt-10">
-						<p>Bitter</p>
-						
-					</div>
-					<div class="mt-10">
-						<input type="text" name="bitter" placeholder="Bitterness" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Bitterness'" required class="single-input" value="<?php echo $kopi->bitter ?>">
-					</div>
-					<div class="mt-10">
+					<br>
+					<div class="mt-20">
 						<p>Savory</p>
 						
 					</div>
-					<div class="mt-10">
-						<input type="text" name="savory" placeholder="Savoriness" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Savoriness'" required class="single-input" value="<?php echo $kopi->savory ?>">
+					<div class="mt-20 mb-20">
+						<div class="range">
+							<input name="savory" type="range" min="1" max="9" steps="1" value="<?php echo $kopi->savory ?>">
+						</div>
+
+						<ul class="range-labels">
+							<li class="active selected">1</li>
+							<li>2</li>
+							<li>3</li>
+							<li>4</li>
+							<li>5</li>
+							<li>6</li>
+							<li>7</li>
+							<li>8</li>
+							<li>9</li>
+						</ul>
 					</div>
+					<br>
+					<div class="mt-20">
+						<p>Bitterness</p>
+						
+					</div>
+					<div class="mt-20 mb-20">
+						<div class="range">
+							<input name="bitter" type="range" min="1" max="9" steps="1" value="<?php echo $kopi->bitter ?>">
+						</div>
+
+						<ul class="range-labels">
+							<li class="active selected">1</li>
+							<li>2</li>
+							<li>3</li>
+							<li>4</li>
+							<li>5</li>
+							<li>6</li>
+							<li>7</li>
+							<li>8</li>
+							<li>9</li>
+						</ul>
+					</div>
+					<br>
 					<div class="mt-10">
 						<p>Origin</p>
 						
@@ -106,26 +171,7 @@
 							</select>
 						</div>
 					</div>
-					<div class="mt-10">
-						<p>Tastes</p>
-						
-					</div>
-					<div class="input-group-icon mt-10">
-						<div class="icon"><i class="fa fa-fire" aria-hidden="true"></i></div>
-						<div class="form-select" id="default-select"">
-							<select name="tastes">
-								<?php foreach ($tastes as $tt): ?>
-									<option value="" disabled>Tastes</option>
 
-									<option 
-									<?php if ($kopi->tastes->firstWhere('id_tastes', $tt->id_tastes)) {
-										echo "selected";
-									}?>
-									value="<?php echo $tt->id_tastes ?>"><?php echo $tt->nama_tastes ?> </option>
-								<?php endforeach ?>
-							</select>
-						</div>
-					</div>
 
 					<div class="mt-10">
 						<p>About This Coffee</p>
@@ -148,7 +194,9 @@
 						<script>
 							function goBack() 
 							{
-								window.history.back()
+								window.onbeforeunload = function(){
+									return 'Are you sure you want to leave?';
+								};
 							}
 							
 						</script>
@@ -163,3 +211,19 @@
 		</div>
 	</div>
 </div>
+<script>
+	var counter = 0;
+	$('.addp').click(function () {
+		console.log($(this));
+		var fg = $(this).parent().parent().clone(true, true);
+		counter++;
+		if (counter<5)
+			$('#dynamic_field').append(fg);
+	});
+
+	$('.removep').click(function () {
+		if ($('#dynamic_field > div').length > 1) {
+			$(this).parent().parent().remove();
+		}
+	});
+</script>

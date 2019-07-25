@@ -6,7 +6,7 @@
 				<form method="post" enctype="multipart/form-data">
 					
 					<div class="mt-10">
-						<input type="text" name="nama_kopi" placeholder="Coffee's Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Coffees Name'" required class="single-input">
+						<input type="text" name="nama_kopi" placeholder="Coffee's Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Coffees Name'" class="single-input">
 					</div>
 					<div class="mt-10 mb-20">
 						<p>Acidity</p>
@@ -51,27 +51,6 @@
 					</div>
 					<br>
 					<div class="mt-10 mb-20">
-						<p>Bitterness</p>
-					</div>
-					<div class="mt-10 mb-20">
-						<div class="range">
-							<input type="range" name="bitter" min="1" max="9" steps="1" value="1">
-						</div>
-
-						<ul class="range-labels">
-							<li class="active selected">1</li>
-							<li>2</li>
-							<li>3</li>
-							<li>4</li>
-							<li>5</li>
-							<li>6</li>
-							<li>7</li>
-							<li>8</li>
-							<li>9</li>
-						</ul>
-					</div>
-					<br>
-					<div class="mt-10 mb-20">
 						<p>Savoriness</p>
 					</div>
 					<div class="mt-10 mb-20">
@@ -92,10 +71,32 @@
 						</ul>
 					</div>
 					<br>
+					<div class="mt-10 mb-20">
+						<p>Bitterness</p>
+					</div>
+					<div class="mt-10 mb-20">
+						<div class="range">
+							<input type="range" name="bitter" min="1" max="9" steps="1" value="1">
+						</div>
+
+						<ul class="range-labels">
+							<li class="active selected">1</li>
+							<li>2</li>
+							<li>3</li>
+							<li>4</li>
+							<li>5</li>
+							<li>6</li>
+							<li>7</li>
+							<li>8</li>
+							<li>9</li>
+						</ul>
+					</div>
+					<br>
 					<div class="mt-20">
-						<input type="text" name="origin" placeholder="Place of Origin" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Place of Origin'" required class="single-input">
+						<input type="text" name="origin" placeholder="Place of Origin" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Place of Origin'" class="single-input">
 					</div>
 					<div class="input-group-icon mt-10">
+						<!-- <input type="text" name="aaa" placeholder="Roast ID" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Roast ID'" class="single-input"> -->
 						<div class="icon"><i class="fa fa-fire" aria-hidden="true"></i></div>
 						<div class="form-select" id="default-select"">
 							<select name="roast_prof_id_roast_prof">
@@ -111,7 +112,7 @@
 						<div class="icon"><i class="fa fa-fire" aria-hidden="true"></i></div>
 						<div class="form-select" id="default-select"">
 							<select name="jenis_kopi_id_jenis_kopi">
-								<option value="" disabled selected>Coffee's Kind</option>
+								<option value="" disabled selected>Variety</option>
 								
 								<?php foreach ($jenis_kopi as $key => $value): ?>
 									<option value="<?php echo $value->id_jenis_kopi ?>"><?php echo $value->jenis_kopi ?> </option>
@@ -137,21 +138,22 @@
 								<div class="icon"><i class="fa fa-fire" aria-hidden="true"></i></div>
 								<div class="form-select" id="default-select">
 									<select name="tastes[]">
+										<option value="" disabled selected>Taste Note's</option>
 										<?php foreach ($tastes as $value): ?>
-										<option value="<?php echo $value->id_tastes ?>" disabled selected>Taste Note's</option>
+											<!-- <option value="" disabled selected>Taste Note's</option> -->
 											<option value="<?php echo $value->id_tastes ?>"><?php echo $value->nama_tastes ?> </option>
 										<?php endforeach ?>
 									</select>
 								</div>
 							</div>
-							<div class="col-md-5">
-								<button type="button" class="addp genric-btn info circle" title="Add More"> + </button>
-								<button type="button" class="removep genric-btn danger circle" title="Remove"> x </button>
+							<div class="col-md-5 mt-15">
+								<button type="button" class="addp genric-btn info circle small" title="Add More"> + </button>
+								<button type="button" class="removep genric-btn danger circle small" title="Remove"> x </button>
 							</div>	
 						</div>
 					</div>
 					<div class="mt-10">
-						<textarea id="textareaChars" name="deskripsi_kopi" placeholder="About This Coffee" onfocus="this.placeholder = ''" onblur="this.placeholder = 'About This Coffee'" required class="single-input" maxlength="500"></textarea>
+						<textarea id="textareaChars" name="deskripsi_kopi" placeholder="About This Coffee" onfocus="this.placeholder = ''" onblur="this.placeholder = 'About This Coffee'" class="single-input" maxlength="500"></textarea>
 						<span id="chars">500</span> characters remaining
 					</div>
 					<h6 class="mt-15">Photo's</h6>
@@ -167,6 +169,9 @@
 					<div class="file-uploader">
 						<input type="file" name="photos" class="fileuploader-area">
 					</div>
+					<?php if ($eror):?>
+						<div class="alert alert-danger col-md-12"><?php echo $eror; ?></div>
+					<?php endif ?>
 					<div class="col-lg-3 col-md-3 pull-right">
 						<br>
 						<br>
@@ -183,11 +188,13 @@
 	</div>
 
 	<script>
+		var counter = 0;
 		$('.addp').click(function () {
 			console.log($(this));
 			var fg = $(this).parent().parent().clone(true, true);
-
-			$('#dynamic_field').append(fg);
+			counter++;
+			if (counter<5)
+				$('#dynamic_field').append(fg);
 		});
 
 		$('.removep').click(function () {
@@ -197,17 +204,4 @@
 		});
 	</script>
 
-	<script>
-		$('.addp2').click(function () {
-			console.log($(this));
-			var fg = $(this).parent().parent().clone(true, true);
 
-			$('#dynamic_field2').append(fg);
-		});
-
-		$('.removep2').click(function () {
-			if ($('#dynamic_field2 > div').length > 1) {
-				$(this).parent().parent().remove();
-			}
-		});
-	</script>

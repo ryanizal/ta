@@ -4,7 +4,18 @@
 		<br>
 		<div class="row">
 			<div class="col-md-3">
-				<img src="<?php echo base_url().$value->foto->first()->path_foto; ?>" class="img-fluid">
+				<div class="row">
+					<div class="fotocls col-md-12"> 
+						<?php
+							//print_r($value->foto[0]);
+						foreach ($value->foto as $rowfoto):
+							?>
+							<img src= "<?php echo base_url().$rowfoto->path_foto;?>" class="img-fluid">
+							<?php
+						endforeach;
+						?>
+					</div>
+				</div>
 			</div>
 			<div class="col-md-9 single-menu">
 
@@ -93,7 +104,7 @@
 						<div class="col-sm-10 pull-right">
 							<p class="form-control-static"> 
 								<?php foreach ($value->tastes as $taste): ?>
-									<?php echo $taste->nama_tastes; ?> |
+									<?php echo $taste->nama_tastes; ?>, 
 								<?php endforeach; ?>
 							</p>
 						</div>
@@ -101,7 +112,7 @@
 					<div class="form-group">
 						<label class="control-label col-sm-2">Roast by</label>
 						<div class="col-sm-10 pull-right">
-							<p class="form-control-static"><a href="<?php echo base_url('Member/tampil_roaster/').$value->roaster->id_roaster ?>"> : <?php echo $value->roaster->nama_roaster ?></p></a>
+							<p class="form-control-static"><a href="<?php echo base_url('Member/tampil_roaster/').$value->roaster->id_roaster ?>" class="genric-btn primary small"> <?php echo $value->roaster->nama_roaster ?></p></a>
 						</div>
 					</div>
 					<div class="form-group">
@@ -114,14 +125,27 @@
 			<?php endforeach; ?>
 		</div>
 	</div>
+	<?php if ($value->roaster_id_roaster == $id_roaster): ?>
+		<div class="pull-right">
+			<a class="genric-btn primary" href="<?php echo base_url('Roaster/edit_kopi/'.$value['id_kopi']) ?>">Edit Coffee</a> 
+		</div>
+	<?php endif; ?>
 
 	<div class="section-top-border">
 		<div class="single-menu">
 			<h3>Comments:</h3>
 			<br>
+			<!-- <?php if ($komentar == NULL) {
+				echo "<p>	belum ada komentar</p>";
+			} ?> -->
 			<?php foreach ($komentar as $value): ?>
 				<div class="card">
 					<div class="card-body">
+						<?php 
+						if ($value == NULL) {
+							echo "No one comment id this coffee yet, be the first!";
+						}
+						 ?>
 						<div class="row mb-50">
 							<div class="col-md-2">
 								<img src="<?php echo base_url('assets/img/').($value->member ? 'member/'.$value->member['foto_member'] : 'roaster/'.$value->roaster['foto_roaster']);?>" class="img img-rounded img-fluid"/>

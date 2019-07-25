@@ -70,8 +70,19 @@
 					</div>
 				<?php endforeach; ?>
 
+
 			</div>
-		</div>	
+			<div class="row">
+				<div class="col-lg-5">
+					
+				</div>
+				<div class="col-lg-5">
+					
+					<?php echo $links; ?> 
+				</div>
+			</div>
+		</div>
+
 	</section>
 
 

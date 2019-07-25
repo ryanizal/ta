@@ -15,6 +15,7 @@
 		<meta charset="UTF-8"> 
 		
 		<title>Coffee</title>
+		<link href="<?php echo base_url('assets/slick/slick/slick-theme.css');?>" rel="stylesheet">
 
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
 
@@ -63,7 +64,14 @@
 				<br>
 				<div class="row">
 					<div class="col-md-3">
-						<img src="<?php echo base_url().$value->foto->first()->path_foto; ?>" class="img-fluid">
+						<div class="row">
+							<div class="fotocls col-md-12"> 
+								<?php foreach ($value->foto as $rowfoto):?>
+									<img src= "<?php echo base_url().$rowfoto->path_foto;?>" class="img-fluid">
+								<?php endforeach;?>
+
+							</div>
+						</div>
 					</div>
 					<div class="col-md-9 single-menu">
 
@@ -250,7 +258,8 @@
 				<p>You are not log in. please <b><a href="<?php echo base_url('Welcome/signup'); ?>">Signup</a></b>. Or <b><a href="<?php echo base_url('Welcome/login'); ?>">Login</a></b></p>
 			</div>
 		</div>
-</div>
+	</div>
 </div>
 
 </div>
+

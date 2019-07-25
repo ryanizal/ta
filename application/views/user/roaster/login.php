@@ -60,6 +60,8 @@
 
               <div class="col-lg-5 single-menu">
                 <h3 class="mb-30">Login as Roaster</h3>
+                  <?php echo $this->session->flashdata('pesan'); ?>
+                
                 <!-- <a href="<?php echo base_url('Welcome/login_roaster'); ?>"><p class="pull-right">I am a Roaster</p></a> -->
                 <form method="post" >
                   <div class="form-group">

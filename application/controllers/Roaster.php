@@ -1,30 +1,72 @@
  <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+ defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Roaster extends CI_Controller {
+ class Roaster extends CI_Controller {
 
-	public function __construct()
-	{
-		parent::__construct();
-		
-		$this->load->model('Mroaster');
-		$this->load->model('Mkopi');
-		$this->load->model('Mkomentar');
-		$this->load->model('Mview');
-	}
+ 	public function __construct()
+ 	{
+ 		parent::__construct();
+ 		if (!@$_SESSION['roaster']['id_roaster']) {
+			//echo "<script>alert('Belum Login');</script>";
+ 			$this->session->set_flashdata('pesan', '<div class="alert alert-warning" role="alert">Logged Out / Not Login yet
+ 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+ 				<span aria-hidden="true">&times;</span>
+ 				</button>
+ 				</div>');
+ 			redirect('Welcome/login_roaster');
+ 			exit;
+ 		}
 
-	public function index()
-	{
-		$data['nama_roaster'] = $_SESSION['roaster']['nama_roaster'];
-		$idr = $_SESSION['roaster']['id_roaster'];
+ 		$this->load->model('Mroaster');
+ 		$this->load->model('Mkopi');
+ 		$this->load->model('Mkomentar');
+ 		$this->load->model('Mview');
+ 		// $this->load->helper('form');
+ 	}
 
-		$data['new'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'=>function($query)
-		{
-			$query->limit(5); 
-		}])->where('roaster_id_roaster', $idr)->orderBy('id_kopi','desc')->take(5)->get();
+ 	public function index()
+ 	{
+ 		$data['nama_roaster'] = $_SESSION['roaster']['nama_roaster'];
+ 		$idr = $_SESSION['roaster']['id_roaster'];
+
+ 		$data['new'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'=>function($query)
+ 		{
+ 			$query->limit(5); 
+ 		}])->where('roaster_id_roaster', $idr)->orderBy('id_kopi','desc')->skip($this->uri->segment(3))->take(5)->get();
+
+ 		$this->load->library('pagination');
+
+ 		$config['full_tag_open'] = '<ul class="pagination">';
+ 		$config['full_tag_close'] = '</ul>';
+ 		$config['attributes'] = ['class' => 'page-link'];
+ 		$config['first_link'] = false;
+ 		$config['last_link'] = false;
+ 		$config['first_tag_open'] = '<li class="page-item">';
+ 		$config['first_tag_close'] = '</li>';
+ 		$config['prev_link'] = '&laquo';
+ 		$config['prev_tag_open'] = '<li class="page-item">';
+ 		$config['prev_tag_close'] = '</li>';
+ 		$config['next_link'] = '&raquo';
+ 		$config['next_tag_open'] = '<li class="page-item">';
+ 		$config['next_tag_close'] = '</li>';
+ 		$config['last_tag_open'] = '<li class="page-item">';
+ 		$config['last_tag_close'] = '</li>';
+ 		$config['cur_tag_open'] = '<li class="page-item active"><a class="page-link">';
+ 		$config['cur_tag_close'] = '<span class="sr-only">(current)</span></a></li>';
+ 		$config['num_tag_open'] = '<li class="page-item">';
+ 		$config['num_tag_close'] = '</li>';
+
+		// $config['full_tag_open'] = '<p>';
+		// $config['full_tag_close'] = '</p>';
+		$config['base_url'] = site_url('roaster/index/');//http://example.com/index.php/test/page/';
+		$config['total_rows'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'])->count();
+		$config['per_page'] = 5;
+
+		$this->pagination->initialize($config);
+
+		$data['links'] = $this->pagination->create_links();
 
 
-		
 		// print_r($data);
 
 		// $data['new'] = $this->Mkopi->tampil_kopi_roaster(2,$idr);
@@ -54,16 +96,27 @@ class Roaster extends CI_Controller {
 		$input = $this->input->post();
 		$idr = $_SESSION['roaster']['id_roaster'];
 
+		$this->form_validation->set_rules('nama_kopi', 'Coffee name', 'required|is_unique[kopi.nama_kopi]');
+		$this->form_validation->set_rules('origin', 'Place Of Origin', 'required');
+		$this->form_validation->set_rules('roast_prof_id_roast_prof', 'Roast Profile', 'required');
+		$this->form_validation->set_rules('proses_kopi_id_proses_kopi', 'Process', 'required');
+		$this->form_validation->set_rules('jenis_kopi_id_jenis_kopi', 'Variety', 'required');
 
-		if($input)
+ 		// $this->form_validation->set_rules('tastes[]', 'Tastes Notes at Least 1', 'required');
+ 		// $this->form_validation->set_rules('photos', 'Photos', 'required');
+
+		if($this->form_validation->run() == TRUE)
 		{
-			
-			$input['tastes'] = $input['tastes[]'];
-			// print_r($input);
-			// die();
+
+			$input['tastes'] = $input['tastes'];
+			//print_r($input['tastes']);
+			// print_r($_POST['tastes']);
+			//die();
 			$input['roaster_id_roaster'] = $idr;
 			$this->Mkopi->save_kopi($input, $_FILES);
 			redirect('roaster/list_kopi');
+		} else {
+			$data['eror']=validation_errors();
 		}
 
 		$data['profile_roast'] = $this->Mkopi->profile_roast();
@@ -164,8 +217,12 @@ class Roaster extends CI_Controller {
 		redirect('Roaster/detail_kopi/'.$id_kopi.'','refresh');
 	}
 
-	function edit_kopi($id_kopi)
+	function edit_kopi($id_kopi) 
 	{
+
+
+
+
 		$input = $this->input->post(); 
 		$data['profile_roast'] = Mprofil::get();
 		$data['jenis_kopi'] = MjenisEL::get();
@@ -178,7 +235,7 @@ class Roaster extends CI_Controller {
 			$this->Mkopi->edit_kopi($input, $_FILES, $id_kopi);
 			redirect('Roaster/list_kopi');
 		}
-		// $data['k'] = $this->Mkopi->get_kopi($id_kopi);
+		// $data['k'] = $this->Mkopi->get_kopi($id_kopi); 
 		// $data['profile_roast'] = $this->Mkopi->profile_roast();
 		// $data['jenis_kopi'] = $this->Mkopi->jenis_kopi();
 		// $data['proses_kopi'] = $this->Mkopi->proses_kopi();
@@ -190,7 +247,7 @@ class Roaster extends CI_Controller {
 		$this->load->view('user/roaster/footer');
 	}
 
-	
+
 
 	function hapus_kopi($id_kopi){
 		$this->Mkopi->hapus_kopi($id_kopi);
@@ -211,7 +268,7 @@ class Roaster extends CI_Controller {
 		$keyword = $this->input->post('keyword');
 		// $data['kopi']=$this->Mkopi->cari_kopi($keyword);
 		$data['k'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'])->where('nama_kopi', 'like', '%' . $keyword . '%')->get();
-		
+
 		$k = $keyword;
 		$this->load->view('user/roaster/header');
 		$this->load->view('user/roaster/hasil_cari',$data);

@@ -1,10 +1,3 @@
-<script> 
-	$(document).ready(function(){
-		$("form").submit(function(){
-			alert("Coffee Sucessfully Edited");
-		});
-	}); 
-</script>
 <div id="page-wrapper">
 	<ol class="breadcrumb">
 		<li><a href="<?php echo base_url('administrator/Home'); ?>">Home</a></li>
@@ -127,16 +120,34 @@
 				<script>
 					function goBack() 
 					{
-						window.history.back()
+						window.onbeforeunload = function(){
+							return 'Are you sure you want to leave?';
+						};
 					}
-
 				</script>
 				<div class="col-lg-2 col-md-2 pull-right">
 					<button onClick="goBack()" class="btn btn-warning">Cancel</button>
-					<button type="submit" class="btn btn-success">Submit</button>
+					<button type="submit" onClick="alert('Coffee Sucessfully Edited')" class="btn btn-success">Submit</button>
 				</div>
 				
 			</form>
 		</div>
 	</div>
 </div>
+
+	<script>
+		var counter = 0;
+		$('.addp').click(function () {
+			console.log($(this));
+			var fg = $(this).parent().parent().clone(true, true);
+			counter++;
+			if (counter<5)
+				$('#dynamic_field').append(fg);
+		});
+
+		$('.removep').click(function () {
+			if ($('#dynamic_field > div').length > 1) {
+				$(this).parent().parent().remove();
+			}
+		});
+	</script>

@@ -52,7 +52,7 @@
 
 				<div class="form-group">
 					<label class="col-sm-1 control-label">Roaster</label>
-						<div class="col-sm-3">
+					<div class="col-sm-3">
 						<select class="form-control" name="profile_roast">
 							<option value="" disabled selected></option>
 							<?php foreach ($roaster as $key => $value): ?>
@@ -95,6 +95,25 @@
 						</select>
 					</div>
 				</div>
+				<div class="form-group" id="dynamic_field">
+					<div class="row">
+						<label class="col-md-1 mb-20 control-label">Cita Rasa</label>
+						<div class="col-md-4">
+							<select class="form-control" name="tastes[]">
+								<?php foreach ($tastes as $value): ?>
+									<option value="" disabled selected></option>
+									<!-- <option value="<?php echo $value->id_tastes ?>" disabled selected>Taste Note's</option> -->
+									<option value="<?php echo $value->id_tastes ?>"><?php echo $value->nama_tastes ?> </option>
+								<?php endforeach ?>
+							</select>
+						</div>
+						
+						<div class="col-md-5 mt-15">
+							<button type="button" class="addp genric-btn info circle small" title="Add More"> + </button>
+							<button type="button" class="removep genric-btn danger circle small" title="Remove"> x </button>
+						</div>	
+					</div>
+				</div>
 				<div class="form-group">
 					<label class="col-sm-1 control-label">Cita Rasa</label>
 					<div class="col-sm-3">
@@ -115,21 +134,11 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-1 control-label">Foto 1</label>
-					<div class="col-sm-3">
-						<input class="form-control" type="file" name="foto_1">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-1 control-label">Foto 2</label>
-					<div class="col-sm-3">
-						<input class="form-control" type="file" name="foto_2">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-1 control-label">Foto 3</label>
-					<div class="col-sm-3">
-						<input class="form-control" type="file" name="foto_3">
+					<label class="col-sm-1 control-label">Foto </label>
+					<div class="col-lg-6">	
+						<div class="file-uploader">
+							<input type="file" name="photos" class="fileuploader-area" data-fileuploader-files='<?php echo isset($photos) && count($photos) > 0 ? json_encode($photos) : null ?>'>	
+						</div>
 					</div>
 				</div>
 
@@ -138,3 +147,20 @@
 		</div>
 	</div>
 </div>
+
+	<script>
+		var counter = 0;
+		$('.addp').click(function () {
+			console.log($(this));
+			var fg = $(this).parent().parent().clone(true, true);
+			counter++;
+			if (counter<5)
+				$('#dynamic_field').append(fg);
+		});
+
+		$('.removep').click(function () {
+			if ($('#dynamic_field > div').length > 1) {
+				$(this).parent().parent().remove();
+			}
+		});
+	</script>

@@ -15,15 +15,15 @@
 			<br>
 			<br>
 
-			<table class="table table-bordered">
+			<table class="table table-bordered" id="dtab">
 				<thead>
 					<tr>
 						<th>No</th>
 						<th>Nama Kopi</th>
-						<th>Acidity</th>
+						<!-- <th>Acidity</th>
 						<th>Sweetness</th>
-						<th>Bitterness</th>
-						<th>Savory</th>
+						<th>Bitterness</th> 
+						<th>Savory</th> -->
 						<th>Origin</th>
 						<th>Roast profile</th>
 						<th>Tipe</th>
@@ -40,10 +40,10 @@
 							<!-- <td><?php echo $value['id_kopi'] ?></td> -->
 							<td><?php echo $no++; ?></td>
 							<td><?php echo $value['nama_kopi'] ?></td>
-							<td><?php echo $value['acidity'] ?></td>
+							<!-- <td><?php echo $value['acidity'] ?></td>
 							<td><?php echo $value['sweet'] ?></td>
 							<td><?php echo $value['bitter'] ?></td>
-							<td><?php echo $value['savory'] ?></td>
+							<td><?php echo $value['savory'] ?></td> -->
 							<td><?php echo $value['origin'] ?></td>
 							<td><?php echo $value->profil->nama_roast_prof; ?></td>
 							<td><?php echo $value->jenis->jenis_kopi; ?></td>

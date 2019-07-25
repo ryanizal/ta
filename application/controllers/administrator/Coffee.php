@@ -47,6 +47,11 @@ class Coffee extends CI_Controller {
 		{
 			$query->limit(5);
 		}])->where('id_kopi', $id_kopi)->get();
+
+		//print_r($data['k']);
+		// die();
+		// $data['photos'] = $this->Mkopi->convertToFileuploader($kopi->foto);
+		
 		$this->load->view('admin/header'); 
 		$this->load->view('admin/coffee/detail_kopi',$data);
 		

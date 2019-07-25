@@ -28,7 +28,7 @@
 			<br>
 			<br>
 
-			<table class="table table-bordered">
+			<table class="table table-bordered" id="dtab">
 				<thead>
 					<tr>
 						<th>No</th>

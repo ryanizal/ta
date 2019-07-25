@@ -15,7 +15,7 @@
 			<br>
 			<br>
 
-			<table class="table table-bordered">
+			<table class="table table-bordered" id="dtab">
 				<thead>
 					<tr>
 						<th width="3%" class="text-center">No</th>

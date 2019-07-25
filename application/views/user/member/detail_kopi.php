@@ -4,7 +4,18 @@
 		<br>
 		<div class="row">
 			<div class="col-md-3">
-				<img src="<?php echo base_url().$value->foto->first()->path_foto; ?>" class="img-fluid">
+				<div class="row">
+					<div class="fotocls col-md-12"> 
+						<?php
+							//print_r($value->foto[0]);
+						foreach ($value->foto as $rowfoto):
+							?>
+							<img src= "<?php echo base_url().$rowfoto->path_foto;?>" class="img-fluid">
+							<?php
+						endforeach;
+						?>
+					</div>
+				</div>
 			</div>
 			<div class="col-md-9 single-menu">
 
@@ -101,7 +112,7 @@
 					<div class="form-group">
 						<label class="control-label col-sm-2">Roast by</label>
 						<div class="col-sm-10 pull-right">
-							<p class="form-control-static"><a href="<?php echo base_url('Member/tampil_roaster/').$value->roaster->id_roaster ?>"> : <?php echo $value->roaster->nama_roaster ?></p></a>
+							<p class="form-control-static"><a href="<?php echo base_url('Member/tampil_roaster/').$value->roaster->id_roaster ?>" class="genric-btn primary small">  <?php echo $value->roaster->nama_roaster ?></p></a>
 						</div>
 					</div>
 					<div class="form-group">

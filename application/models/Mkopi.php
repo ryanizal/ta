@@ -84,21 +84,25 @@ class Mkopi extends CI_Model
 
 	function hapus_kopi($id_kopi){
 
-		$this->db->where('k.id_kopi', $id_kopi);
+		// $this->db->where('k.id_kopi', $id_kopi);
+
+		// $detail_kopi = $this->get_kopi($id_kopi);
+		// $old = $detail_kopi['foto_1'];
+		// $old = $detail_kopi['foto_2'];
+		// $old = $detail_kopi['foto_3'];
 
 
-		$detail_kopi = $this->get_kopi($id_kopi);
-		$old = $detail_kopi['foto_1'];
-		$old = $detail_kopi['foto_2'];
-		$old = $detail_kopi['foto_3'];
+		// if (file_exists("./assets/img/kopi".$old)) {
+		// 	unlink("./assets/img/kopi".$old);
+		// }
 
-
-		if (file_exists("./assets/img/kopi".$old)) {
-			unlink("./assets/img/kopi".$old);
-		}
-
+		$this->db->where('kopi_id_kopi', $id_kopi);
+		$this->db->delete('foto');
+		$this->db->where('kopi_id_kopi', $id_kopi);
+		$this->db->delete('kopi_has_tastes');
 		$this->db->where('id_kopi', $id_kopi);
 		$this->db->delete('kopi');
+
 	}
 
 	function edit_kopi($input, $files, $id_kopi)

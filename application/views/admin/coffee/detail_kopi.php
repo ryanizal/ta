@@ -14,8 +14,17 @@
 		<div class="panel-body">
 			<div class="row">
 				<?php foreach ($k as $value):;?>
-					<div class="col-md-3">
-						<img src= "<?php echo base_url().$value->foto->first()->path_foto;?>" class="img-responsive">
+					<div class="fotocls col-md-3">
+						<?php
+							//print_r($value->foto[0]);
+						foreach ($value->foto as $rowfoto) {
+						?>
+						<div class="col-md-3">
+							<img src= "<?php echo base_url().$rowfoto->path_foto;?>" class="img-responsive">
+						</div>
+						<?php
+						}
+						?>
 					</div>
 					<div class="col-md-9">
 						<div class="row">
@@ -142,3 +151,4 @@
 		</div>
 	</div>
 </div>
+

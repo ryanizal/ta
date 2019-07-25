@@ -9,6 +9,8 @@
 		<meta charset="UTF-8">
 		<title>Member</title>
 
+		<link href="<?php echo base_url();?>assets/slick/slick/slick-theme.css" rel="stylesheet">
+
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/linearicons.css">
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/font-awesome.min.css">
@@ -19,6 +21,8 @@
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/owl.carousel.css">
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/user/css/main.css">
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/css/komen.css">
+		<script src="<?php echo base_url();?>assets/user/js/vendor/jquery-2.2.4.min.js"></script>
+		
 	</head>
 	<body class="menu-area">
 
