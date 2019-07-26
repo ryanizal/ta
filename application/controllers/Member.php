@@ -31,7 +31,7 @@ class Member extends CI_Controller {
 		// {
 		// 	$query->limit(5);
 		// }])->orderBy('id_kopi','desc')->limit(2, 5)->get();
-		$data['kopi'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'])->orderBy('id_kopi','desc')->skip($this->uri->segment(3))->take(5)->get();
+		$data['kopi'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'])->orderBy('id_kopi','desc')->skip($this->uri->segment(3))->take(6)->get();
 
 		$this->load->library('pagination');
 
@@ -56,7 +56,7 @@ class Member extends CI_Controller {
 		$config['num_tag_close'] = '</li>';
 		$config['base_url'] = site_url('member/index/');//http://example.com/index.php/test/page/';
 		$config['total_rows'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'])->count();
-		$config['per_page'] = 5;
+		$config['per_page'] = 6;
 
 		$this->pagination->initialize($config);
 

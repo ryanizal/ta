@@ -220,7 +220,13 @@
 	function edit_kopi($id_kopi) 
 	{
 
-
+		$this->form_validation->set_rules('nama_kopi', 'Coffee name', 'required');
+		$this->form_validation->set_rules('origin', 'Place Of Origin', 'required');
+		$this->form_validation->set_rules('roast_prof_id_roast_prof', 'Roast Profile', 'required');
+		$this->form_validation->set_rules('proses_kopi_id_proses_kopi', 'Process', 'required');
+		$this->form_validation->set_rules('jenis_kopi_id_jenis_kopi', 'Variety', 'required');
+		$this->form_validation->set_rules('tastes[]', 'Taste Notes', 'required');
+		// $this->form_validation->set_rules('photos', 'Photo', 'required');
 
 
 		$input = $this->input->post(); 
@@ -230,10 +236,14 @@
 		$data['tastes'] = MtastesEL::get();
 		$data['kopi'] = $kopi = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'])->findOrFail($id_kopi);
 
-		if ($input)
+		if ($this->form_validation->run() == TRUE)
 		{
+			$input['tastes'] = $input['tastes'];
+			
 			$this->Mkopi->edit_kopi($input, $_FILES, $id_kopi);
 			redirect('Roaster/list_kopi');
+		} else{
+			$data['eror']=validation_errors();
 		}
 		// $data['k'] = $this->Mkopi->get_kopi($id_kopi); 
 		// $data['profile_roast'] = $this->Mkopi->profile_roast();

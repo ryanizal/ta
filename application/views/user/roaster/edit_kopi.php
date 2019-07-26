@@ -3,13 +3,16 @@
 		<div class="row">
 			<div class="col-lg-11 col-md-11 single-menu	">
 				<h3 class="mb-30">Update Coffee</h3>
+				<?php if ($eror):?>
+					<div class="alert alert-danger col-md-12"><?php echo $eror; ?></div>
+				<?php endif ?>
 				<form method="post" enctype="multipart/form-data">
 					<div class="mt-10">
 						<p>Coffee's Name</p>
 						
 					</div>
 					<div class="mt-10">
-						<input type="text" name="nama_kopi" placeholder="Coffee's Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Coffees Name'" required class="single-input" value="<?php echo $kopi->nama_kopi ?>">
+						<input type="text" name="nama_kopi" placeholder="Coffee's Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Coffees Name'" class="single-input" value="<?php echo $kopi->nama_kopi ?>">
 					</div>
 					
 					<div class="mt-20">
@@ -103,7 +106,7 @@
 						
 					</div>
 					<div class="mt-10">
-						<input type="text" name="origin" placeholder="Place of Origin" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Place of Origin'" required class="single-input" value="<?php echo $kopi->origin ?>">
+						<input type="text" name="origin" placeholder="Place of Origin" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Place of Origin'" class="single-input" value="<?php echo $kopi->origin ?>">
 					</div>
 					<div class="mt-10">
 						<p>Roast Profile</p>
@@ -135,7 +138,7 @@
 						<div class="icon"><i class="fa fa-fire" aria-hidden="true"></i></div>
 						<div class="form-select" id="default-select"">
 							<select name="jenis_kopi_id_jenis_kopi">
-								<option value="" disabled>Coffee's Kind</option>
+								<option value="" disabled>Variety</option>
 								
 								<?php foreach ($jenis_kopi as $jk): ?>
 
@@ -171,14 +174,37 @@
 							</select>
 						</div>
 					</div>
-
+					<div class="mt-10">
+						<p>Taste Note's</p>
+						
+					</div>
+					<div class="form-group" id="dynamic_field">
+						<div class="row">
+							<div class="input-group-icon mt-10 col-md-4">
+								<div class="icon"><i class="fa fa-fire" aria-hidden="true"></i></div>
+								<div class="form-select" id="default-select">
+									<select name="tastes[]">
+										<option value="" disabled selected>Taste Note's</option>
+										<?php foreach ($tastes as $value): ?>
+											<!-- <option value="" disabled selected>Taste Note's</option> -->
+											<option value="<?php echo $value->id_tastes ?>"><?php echo $value->nama_tastes ?> </option>
+										<?php endforeach ?>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-5 mt-15">
+								<button type="button" class="addp genric-btn info circle small" title="Add More"> + </button>
+								<button type="button" class="removep genric-btn danger circle small" title="Remove"> x </button>
+							</div>	
+						</div>
+					</div>
 
 					<div class="mt-10">
 						<p>About This Coffee</p>
 						
 					</div>
 					<div class="mt-10">
-						<textarea name="deskripsi_kopi" placeholder="About This Coffee" onfocus="this.placeholder = ''" onblur="this.placeholder = 'About This Coffee'" required class="single-input"><?php echo $kopi->deskripsi_kopi ?></textarea>
+						<textarea name="deskripsi_kopi" placeholder="About This Coffee" onfocus="this.placeholder = ''" onblur="this.placeholder = 'About This Coffee'" class="single-input"><?php echo $kopi->deskripsi_kopi ?></textarea>
 					</div>
 					<div class="mt-10">
 						<p>Photo's</p>

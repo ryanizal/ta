@@ -97,6 +97,10 @@ class Mkopi extends CI_Model
 		// }
 
 		$this->db->where('kopi_id_kopi', $id_kopi);
+		$this->db->delete('komentar');
+		$this->db->where('kopi_id_kopi', $id_kopi);
+		$this->db->delete('view');
+		$this->db->where('kopi_id_kopi', $id_kopi);
 		$this->db->delete('foto');
 		$this->db->where('kopi_id_kopi', $id_kopi);
 		$this->db->delete('kopi_has_tastes');
@@ -107,6 +111,12 @@ class Mkopi extends CI_Model
 
 	function edit_kopi($input, $files, $id_kopi)
 	{
+		 $this->db->where('kopi_id_kopi', $id_kopi);
+         $this->db->delete('kopi_has_tastes');
+		foreach ($input['tastes'] as $t) 
+		{
+			$this->db->query("INSERT INTO kopi_has_tastes (kopi_id_kopi, tastes_id_tastes) values ('{$id_kopi}','{$t}')");
+		}
 		if (array_key_exists('photos', $files)) {
 			$this->save_foto((array) $files['photos'], $id_kopi, Arr::get($input, 'selected-photos'));
 		}

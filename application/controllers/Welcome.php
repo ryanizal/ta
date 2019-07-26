@@ -21,7 +21,7 @@ class Welcome extends CI_Controller {
 	{ 
 		// $data['kopi'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','five_tastes'])->orderBy('id_kopi', 'desc')->get();
 
-		$data['kopi'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'])->orderBy('id_kopi','desc')->skip($this->uri->segment(3))->take(5)->get();
+		$data['kopi'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'])->orderBy('id_kopi','desc')->skip($this->uri->segment(3))->take(6)->get();
 
 		$this->load->library('pagination');
 		
@@ -49,7 +49,7 @@ class Welcome extends CI_Controller {
 		// $config['full_tag_close'] = '</p>';
 		$config['base_url'] = site_url('welcome/index/');//http://example.com/index.php/test/page/';
 		$config['total_rows'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'])->count();
-		$config['per_page'] = 5;
+		$config['per_page'] = 6;
 
 		$this->pagination->initialize($config);
 

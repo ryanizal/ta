@@ -4,7 +4,9 @@
 			<div class="col-lg-12 col-md-12	">
 				<h3 class="mb-30">Add Coffee</h3>
 				<form method="post" enctype="multipart/form-data">
-					
+					<?php if ($eror):?>
+						<div class="alert alert-danger col-md-12"><?php echo $eror; ?></div>
+					<?php endif ?>
 					<div class="mt-10">
 						<input type="text" name="nama_kopi" placeholder="Coffee's Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Coffees Name'" class="single-input">
 					</div>
@@ -137,7 +139,7 @@
 							<div class="input-group-icon mt-10 col-md-4">
 								<div class="icon"><i class="fa fa-fire" aria-hidden="true"></i></div>
 								<div class="form-select" id="default-select">
-									<select name="tastes[]">
+									<select name="tastes[]" required="required">
 										<option value="" disabled selected>Taste Note's</option>
 										<?php foreach ($tastes as $value): ?>
 											<!-- <option value="" disabled selected>Taste Note's</option> -->
@@ -167,11 +169,9 @@
 						</div>
 					</div> -->
 					<div class="file-uploader">
-						<input type="file" name="photos" class="fileuploader-area">
+						<input type="file" name="photos" class="fileuploader-area" required="required">
 					</div>
-					<?php if ($eror):?>
-						<div class="alert alert-danger col-md-12"><?php echo $eror; ?></div>
-					<?php endif ?>
+					
 					<div class="col-lg-3 col-md-3 pull-right">
 						<br>
 						<br>

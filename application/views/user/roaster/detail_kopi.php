@@ -10,7 +10,7 @@
 							//print_r($value->foto[0]);
 						foreach ($value->foto as $rowfoto):
 							?>
-							<img src= "<?php echo base_url().$rowfoto->path_foto;?>" class="img-fluid">
+							<img src= "<?php echo base_url().$rowfoto->path_foto;?>" class="img-responsive">
 							<?php
 						endforeach;
 						?>
@@ -109,12 +109,12 @@
 							</p>
 						</div>
 					</div>
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label class="control-label col-sm-2">Roast by</label>
 						<div class="col-sm-10 pull-right">
-							<p class="form-control-static"><a href="<?php echo base_url('Member/tampil_roaster/').$value->roaster->id_roaster ?>" class="genric-btn primary small"> <?php echo $value->roaster->nama_roaster ?></p></a>
+							<a class="genric-btn primary-border small disable"> <p class="form-control-static"><?php echo $value->roaster->nama_roaster ?></p></a>
 						</div>
-					</div>
+					</div> -->
 					<div class="form-group">
 						<label class="control-label col-sm-2">Description</label>
 						<div class="col-sm-10 pull-right">
