@@ -4,6 +4,8 @@
   <link href="<?php echo base_url();?>assets/slick/slick/slick-theme.css" rel="stylesheet">
   <link href="<?php echo base_url();?>assets/css/bootstrap.min.css" rel="stylesheet">
   <link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/range.css">
+  
   <link href="<?php echo base_url();?>assets/fa/css/all.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
   <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/datatables/css/datatables.min.css"/> -->

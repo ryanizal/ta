@@ -9,7 +9,6 @@
 				<form method="post" enctype="multipart/form-data">
 					<div class="mt-10">
 						<p>Coffee's Name</p>
-						
 					</div>
 					<div class="mt-10">
 						<input type="text" name="nama_kopi" placeholder="Coffee's Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Coffees Name'" class="single-input" value="<?php echo $kopi->nama_kopi ?>">

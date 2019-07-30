@@ -25,11 +25,29 @@ class Coffee extends CI_Controller {
 	function tambah()
 	{
 		$input = $this->input->post();
-		if($input)
+
+		$this->form_validation->set_rules('nama_kopi', 'Coffee name', 'required|is_unique[kopi.nama_kopi]');
+		$this->form_validation->set_rules('origin', 'Place Of Origin', 'required');
+		$this->form_validation->set_rules('roast_prof_id_roast_prof', 'Roast Profile', 'required');
+		$this->form_validation->set_rules('proses_kopi_id_proses_kopi', 'Process', 'required');
+		$this->form_validation->set_rules('jenis_kopi_id_jenis_kopi', 'Variety', 'required');
+
+ 		// $this->form_validation->set_rules('tastes[]', 'Tastes Notes at Least 1', 'required');
+ 		// $this->form_validation->set_rules('photos', 'Photos', 'required');
+
+		if($this->form_validation->run() == TRUE)
 		{
+
+			$input['tastes'] = $input['tastes'];
+			//print_r($input['tastes']);
+			// print_r($_POST['tastes']);
+			//die();
 			$this->Mkopi->save_kopi($input, $_FILES);
-			redirect('administrator/coffee');
+			redirect('administrator/coffee');			
+		} else {
+			$data['eror']=validation_errors();
 		}
+		
 		$data['profile_roast'] = $this->Mkopi->profile_roast();
 		$data['jenis_kopi'] = $this->Mkopi->jenis_kopi();
 		$data['proses_kopi'] = $this->Mkopi->proses_kopi();

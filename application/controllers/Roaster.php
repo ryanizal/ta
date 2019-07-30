@@ -74,6 +74,7 @@
 		$data['total_produk'] = MkopiEL::where('roaster_id_roaster', $idr)->count();
 		$data['total_komentar'] = $this->Mkomentar->hitung($idr);
 		$data['total_view'] = $this->Mview->hitung($idr);
+		
 
 		// MkomentarEL::with(['kopi', 'roaster'=>function($query)
 		// {

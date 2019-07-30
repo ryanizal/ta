@@ -9,10 +9,10 @@ class Member extends CI_Controller {
 		if (!@$_SESSION['member']['id_member']) {
 			//echo "<script>alert('Belum Login');</script>";
 			$this->session->set_flashdata('pesan', '<div class="alert alert-warning" role="alert">Logged Out / Not Login yet
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>');
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+				</div>');
 			redirect('Welcome/login');
 			exit;
 		}
@@ -149,6 +149,8 @@ class Member extends CI_Controller {
 			$input['kopi_id_kopi'] = $id_kopi;
 
 			$this->Mkopi->simpan_komentar($input);
+			redirect('Member/detail_kopi/'.$id_kopi.'','refresh');
+
 		}
 
 
@@ -239,7 +241,8 @@ class Member extends CI_Controller {
 		$i=0;
 		$id_kopi = array();
 		foreach ($datakopi as $row) {
-			if ($i>=3) { break; }
+			// sampel
+			// if ($i>=3) { break; }
 			$id_kopi[$i] = $row['id_kopi'];
 			$matriks_bobot_alternatif[$i][0] = $row['acidity'];
 			$matriks_bobot_alternatif[$i][1] = $row['sweet'];
@@ -294,7 +297,7 @@ class Member extends CI_Controller {
 		}
 
 		for($i=0;$i<count($id_rangking);$i++) {
-			$kopi_rangking[$i] = MkopiEL::with(['profil','jenis','proses','foto','roaster'])->where('id_kopi',$id_rangking[$i])->get();
+			$kopi_rangking[$i] = MkopiEL::with(['profil','jenis','proses','foto','roaster'])->where('id_kopi',$id_rangking[$i])->take(5)->get();
 		}
 
 		// print_r($matriks_nilai_kriteria);

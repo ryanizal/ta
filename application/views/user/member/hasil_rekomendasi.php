@@ -3,6 +3,9 @@
 	<hr>
 	<?php
 	for ($i=0;$i<count($kopi_rangking);$i++) {
+		if ($i==5) {
+			break;
+		}
 		?>
 		<h4 align="center" class="panel-title"> <?php echo $kopi_rangking[$i][0]->nama_kopi?></h4>
 		<br>

@@ -8,6 +8,9 @@
 						<div class="alert alert-danger col-md-12"><?php echo $eror; ?></div>
 					<?php endif ?>
 					<div class="mt-10">
+						<p>Coffee's Name</p>
+					</div>
+					<div class="mt-10">
 						<input type="text" name="nama_kopi" placeholder="Coffee's Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Coffees Name'" class="single-input">
 					</div>
 					<div class="mt-10 mb-20">
@@ -94,11 +97,16 @@
 						</ul>
 					</div>
 					<br>
-					<div class="mt-20">
+					<div class="mt-10">
+						<p>Place Of Origin</p>
+					</div>
+					<div class="mt-10">
 						<input type="text" name="origin" placeholder="Place of Origin" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Place of Origin'" class="single-input">
 					</div>
+					<div class="mt-10">
+						<p>Roast Profile</p>
+					</div>
 					<div class="input-group-icon mt-10">
-						<!-- <input type="text" name="aaa" placeholder="Roast ID" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Roast ID'" class="single-input"> -->
 						<div class="icon"><i class="fa fa-fire" aria-hidden="true"></i></div>
 						<div class="form-select" id="default-select"">
 							<select name="roast_prof_id_roast_prof">
@@ -109,6 +117,9 @@
 								<?php endforeach ?>
 							</select>
 						</div>
+					</div>
+					<div class="mt-10">
+						<p>Variety</p>
 					</div>
 					<div class="input-group-icon mt-10">
 						<div class="icon"><i class="fa fa-fire" aria-hidden="true"></i></div>
@@ -122,6 +133,9 @@
 							</select>
 						</div>
 					</div>
+					<div class="mt-10">
+						<p>Process</p>
+					</div>
 					<div class="input-group-icon mt-10">
 						<div class="icon"><i class="fa fa-fire" aria-hidden="true"></i></div>
 						<div class="form-select" id="default-select">
@@ -134,13 +148,16 @@
 							</select>
 						</div>
 					</div>
+					<div class="mt-10">
+						<p>Taste Note's</p>
+					</div>
 					<div class="form-group" id="dynamic_field">
 						<div class="row">
 							<div class="input-group-icon mt-10 col-md-4">
 								<div class="icon"><i class="fa fa-fire" aria-hidden="true"></i></div>
 								<div class="form-select" id="default-select">
 									<select name="tastes[]" required="required">
-										<option value="" disabled selected>Taste Note's</option>
+										<!-- <option value="" disabled selected>Taste Note's</option> -->
 										<?php foreach ($tastes as $value): ?>
 											<!-- <option value="" disabled selected>Taste Note's</option> -->
 											<option value="<?php echo $value->id_tastes ?>"><?php echo $value->nama_tastes ?> </option>
@@ -155,10 +172,15 @@
 						</div>
 					</div>
 					<div class="mt-10">
+						<p>Description</p>
+					</div>
+					<div class="mt-10">
 						<textarea id="textareaChars" name="deskripsi_kopi" placeholder="About This Coffee" onfocus="this.placeholder = ''" onblur="this.placeholder = 'About This Coffee'" class="single-input" maxlength="500"></textarea>
 						<span id="chars">500</span> characters remaining
 					</div>
-					<h6 class="mt-15">Photo's</h6>
+					<div class="mt-10">
+						<p>Photo's</p>
+					</div>
 					<!-- <div class="form-group" id="dynamic_field2">
 						<div class="row">
 							<div class="mt-10 col-md-7" >
@@ -169,7 +191,7 @@
 						</div>
 					</div> -->
 					<div class="file-uploader">
-						<input type="file" name="photos" class="fileuploader-area" required="required">
+						<input type="file" name="photos" class="fileuploader-area">
 					</div>
 					
 					<div class="col-lg-3 col-md-3 pull-right">

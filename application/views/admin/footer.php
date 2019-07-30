@@ -9,9 +9,11 @@
 		});
 	});
 </script><!-- <script src="<?php echo base_url();?>assets/js/jquery.js"></script> -->
+<script src="<?php echo base_url();?>assets/js/range.js"></script>
 <script src="<?php echo base_url();?>assets/slick/slick/slick.min.js"></script>
 <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url();?>assets/js/js.js"></script>
+
 
 
 <!-- <script src="<?php echo base_url();?>assets/datatables/js/datatables.js"></script> -->

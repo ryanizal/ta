@@ -104,7 +104,7 @@
 						<div class="col-sm-10 pull-right">
 							<p class="form-control-static"> 
 								<?php foreach ($value->tastes as $taste): ?>
-									<?php echo $taste->nama_tastes; ?> |	
+									<?php echo $taste->nama_tastes; ?>, 	
 								<?php endforeach; ?>
 							</p>
 						</div>
@@ -151,7 +151,7 @@
 						</div>
 						<?php if ($value->member_id_member == $id_member): ?>
 							<div class="pull-right">
-								<a href="<?php echo base_url("Member/hapus_komentar/$value->kopi_id_kopi/$value->id_komentar") ?>" class="genric-btn danger circle">
+								<a href="<?php echo base_url("Member/hapus_komentar/$value->kopi_id_kopi/$value->id_komentar") ?>" class="genric-btn danger circle" onclick="javascript: return confirm('Delete this Comment ?')">
 									Delete
 								</a>
 							</div>

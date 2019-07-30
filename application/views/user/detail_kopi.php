@@ -89,11 +89,11 @@
 						<div class="progress">
 							<?php 
 							$max = 2;
-							$isi = $value->acidity/9*100;
+							$isi = $value->acidity/9*90;
 							$level = substr($isi, 0, $max);
 							?>
 							<div class="progress-bar" role="progressbar" style="width: <?php echo $level;?>%" aria-valuenow="<?php echo $level; ?>" aria-valuemin="0" aria-valuemax="100">
-								<?php echo $level?>% Acidity
+								<?php echo $level?>%
 							</div>
 						</div>
 						
@@ -105,11 +105,11 @@
 						<div class="progress">
 							<?php 
 							$max = 2;
-							$isi = $value->sweet/9*100;
+							$isi = $value->sweet/9*90;
 							$level = substr($isi, 0, $max);
 							?>
 							<div class="progress-bar" role="progressbar" style="width: <?php echo $level;?>%" aria-valuenow="<?php echo $level; ?>" aria-valuemin="0" aria-valuemax="100">
-								<?php echo  $level?>%   Sweetness
+								<?php echo  $level?>%
 							</div>
 						</div>
 					</div>
@@ -120,11 +120,11 @@
 						<div class="progress">
 							<?php 
 							$max = 2;
-							$isi = $value->savory/9*100;
+							$isi = $value->savory/9*90;
 							$level = substr($isi, 0, $max);
 							?>
 							<div class="progress-bar" role="progressbar" style="width: <?php echo $level;?>%" aria-valuenow="<?php echo $level; ?>" aria-valuemin="0" aria-valuemax="100">
-								<?php echo $level ?>%   Savoriness
+								<?php echo $level ?>%
 							</div>
 						</div>
 					</div>
@@ -135,11 +135,11 @@
 						<div class="progress">
 							<?php 
 							$max = 2;
-							$isi = $value->bitter/9*100;
+							$isi = $value->bitter/9*90;
 							$level = substr($isi, 0, $max);
 							?>
 							<div class="progress-bar" role="progressbar" style="width: <?php echo $level;?>%" aria-valuenow="<?php echo $level; ?>" aria-valuemin="0" aria-valuemax="100">
-								<?php echo $level ?>%   Bitterness
+								<?php echo $level ?>%
 							</div>
 						</div>
 					</div>
