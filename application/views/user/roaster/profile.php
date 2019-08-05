@@ -11,6 +11,7 @@
 		<div class="row d-flex justify-content-center">
 			<?php foreach ($roaster as $value):; ?>
 				<div class="col-md-5 mt-sm-30">
+					<?php echo $this->session->flashdata('pesan'); ?> 
 					<h3 class="mb-20 text-center"><?php echo $value['nama_roaster'];?></h3>
 					<br>
 					<div class="text-center single-menu">

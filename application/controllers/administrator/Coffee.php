@@ -26,7 +26,7 @@ class Coffee extends CI_Controller {
 	{
 		$input = $this->input->post();
 
-		$this->form_validation->set_rules('nama_kopi', 'Coffee name', 'required|is_unique[kopi.nama_kopi]');
+		$this->form_validation->set_rules('nama_kopi', 'Coffee name', 'required');
 		$this->form_validation->set_rules('origin', 'Place Of Origin', 'required');
 		$this->form_validation->set_rules('roast_prof_id_roast_prof', 'Roast Profile', 'required');
 		$this->form_validation->set_rules('proses_kopi_id_proses_kopi', 'Process', 'required');

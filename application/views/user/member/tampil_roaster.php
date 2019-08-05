@@ -62,7 +62,14 @@
 						</h5>
 					</div>
 					<br>
-					<img src="<?php echo base_url().$value->foto->first()->path_foto;?>" class="center" width="200" height="200">
+					<?php
+							$image = $value->foto->first()['path_foto'];
+							if (empty($image)){
+								$image = 'assets/img/np.png';
+							}
+							?>
+							<img src="<?php echo base_url().$image;?>" class="center" width="200" height="200">
+					<!-- <img src="<?php echo base_url().$value->foto->first()->path_foto;?>" class="center" width="200" height="200"> -->
 					<!-- </div> -->
 				</div>
 			</div>

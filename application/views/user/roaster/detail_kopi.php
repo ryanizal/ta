@@ -7,12 +7,19 @@
 				<div class="row">
 					<div class="fotocls col-md-12"> 
 						<?php
-							//print_r($value->foto[0]);
-						foreach ($value->foto as $rowfoto):
+						$image = $value->foto->first()['path_foto'];
+						if (empty($image)){
 							?>
-							<img src= "<?php echo base_url().$rowfoto->path_foto;?>" class="img-responsive">
+							<img src= "<?php echo base_url('assets/img/np.png');?>" class="img-responsive">
 							<?php
-						endforeach;
+							
+						}else{
+							foreach ($value->foto as $rowfoto):
+								?>
+								<img src= "<?php echo base_url().$rowfoto->path_foto;?>" class="img-responsive">
+								<?php
+							endforeach;
+						}
 						?>
 					</div>
 				</div>
@@ -134,18 +141,20 @@
 	<div class="section-top-border">
 		<div class="single-menu">
 			<h3>Comments:</h3>
+			<?php echo $this->session->flashdata('pesan'); ?> 
 			<br>
 			<!-- <?php if ($komentar == NULL) {
 				echo "<p>	belum ada komentar</p>";
 			} ?> -->
 			<?php foreach ($komentar as $value): ?>
 				<div class="card">
+
 					<div class="card-body">
 						<?php 
 						if ($value == NULL) {
 							echo "No one comment id this coffee yet, be the first!";
 						}
-						 ?>
+						?>
 						<div class="row mb-50">
 							<div class="col-md-2">
 								<img src="<?php echo base_url('assets/img/').($value->member ? 'member/'.$value->member['foto_member'] : 'roaster/'.$value->roaster['foto_roaster']);?>" class="img img-rounded img-fluid"/>

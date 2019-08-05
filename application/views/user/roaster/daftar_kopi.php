@@ -1,6 +1,8 @@
 <div class="container single-menu">
 	
 	<h3 class="mb-30">List of Your Coffee</h3>
+	<?php echo $this->session->flashdata('pesan'); ?> 
+	
 	<div class="progress-table-wrap">
 		<div class="pull-right">
 			<a href="<?php echo base_url('Roaster/tambah_kopi/');?>" class="genric-btn primary circle col-md-offset-11">Add Coffee</a>
@@ -26,7 +28,7 @@
 				<?php foreach ($new as $value): ?>
 					
 					<tr>
-						<td><?php echo $no++ ?></td>
+						<td><?php echo $no++ ?></td> 
 						<td><?php echo $value->nama_kopi; ?></td>
 						<td><?php echo $value->origin; ?></td>
 						<td><?php echo $value->profil->nama_roast_prof ;?></td>

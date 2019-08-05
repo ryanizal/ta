@@ -11,6 +11,7 @@
 	<section class="text-sample">
 		<div class="row d-flex justify-content-center single-menu">
 			<div class="col-md-5 mt-sm-30">
+				<?php echo $this->session->flashdata('pesan'); ?> 
 				<h3 class="mb-20 text-center"><?php echo $profile['nama_member']?></h3>
 				<div class="text-center">
 					<img class="img-circle" width="200" height="200" src="<?php echo base_url('assets/img/member/'.$profile['foto_member']);?>" >

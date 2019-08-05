@@ -17,12 +17,21 @@
 					<div class="fotocls col-md-3">
 						<?php
 							//print_r($value->foto[0]);
-						foreach ($value->foto as $rowfoto) {
-						?>
-						<div class="col-md-3">
-							<img src= "<?php echo base_url().$rowfoto->path_foto;?>" class="img-responsive">
-						</div>
-						<?php
+						$image = $value->foto->first()['path_foto'];
+						if (empty($image)){
+							?>
+							<img src= "<?php echo base_url('assets/img/np.png');?>" class="img-responsive">
+							<?php
+							
+						}
+						else{
+							foreach ($value->foto as $rowfoto) :
+								?>
+								<div class="col-md-3">
+									<img src= "<?php echo base_url().$rowfoto->path_foto;?>" class="img-responsive">
+								</div>
+								<?php
+							endforeach;
 						}
 						?>
 					</div>

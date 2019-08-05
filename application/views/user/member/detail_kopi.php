@@ -8,11 +8,19 @@
 					<div class="fotocls col-md-12"> 
 						<?php
 							//print_r($value->foto[0]);
-						foreach ($value->foto as $rowfoto):
+						$image = $value->foto->first()['path_foto'];
+						if (empty($image)){
 							?>
-							<img src= "<?php echo base_url().$rowfoto->path_foto;?>" class="img-fluid">
+							<img src= "<?php echo base_url('assets/img/np.png');?>" class="img-responsive">
 							<?php
-						endforeach;
+							
+						}else{
+							foreach ($value->foto as $rowfoto):
+								?>
+								<img src= "<?php echo base_url().$rowfoto->path_foto;?>" class="img-fluid">
+								<?php
+							endforeach;
+						}
 						?>
 					</div>
 				</div>
@@ -121,7 +129,7 @@
 							<p class="form-control-static">: <?php echo $value->deskripsi_kopi ?></p>
 						</div>
 					</div>
-					
+
 				</form>
 			<?php endforeach; ?>
 		</div>
@@ -130,6 +138,7 @@
 	<div class="section-top-border">
 		<div class="single-menu">
 			<h3>Comments:</h3>
+			<?php echo $this->session->flashdata('pesan'); ?> 
 			<br>
 			<?php foreach ($komentar as $value): ?>
 				<div class="card">

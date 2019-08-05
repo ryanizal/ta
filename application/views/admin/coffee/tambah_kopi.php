@@ -160,7 +160,7 @@
 						<div class="col-md-4">
 							<select class="form-control" name="tastes[]">
 								<?php foreach ($tastes as $value): ?>
-									<option value="" disabled selected></option>
+									<!-- <option value="" disabled selected></option> -->
 									<!-- <option value="<?php echo $value->id_tastes ?>" disabled selected>Taste Note's</option> -->
 									<option value="<?php echo $value->id_tastes ?>"><?php echo $value->nama_tastes ?> </option>
 								<?php endforeach ?>

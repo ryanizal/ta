@@ -64,7 +64,7 @@
 									<li><a href="<?php echo base_url('member/rekomendasi'); ?>">Recomendation</a></li>
 								</ul>
 							</li>
-							<li class="menu-has-children"><a href="<?php echo base_url('Member/logout') ?>">Logout</a>
+							<li class="menu-has-children"><a href="<?php echo base_url('Member/logout') ?>" onclick="javascript: return confirm('Are you sure to logout ?')">Logout</a>
 
 							</ul>
 						</nav>		    		

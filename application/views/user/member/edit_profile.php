@@ -38,13 +38,6 @@
 					</div>
 					<br>
 					<div class="col-lg-3 col-md-3 pull-right">
-						<script>
-							function goBack() 
-							{
-								window.history.back()
-							}
-							
-						</script>
 						<button onclick="goBack()" class="genric-btn danger circle">Cancel</button>
 						<button type="submit" class="genric-btn success circle">Update</button>
 					</div>
@@ -54,3 +47,10 @@
 		</div>
 	</div>
 </div>
+<script>
+	function goBack() 
+	{
+		window.history.back()
+	}
+	
+</script>

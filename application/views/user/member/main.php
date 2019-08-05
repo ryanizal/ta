@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container"> 
 	<div class="single-menu">
 		<h4>
 			Welcome, <?php echo $nama_member; ?>		
@@ -22,7 +22,14 @@
 
 					<div class="col-lg-5 col-md-5 single-blog single-menu">
 						<a href="<?php echo base_url('Member/detail_kopi/'.$value->id_kopi);?>">
-							<img class="img-fluid" src="<?php echo base_url($value->foto->first()->path_foto);?>" alt="">
+							<?php
+							$image = $value->foto->first()['path_foto'];
+							if (empty($image)){
+								$image ='assets/img/np.png';
+							}
+							?>
+							<img src="<?php echo base_url().$image;?>" class="img-fluid">
+							<!-- <img class="img-fluid" src="<?php echo base_url($value->foto->first()->path_foto);?>" alt=""> -->
 
 							<hr>
 							
@@ -91,16 +98,24 @@
 		<div class="row">
 			
 			<?php foreach ($last as $value): ;?>
-				<div class="col-md-4 single-menu">
+				<div class="col-md-3 single-menu">
 					<div align="center" class="single-defination">
 						<h4 class="mb-20"><?php echo $value->nama_kopi; ?></h4>
-						<a href=""><img class="img-fluid" src="<?php echo base_url($value->foto->first()->path_foto);?>" class="img-responsive"></a>
+						<a href="<?php echo base_url('Member/detail_kopi/'.$value->id_kopi);?>">
+							<?php
+							$image = $value->foto->first()['path_foto'];
+							if (empty($image)){
+								$image ='assets/img/np.png';
+							}
+							?>
+							<img src="<?php echo base_url().$image;?>" class="img-fluid">
+							<!-- <img class="img-fluid" src="<?php echo base_url($value->foto->first()->path_foto);?>" class="img-responsive"></a> -->
+						</div>
 					</div>
-				</div>
-				<div class="col-md-1">
+					<div class="col-md-1">
 
-				</div>
-			<?php endforeach; ?>
+					</div>
+				<?php endforeach; ?>
+			</div>
 		</div>
 	</div>
-</div>

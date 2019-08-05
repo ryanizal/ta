@@ -118,7 +118,7 @@ class Welcome extends CI_Controller {
 	public function signup()
 	{
 		$inputan=$this->input->post();
-		$this->form_validation->set_rules('username_member', 'Username', 'required');
+		$this->form_validation->set_rules('username_member', 'Username', 'required|is_unique[member.username_member]');
 		// $this->form_validation->set_rules('username_member', 'Username', 'is_unique[member.username_member]');
 		$this->form_validation->set_rules('password_member', 'Password', 'required');
 		$this->form_validation->set_rules('nama_member', 'Fullname', 'required');
@@ -147,12 +147,12 @@ class Welcome extends CI_Controller {
 
 	public function signup_roaster()
 	{
-		$this->form_validation->set_rules('username_roaster', 'Username', 'required');
-		$this->form_validation->set_rules('username_roaster', 'Username', 'is_unique[roaster.username_roaster]');
-		$this->form_validation->set_message('is_unique', '%s has already registered. Choose another username');
+		$this->form_validation->set_rules('username_roaster', 'Username', 'required|is_unique[roaster.username_roaster]');
+		// $this->form_validation->set_rules('username_roaster', 'Username', 'is_unique[roaster.username_roaster]');
 		$this->form_validation->set_rules('password_roaster', 'Password', 'required');
 		$this->form_validation->set_rules('nama_roaster', 'Fullname', 'required');
 		$this->form_validation->set_rules('foto_roaster', 'Profile Picture', 'required');
+		$this->form_validation->set_message('is_unique', '%s has already registered. Choose another username');
 
 		$inputan=$this->input->post();
 		if ($this->form_validation->run() == TRUE) 
@@ -184,8 +184,17 @@ class Welcome extends CI_Controller {
 		// var_dump('hai');die();
 		$keyword = $this->input->post('keyword');
 		$data['k'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'])->where('nama_kopi', 'like', '%' . $keyword . '%')->get();
-		$k = $keyword;
-		$this->load->view('user/hasil_cari',$data);
+		// $k = $keyword;
+		$ceks=count($data['k']);
+		// print_r($ceks);
+		// die();
+		if ($ceks!=0) {
+			$this->load->view('user/hasil_cari',$data);
+		} 
+		else {
+			echo "<script>alert('No data Found!');</script>";
+			redirect('','refresh');
+		}
 
 	}
 }

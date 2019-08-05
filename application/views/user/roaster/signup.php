@@ -33,7 +33,7 @@
       <div class="container">
         <div class="row align-items-center justify-content-between d-flex">
           <div id="logo">
-            <a href="index.html"><img src="<?php echo base_url();?>assets/user/img/logo.png" alt="" title="" /></a>
+            <a href="<?php echo base_url('Welcome'); ?>"><img src="<?php echo base_url();?>assets/user/img/logo.png" alt="" title="" /></a>
           </div>
           <nav id="nav-menu-container">
             <ul class="nav-menu">
@@ -55,45 +55,49 @@
       <div class="container">
         <!-- <section class="sample-text-area"> -->
           <div class="row">
+            <a href="<?php echo base_url('Welcome/signup'); ?>"><p class="pull-right genric-btn info circle arrow">Back to Signup Member</p></a>
             <div class="col-lg-12 col-md-12 single-menu">
               <h3 class="mb-30 text-center">Register a Roastery</h3>
               <!-- <a href="<?php echo base_url('Welcome/signup_roaster'); ?>"><p class="pull-right">I am a Roaster</p></a> -->
               <br>
               <form method="post" enctype="multipart/form-data" class="form-horizontal">
                 <div class="form-group">
+                  <?php if ($eror):?>
+                    <div class="alert alert-danger col-md-12"><?php echo $eror; ?></div>
+                  <?php endif ?>
                   <label class="col-sm-2 control-label">Username</label>
                   <div class="col-sm-12">
-                    <input class="single-input" type="text" name="username_roaster" required>
+                    <input class="single-input" type="text" name="username_roaster">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Email</label>
                   <div class="col-sm-12">
-                    <input class="single-input" type="email" name="email_roaster" required>
+                    <input class="single-input" type="email" name="email_roaster">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Password</label>
                   <div class="col-sm-12">
-                    <input class="single-input" type="password" name="password_roaster" required>
+                    <input class="single-input" type="password" name="password_roaster">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Roastery's Name</label>
                   <div class="col-sm-12">
-                    <input class="single-input" type="text" name="nama_roaster" required>
+                    <input class="single-input" type="text" name="nama_roaster">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-5 control-label">About Your Rosatery</label>
                   <div class="col-sm-12">
-                    <textarea class="single-input" name="deskripsi_roaster" required></textarea>
+                    <textarea class="single-input" name="deskripsi_roaster"></textarea>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Your Address</label>
                   <div class="col-sm-12">
-                    <input class="single-input" type="text" name="alamat_roaster" required>
+                    <input class="single-input" type="text" name="alamat_roaster">
                   </div>
                 </div>
                 <div class="form-group">
@@ -111,12 +115,10 @@
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Profile Picture</label>
                   <div class="col-sm-12">
-                    <input class="" type="file" name="foto_roaster" required>
+                    <input class="" type="file" name="foto_roaster">
                   </div>
                 </div>
-                <?php if ($eror):?>
-                  <div class="alert alert-danger col-md-12"><?php echo $eror; ?></div>
-                <?php endif ?>
+                
                 <br>
                 <div class="col-lg-2 col-md-2 pull-right">
                   <button type="submit" class="genric-btn info circle arrow">Signup</button>

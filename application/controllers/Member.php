@@ -67,7 +67,7 @@ class Member extends CI_Controller {
 		$data['last'] = MmemberEL::find($idm)->kopi()->with(['profil','jenis','proses','foto','roaster','tastes'=>function($query)
 		{
 			$query->limit(5);
-		}])->orderBy('pivot_kopi_id_kopi','desc')->groupBy('pivot_kopi_id_kopi')->limit(5)->get();
+		}])->orderBy('pivot_kopi_id_kopi','desc')->groupBy('pivot_kopi_id_kopi')->limit(6)->get();
 
 		// print_r($data['last']->toArray());
 		// die();
@@ -106,6 +106,11 @@ class Member extends CI_Controller {
 		{
 
 			$this->Mmember->edit_member($input, $id_member);
+			$this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">Profile Updated!
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+				</div>');
 			redirect('Member/profile');
 		}
 
@@ -168,6 +173,11 @@ class Member extends CI_Controller {
 	function hapus_komentar($id_kopi, $id_komentar)
 	{
 		$this->Mkopi->hapus_komentar($id_komentar);
+		$this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">Comment Deleted!
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+			</button>
+			</div>');
 		redirect('Member/detail_kopi/'.$id_kopi.'','refresh');
 	}
 
@@ -241,7 +251,7 @@ class Member extends CI_Controller {
 		$i=0;
 		$id_kopi = array();
 		foreach ($datakopi as $row) {
-			// sampel
+			// sampel kopi kriteria
 			// if ($i>=3) { break; }
 			$id_kopi[$i] = $row['id_kopi'];
 			$matriks_bobot_alternatif[$i][0] = $row['acidity'];
@@ -339,10 +349,16 @@ class Member extends CI_Controller {
 		// $data['kopi']=$this->Mkopi->cari_kopi($keyword);
 		$data['k'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'])->where('nama_kopi', 'like', '%' . $keyword . '%')->get();
 		$k = $keyword;
-		$this->load->view('user/member/header');
-		$this->load->view('user/member/hasil_cari',$data);
-		$this->load->view('user/member/footer');
-
+		$ceks=count($data['k']);
+		if ($ceks!=0) {
+			$this->load->view('user/member/header');
+			$this->load->view('user/member/hasil_cari',$data);
+			$this->load->view('user/member/footer');
+		} 
+		else {
+			echo "<script>alert('No data Found!');</script>";
+			redirect('Member','refresh');
+		}
 	}
 
 	function tampil_roaster($id_roaster)

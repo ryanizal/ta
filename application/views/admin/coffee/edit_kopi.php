@@ -97,6 +97,25 @@
 						</select>
 					</div>
 				</div>
+				<div class="form-group" id="dynamic_field">
+					<div class="row">
+						<label class="col-md-1 mb-20 control-label">Cita Rasa</label>
+						<div class="col-md-4">
+							<select class="form-control" name="tastes[]">
+								<?php foreach ($tastes as $value): ?>
+									<!-- <option value="" disabled selected></option> -->
+									<!-- <option value="<?php echo $value->id_tastes ?>" disabled selected>Taste Note's</option> -->
+									<option value="<?php echo $value->id_tastes ?>"><?php echo $value->nama_tastes ?> </option>
+								<?php endforeach ?>
+							</select>
+						</div>
+						
+						<div class="col-md-5 mt-15">
+							<button type="button" class="addp genric-btn info circle small" title="Add More"> + </button>
+							<button type="button" class="removep genric-btn danger circle small" title="Remove"> x </button>
+						</div>	
+					</div>
+				</div>
 				<div class="form-group">
 					<label class="col-sm-1 control-label">Deskripsi</label>
 					<div class="col-sm-11">
@@ -106,6 +125,7 @@
 						<span id="chars">500</span> sisa karakter
 					</div>
 				</div>
+
 				<div class="form-group">
 					<label class="col-sm-1 control-label">Foto </label>
 					<div class="col-lg-6">	

@@ -97,7 +97,7 @@
 		$input = $this->input->post();
 		$idr = $_SESSION['roaster']['id_roaster'];
 
-		$this->form_validation->set_rules('nama_kopi', 'Coffee name', 'required|is_unique[kopi.nama_kopi]');
+		$this->form_validation->set_rules('nama_kopi', 'Coffee name', 'required');
 		$this->form_validation->set_rules('origin', 'Place Of Origin', 'required');
 		$this->form_validation->set_rules('roast_prof_id_roast_prof', 'Roast Profile', 'required');
 		$this->form_validation->set_rules('proses_kopi_id_proses_kopi', 'Process', 'required');
@@ -115,6 +115,11 @@
 			//die();
 			$input['roaster_id_roaster'] = $idr;
 			$this->Mkopi->save_kopi($input, $_FILES);
+			$this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">Submit Succsessfull!
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+				</div>');
 			redirect('roaster/list_kopi');
 		} else {
 			$data['eror']=validation_errors();
@@ -168,6 +173,11 @@
 		if($input) {
 			$id_roaster= $_SESSION['roaster']['id_roaster'];
 			$this->Mroaster->edit_roaster($input, $id_roaster);
+			$this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">Edit Succsessfull!
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+				</div>');
 			redirect('roaster/profile');
 		}
 
@@ -215,6 +225,11 @@
 	function hapus_komentar($id_kopi, $id_komentar)
 	{
 		$this->Mkopi->hapus_komentar($id_komentar);
+		$this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">Comment Deleted!
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+			</button>
+			</div>');
 		redirect('Roaster/detail_kopi/'.$id_kopi.'','refresh');
 	}
 
@@ -242,6 +257,11 @@
 			$input['tastes'] = $input['tastes'];
 			
 			$this->Mkopi->edit_kopi($input, $_FILES, $id_kopi);
+			$this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">Edit Succsessfull!
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+				</div>');
 			redirect('Roaster/list_kopi');
 		} else{
 			$data['eror']=validation_errors();
@@ -262,6 +282,11 @@
 
 	function hapus_kopi($id_kopi){
 		$this->Mkopi->hapus_kopi($id_kopi);
+		$this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">Coffee Deleted!
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+			</button>
+			</div>');
 		redirect('Roaster/list_kopi');
 
 
@@ -281,9 +306,19 @@
 		$data['k'] = MkopiEL::with(['profil','jenis','proses','foto','roaster','tastes'])->where('nama_kopi', 'like', '%' . $keyword . '%')->get();
 
 		$k = $keyword;
-		$this->load->view('user/roaster/header');
-		$this->load->view('user/roaster/hasil_cari',$data);
-		$this->load->view('user/roaster/footer');
+		$ceks=count($data['k']);
+		// print_r($ceks);
+		// die();
+		if ($ceks!=0) {
+			$this->load->view('user/roaster/header');
+			$this->load->view('user/roaster/hasil_cari',$data);
+			$this->load->view('user/roaster/footer');
+		} 
+		else {
+			echo "<script>alert('No data Found!');</script>";
+			redirect('','refresh');
+		}
+		
 
 
 	}

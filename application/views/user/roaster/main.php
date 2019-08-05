@@ -62,52 +62,58 @@
 			<h3 class="mb-30"><?php echo $value->nama_kopi; ?> </h3>
 			<div class="row single-menu">
 				<div class="col-md-3">
-						<a href="<?php echo base_url('Roaster/detail_kopi/'.$value->id_kopi); ?>">
-							<img src="<?php echo base_url().$value->foto->first()->path_foto;?>" onerror="this.src='<?php echo base_url('assets/img/np.jpg') ?>'" class="img-fluid">
-						</a> 
-						</div>
-						<div class="col-md-9 mt-sm-20">
-							<form class="form-horizontal">
-								<div class="form-group">
-									<label class="control-label col-sm-2">Variety</label>
-									<div class="col-sm-10 pull-right">
-										<p class="form-control-static">: <?php echo $value->jenis->jenis_kopi ?></p>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="control-label col-sm-2">Process</label>
-									<div class="col-sm-10 pull-right">
-										<p class="form-control-static">: <?php echo $value->proses->nama_proses ?></p>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="control-label col-sm-2">Roast Profile</label>
-									<div class="col-sm-10 pull-right">
-										<p class="form-control-static">: <?php echo $value->profil->nama_roast_prof ?></p>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="control-label col-sm-2">Description</label>
-									<div class="col-sm-10 pull-right">
-										<p class="form-control-static">: <?php echo $value->deskripsi_kopi ?></p>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-					<hr>
-				<?php endforeach ?>
-			</div>
-			<div class="row">
-				<div class="col-lg-5">
-
+					<a href="<?php echo base_url('Roaster/detail_kopi/'.$value->id_kopi); ?>">
+						<?php
+						$image = $value->foto->first()['path_foto'];
+						if (empty($image)){
+							$image ='assets/img/np.png';
+						}
+						?>
+							<img src="<?php echo base_url().$image;?>" class="img-fluid">
+					</a> 
 				</div>
-				<div class="col-lg-5">
-
-					<?php echo $links; ?> 
+				<div class="col-md-9 mt-sm-20">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label class="control-label col-sm-2">Variety</label>
+							<div class="col-sm-10 pull-right">
+								<p class="form-control-static">: <?php echo $value->jenis->jenis_kopi ?></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2">Process</label>
+							<div class="col-sm-10 pull-right">
+								<p class="form-control-static">: <?php echo $value->proses->nama_proses ?></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2">Roast Profile</label>
+							<div class="col-sm-10 pull-right">
+								<p class="form-control-static">: <?php echo $value->profil->nama_roast_prof ?></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2">Description</label>
+							<div class="col-sm-10 pull-right">
+								<p class="form-control-static">: <?php echo $value->deskripsi_kopi ?></p>
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
+			<hr>
+		<?php endforeach ?>
+	</div>
+	<div class="row">
+		<div class="col-lg-5">
+
 		</div>
+		<div class="col-lg-5">
+
+			<?php echo $links; ?> 
+		</div>
+	</div>
+</div>
 
 
 
